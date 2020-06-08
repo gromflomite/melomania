@@ -30,7 +30,6 @@ public class AlbumController extends HttpServlet {
 		
 		// Calling index.jsp pushing request and response
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

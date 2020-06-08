@@ -9,7 +9,7 @@ public class Album {
 	private String comments;
 	private String cover;
 
-	// Defaul constructor
+	// Default constructor
 	public Album() {
 		this.id = 0;
 		this.title = "";

@@ -14,7 +14,7 @@ public class ConnectionManager {
 
 		Connection dbConnection = null;
 
-		// Checking if the connector is properly working (was added in Maven pom.xml)
+		// Checking if the connector is working properly (was added in Maven pom.xml)
 		Class.forName("com.mysql.jdbc.Driver"); 
 
 		// Establish connection
