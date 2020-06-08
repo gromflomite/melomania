@@ -28,8 +28,8 @@ public class AlbumController extends HttpServlet {
 		// Setting attributes to request
 		request.setAttribute("albums", albums);
 		
-		// Calling index.jsp pushing request and response
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		// Calling albums.jsp pushing request and response
+		request.getRequestDispatcher("albums.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
