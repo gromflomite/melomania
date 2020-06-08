@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>meloMania | Home</title>
+<title>melomania | Home</title>
 </head>
 <body>
 
