@@ -4,10 +4,9 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-	<!-- Call the controller "album" as first element to charge  -->
-	
-<!-- 	<welcome-file-list>		 -->
-<!-- 		<welcome-file>album</welcome-file> -->
-<!-- 	</welcome-file-list> -->
+	<!-- Call the controller "album" as first element to charge  -->	
+	<welcome-file-list>		
+		<welcome-file>album</welcome-file>
+	</welcome-file-list>
 
 </web-app>

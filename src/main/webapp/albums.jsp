@@ -15,7 +15,11 @@
 
 <div class="container">
 	
-	<h2 class="my-3">Albums</h2>
+	<hr>
+	
+	<h2 class="my-3">Your collection</h2>
+	
+	<hr>
 
 	<table id="table" class="tabla table table-striped">
 

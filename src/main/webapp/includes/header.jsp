@@ -21,6 +21,10 @@
 				<li class="nav-item">
 					<a class="nav-link ${ ('albums' eq param.activeTag) ? 'active' : '' }" href="album">Albums</a>
 				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="new-album.jsp">Add album</a>
+				</li>		
 						
 			</ul>
 			
@@ -28,5 +32,8 @@
 		</div>
 	
 	</nav>
+	
+	<!-- Including the .jsp to show feedback -->
+	<jsp:include page="feedback.jsp"></jsp:include>
 
 </header>

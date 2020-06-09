@@ -11,15 +11,19 @@ import model.pojos.Album;
 public class AlbumDao {
 
 	// SQL queries
-	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------------------
 	// executeQuery -> returns -> ResulSet
 	private final String QUERY_GETALL = " SELECT id, title, artist, year, comments, cover FROM albums ORDER BY id ASC; ";
+
+	// executeUpdate -> returns -> integer with the number of affected rows
+	private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
+	// --------------------------------------------------------------------------------------------
 
 	private AlbumDao() {
 		super();
 	}
 
-	// Singleton pattern
+	// Singleton pattern --------------------------------------------------------------------------
 	public static AlbumDao INSTANCE = null;
 
 	public static synchronized AlbumDao getInstance() {
@@ -30,7 +34,11 @@ public class AlbumDao {
 
 		return INSTANCE;
 	}
+	// End Singleton pattern ----------------------------------------------------------------------
+	
+	
 
+	// getAll -------------------------------------------------------------------------------------
 	public ArrayList<Album> getAll() {
 
 		// ArrayList to push the POJO "album" items recovered form DB
@@ -75,5 +83,46 @@ public class AlbumDao {
 		return dbRegisters;
 
 	}
+	// End getAll ---------------------------------------------------------------------------------
+	
+
+	
+	// insert method ------------------------------------------------------------------------------
+
+	public Album insert(Album newAlbum) throws Exception {
+
+		try (Connection dbConnection = ConnectionManager.getConnection();
+				/**
+				 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry
+				 */
+				PreparedStatement pst = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);)
+		{
+
+			// Replace ? in the SQL query
+			pst.setString	(	1, 	newAlbum.getTitle());
+			pst.setString	(	2, 	newAlbum.getArtist());
+			pst.setInt		(	3, 	newAlbum.getYear());
+			pst.setString	(	4, 	newAlbum.getComments());
+			pst.setString	(	5,	newAlbum.getCover());
+			
+			// Executing the update against the DB and saving the number of affected rows
+			int affectedRows = pst.executeUpdate();
+			
+			if (affectedRows == 1) {
+				
+				// TODO ??
+				
+			} else {
+				
+				throw new Exception("The album " + newAlbum.getTitle() + " has not been saved");
+			}
+
+		}
+		
+		return newAlbum;
+
+	}
+
+	// End insert method --------------------------------------------------------------------------
 
 }

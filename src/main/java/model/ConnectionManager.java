@@ -21,6 +21,8 @@ public class ConnectionManager {
 		dbConnection = DriverManager.getConnection(CONNECTION_URL, USER, PASSWORD);
 
 		return dbConnection;
+		
+		// TODO test
 
 	}
 }
