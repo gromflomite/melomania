@@ -1,6 +1,5 @@
-## melomania
+# melomania
 
-**For stable updates in the project, please refer to newest release, not master branch**
+**A basic app to practice with Java EE, JSP, Expression Language, MySQL, Bootstrap, etc.**
 
-**Basic app to play with DB, DAO, JSP, EL...**
-
+For latest stable updates, please refer to [releases](https://github.com/gromflomite/melomania/releases), don't use master branch.
