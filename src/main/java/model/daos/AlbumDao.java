@@ -10,15 +10,15 @@ import model.pojos.Album;
 
 public class AlbumDao {
 
-	// SQL queries
-	// --------------------------------------------------------------------------------------------
+	// SQL queries --------------------------------------------------------------------------------
 	// executeQuery -> returns -> ResulSet
-	private final String QUERY_GETALL = " SELECT id, title, artist, year, comments, cover FROM albums ORDER BY id ASC; ";
-	private final String QUERY_GETBYID = " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
+	private final String QUERY_GETALL	= " SELECT id, title, artist, year, comments, cover FROM albums ORDER BY id ASC; ";
+	private final String QUERY_GETBYID	= " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
 
 	// executeUpdate -> returns -> integer with the number of affected rows
-	private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
-	private final String QUERY_UPDATE = " UPDATE albums SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";	
+	private final String QUERY_INSERT 	= " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
+	private final String QUERY_UPDATE	= " UPDATE albums SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";
+	private final String QUERY_DELETE	= " DELETE FROM albums WHERE id = ? ; ";  
 	// --------------------------------------------------------------------------------------------
 
 	
@@ -40,15 +40,16 @@ public class AlbumDao {
 	// End Singleton pattern ----------------------------------------------------------------------	
 	
 
-	// getAll -------------------------------------------------------------------------------------
+	// getAll() -----------------------------------------------------------------------------------
 	public ArrayList<Album> getAll() {
 
 		// ArrayList to push the POJO "album" items recovered form DB
 		ArrayList<Album> dbRegisters = new ArrayList<Album>();
 
 		// try with resources (autoclosable)
-		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GETALL);
+		try (
+				Connection dbConnection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETALL);
 				ResultSet resulSet = preparedStatement.executeQuery();
 
 		) {
@@ -83,18 +84,18 @@ public class AlbumDao {
 
 		return dbRegisters;
 	}
-	// End getAll ---------------------------------------------------------------------------------
+	// End getAll() -------------------------------------------------------------------------------
 	
 	
-	// getById method ------------------------------------------------------------------------------
+	// getById() ----------------------------------------------------------------------------------
 	public Album getById(int albumId) throws Exception {		
 		
 		// Create POJO and set the recovered values
 		Album album = new Album();
 		
 		try (
-				Connection connection = ConnectionManager.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GETBYID);) {
+				Connection dbConnection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETBYID);) {
 
 			// Replacing ? in the SQL query
 			preparedStatement.setInt(1, albumId);
@@ -105,12 +106,12 @@ public class AlbumDao {
 			if (resulSet.next()) {
 				
 				// Getting the values from the resultSet (values from the DB)
-				int id				= resulSet.getInt("id");
-				String title		= resulSet.getString("title");
-				String artist 		= resulSet.getString("artist");
-				int year 			= resulSet.getInt("year");
-				String comments 	= resulSet.getString("comments");
-				String cover 		= resulSet.getString("cover");				
+				int id			= resulSet.getInt("id");
+				String title	= resulSet.getString("title");
+				String artist 	= resulSet.getString("artist");
+				int year 		= resulSet.getInt("year");
+				String comments = resulSet.getString("comments");
+				String cover 	= resulSet.getString("cover");				
 				
 				// Set the recovered values to POJO
 				album.setId(id);
@@ -122,16 +123,16 @@ public class AlbumDao {
 				
 			} else {
 				
-				throw new Exception("The inserted ID (" + albumId + ") does not exists in the DB");
+				throw new Exception("The album " + album.getTitle() + " does not exists in your collection");
 			}
 		}
 
 		return album;
 	}	
-	// End getById method -------------------------------------------------------------------------
+	// End getById() ------------------------------------------------------------------------------
 	
 
-	// insert method ------------------------------------------------------------------------------
+	// insert() -----------------------------------------------------------------------------------
 	public Album insert(Album newAlbum) throws Exception {
 
 		try (
@@ -139,18 +140,18 @@ public class AlbumDao {
 				/**
 				 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry
 				 */
-				PreparedStatement pst = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);)
+				PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);)
 		{
 
 			// Replace ? in the SQL query
-			pst.setString	(	1, 	newAlbum.getTitle());
-			pst.setString	(	2, 	newAlbum.getArtist());
-			pst.setInt		(	3, 	newAlbum.getYear());
-			pst.setString	(	4, 	newAlbum.getComments());
-			pst.setString	(	5,	newAlbum.getCover());
+			preparedStatement.setString	(	1, 	newAlbum.getTitle());
+			preparedStatement.setString	(	2, 	newAlbum.getArtist());
+			preparedStatement.setInt		(	3, 	newAlbum.getYear());
+			preparedStatement.setString	(	4, 	newAlbum.getComments());
+			preparedStatement.setString	(	5,	newAlbum.getCover());
 			
 			// Executing the update against the DB and saving the number of affected rows
-			int affectedRows = pst.executeUpdate();
+			int affectedRows = preparedStatement.executeUpdate();
 			
 			if (affectedRows == 1) {
 				
@@ -164,23 +165,23 @@ public class AlbumDao {
 		
 		return newAlbum;
 	}
-	// End insert method --------------------------------------------------------------------------	
+	// End insert() -------------------------------------------------------------------------------	
 	
 	
-	// update method ------------------------------------------------------------------------------
+	// update() -----------------------------------------------------------------------------------
 	public Album update(Album updateAlbum) throws Exception {
 
 		try (
-				Connection connection = ConnectionManager.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);) {			
+				Connection dbConnection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_UPDATE);) {			
 
 			// Replace ? in the SQL query
-			preparedStatement.setString(	1, updateAlbum.getTitle());
-			preparedStatement.setString(	2, updateAlbum.getArtist());
-			preparedStatement.setInt(		3, updateAlbum.getYear());
-			preparedStatement.setString(	4, updateAlbum.getComments());
-			preparedStatement.setString(	5, updateAlbum.getCover());
-			preparedStatement.setInt(		6, updateAlbum.getId());
+			preparedStatement.setString	(	1, updateAlbum.getTitle());
+			preparedStatement.setString	(	2, updateAlbum.getArtist());
+			preparedStatement.setInt	(	3, updateAlbum.getYear());
+			preparedStatement.setString	(	4, updateAlbum.getComments());
+			preparedStatement.setString	(	5, updateAlbum.getCover());
+			preparedStatement.setInt	(	6, updateAlbum.getId());
 
 			System.out.println(preparedStatement);
 			
@@ -198,6 +199,34 @@ public class AlbumDao {
 
 		return updateAlbum;
 	}
-	// End update method --------------------------------------------------------------------------	
+	// End update() -------------------------------------------------------------------------------	
+	
+	
+	// delete() -----------------------------------------------------------------------------------
+	public Album delete(int deleteAlbumId) throws Exception {
+
+		// Get the album before try deleting it
+		Album albumToDelete = getById(deleteAlbumId);
+
+		try (
+				Connection dbConnection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_DELETE);) {
+
+			// Changing the ? in the SQL query
+			preparedStatement.setInt(1, deleteAlbumId);
+
+			// Getting the number of affected rows after execute the query
+			int affectedRows = preparedStatement.executeUpdate();
+
+			if (affectedRows != 1) {
+				throw new Exception("The album " + albumToDelete.getTitle() + " cannot be deleted.");
+			}
+
+		}
+		
+		return albumToDelete;
+
+	}
+	// End delete() -------------------------------------------------------------------------------	
 
 } // Class end ------------------------------------------------------------------------------------

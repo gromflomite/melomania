@@ -19,13 +19,16 @@ public class NewEditAlbumController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	// Variable to save the album id value of the album to edit
-	// We are using this method to avoid the necessity to send back the id to the form (as attribute) and 
-	// get it back the value as parameter)	
-	public int albumUpdateId = 0;	
+	/**
+	 * Variable to save the album id# of the album to edit.
+	 * 
+	 * We are using this method to avoid the logic of sending id# to the view (as attribute) and
+	 * get it back unmodified as parameter (user must not be able to modify this value and there is no
+	 * need to show it on the view, so there is no point on sending the id# to the view).	 *
+	 */	
+	private static int albumUpdateId = 0;	
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// RETRIEVING album values from album list table (using edit option) via doGet
 		
@@ -82,7 +85,7 @@ public class NewEditAlbumController extends HttpServlet {
 
 		try {
 			// Getting the values from the form (new-album.jsp)
-			int id 			= albumUpdateId; // Taken the value from the global variable //Integer.parseInt(request.getParameter("id"));			
+			int id 			= albumUpdateId; // Taken album id# the value from the global variable			
 			String title 	= request.getParameter("albumTitle");
 			String artist 	= request.getParameter("artist");
 			int year 		= Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers

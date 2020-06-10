@@ -25,14 +25,13 @@
 
 		<thead>
 			
-			<tr>
-				<td>Id</td>
+			<tr>				
 				<td>Title</td>
 				<td>Artist</td>
 				<td>Year</td>
 				<td>Comments</td>
 				<td>Cover</td>
-				<td>Options</td>
+				<td>Manage</td>
 			</tr>
 		
 		</thead>
@@ -41,8 +40,7 @@
 
 			<c:forEach items="${albums}" var="a">
 
-				<tr>
-					<td>${a.id}</td>
+				<tr>					
 					<td>${a.title}</td>
 					<td>${a.artist}</td>
 					<td>${a.year}</td>
@@ -52,7 +50,7 @@
 					</td>					
 					<td id="formOptionButtons">
 						<a href="newalbum?id=${a.id}" class="mr-2"><i class="far fa-edit fa-1x" title="Edit"></i></a>
-						<a href=""><i class="fas fa-trash fa-1x" title="Delete"></i></a>
+						<a href="deletealbum?id=${a.id}"><i class="fas fa-trash fa-1x" title="Delete"></i></a>
 					</td>					
 				</tr>
 
