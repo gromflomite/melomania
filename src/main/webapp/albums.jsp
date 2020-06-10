@@ -17,7 +17,7 @@
 	
 	<hr>
 	
-	<h2 class="my-3">Your collection</h2>
+	<h2 class="my-3">My collection</h2>
 	
 	<hr>
 
@@ -50,7 +50,7 @@
 					</td>					
 					<td id="formOptionButtons">
 						<a href="newalbum?id=${a.id}" class="mr-2"><i class="far fa-edit fa-1x" title="Edit"></i></a>
-						<a href="deletealbum?id=${a.id}"><i class="fas fa-trash fa-1x" title="Delete"></i></a>
+						<a href="deletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')"><i class="fas fa-trash fa-1x" title="Delete"></i></a>
 					</td>					
 				</tr>
 

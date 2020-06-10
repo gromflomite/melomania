@@ -5,8 +5,8 @@
 	version="3.1">
 
 	<!-- Call the controller "album" as first element to charge  -->	
-	<welcome-file-list>		
-		<welcome-file>album</welcome-file>
-	</welcome-file-list>
+<!-- 	<welcome-file-list>		 -->
+<!-- 		<welcome-file>album</welcome-file> -->
+<!-- 	</welcome-file-list> -->
 
 </web-app>
