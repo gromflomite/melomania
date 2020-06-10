@@ -17,8 +17,6 @@
 	<h1 class="my-5">Welcome to melomania</h1>
 	
 	<h3>In this page will appear your last five Albums (work in progress)</h3>	
-	
-	<!-- New branch test -->
 
 </div>
 

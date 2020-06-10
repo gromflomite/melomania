@@ -31,6 +31,7 @@
 				<td>Year</td>
 				<td>Comments</td>
 				<td>Cover</td>
+				<td>Options</td>
 			</tr>
 		</thead>
 
@@ -46,7 +47,15 @@
 					<td>${a.comments}</td>
 					<td>
 						<img src="${a.cover}" alt="Album cover">
-					</td>
+					</td>					
+					<td>
+						<a href="newalbum?id=${a.id}" class="mr-4">
+							<i class="far fa-edit fa-1x" title="Edit"></i>
+						</a>
+						<a href="">
+							<i class="fas fa-trash fa-1x" title="Delete"></i>
+						</a>
+					</td>					
 				</tr>
 
 			</c:forEach>

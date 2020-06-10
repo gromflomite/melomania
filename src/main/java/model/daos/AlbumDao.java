@@ -14,16 +14,19 @@ public class AlbumDao {
 	// --------------------------------------------------------------------------------------------
 	// executeQuery -> returns -> ResulSet
 	private final String QUERY_GETALL = " SELECT id, title, artist, year, comments, cover FROM albums ORDER BY id ASC; ";
+	private final String QUERY_GETBYID = " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
 
 	// executeUpdate -> returns -> integer with the number of affected rows
 	private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
+	private final String QUERY_UPDATE = " UPDATE album SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";	
 	// --------------------------------------------------------------------------------------------
 
+	
+	// Singleton pattern --------------------------------------------------------------------------
 	private AlbumDao() {
 		super();
-	}
-
-	// Singleton pattern --------------------------------------------------------------------------
+	}	
+	
 	public static AlbumDao INSTANCE = null;
 
 	public static synchronized AlbumDao getInstance() {
@@ -53,12 +56,12 @@ public class AlbumDao {
 			while (resulSet.next()) {
 
 				// Getting the values from the resultSet (values from the DB)
-				int id = resulSet.getInt("id");
-				String title = resulSet.getString("title");
-				String artist = resulSet.getString("artist");
-				int year = resulSet.getInt("year");
+				int id 			= resulSet.getInt("id");
+				String title 	= resulSet.getString("title");
+				String artist 	= resulSet.getString("artist");
+				int year		= resulSet.getInt("year");
 				String comments = resulSet.getString("comments");
-				String cover = resulSet.getString("cover");
+				String cover 	= resulSet.getString("cover");
 
 				// Create POJO and set the recovered values
 				Album album = new Album();
@@ -84,6 +87,51 @@ public class AlbumDao {
 
 	}
 	// End getAll ---------------------------------------------------------------------------------
+	
+	
+	// getById method ------------------------------------------------------------------------------
+	public Album getById(int albumId) throws Exception {		
+		
+		// Create POJO and set the recovered values
+		Album album = new Album();
+		
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GETBYID);) {
+
+			// Replacing ? in the SQL query
+			preparedStatement.setInt(1, albumId);
+
+			// Executing the query against the DB and getting the ResultSet with the values
+			ResultSet resulSet = preparedStatement.executeQuery();
+			
+			if (resulSet.next()) {
+				
+				// Getting the values from the resultSet (values from the DB)
+				int id				= resulSet.getInt("id");
+				String title		= resulSet.getString("title");
+				String artist 		= resulSet.getString("artist");
+				int year 			= resulSet.getInt("year");
+				String comments 	= resulSet.getString("comments");
+				String cover 		= resulSet.getString("cover");				
+				
+				// Set the recovered values to POJO
+				album.setId(id);
+				album.setTitle(title);
+				album.setArtist(artist);
+				album.setYear(year);
+				album.setComments(comments);
+				album.setCover(cover);			
+				
+			} else {
+				
+				throw new Exception("The inserted ID (" + albumId + ") does not exists in the DB");
+
+			}
+		}
+
+		return album;
+	}	
+	// End getById method -------------------------------------------------------------------------
 	
 
 	
@@ -124,5 +172,50 @@ public class AlbumDao {
 	}
 
 	// End insert method --------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	// update method ------------------------------------------------------------------------------
+	public Album update(Album updateAlbum) throws Exception {
 
-}
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);) {
+			
+			//UPDATE album SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?;
+			
+			// Replace ? in the SQL query
+			preparedStatement.setString(1, updateAlbum.getTitle());
+			preparedStatement.setString(2, updateAlbum.getArtist());
+			preparedStatement.setInt(3, updateAlbum.getYear());
+			preparedStatement.setString(4, updateAlbum.getComments());
+			preparedStatement.setString(5, updateAlbum.getCover());
+			preparedStatement.setInt(6, updateAlbum.getId());
+			
+			// Exectute update. executeUpdate returns the numbers of affected rows
+			if (preparedStatement.executeUpdate() != 1) {
+
+				throw new Exception("The album " + updateAlbum.getTitle() + " can not be updated");
+
+			}
+			
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return updateAlbum;
+
+	}
+	
+	
+	
+	// End update method --------------------------------------------------------------------------
+	
+	
+
+} // Class end ------------------------------------------------------------------------------------

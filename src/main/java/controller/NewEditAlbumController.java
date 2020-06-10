@@ -14,14 +14,45 @@ import model.pojos.Album;
 import model.pojos.Feedback;
 
 @WebServlet("/newalbum")
-public class NewAlbumController extends HttpServlet {
+public class NewEditAlbumController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// RETRIEVING album values from album list table (using edit option) via doGet
+		
+		Album album = new Album();
+		
+		// Getting and parsing the ID number
+		// It comes with forced "0" from the form view
+		try {
 
-		// Not using doGet yet
-		doPost(request, response);
+			int idParameter = Integer.parseInt(request.getParameter("id"));
+
+			if (idParameter > 0) {
+
+				// Instanciating DAO
+				AlbumDao editAlbumDao = AlbumDao.getInstance();
+
+				// Getting the student registry by ID from DB
+				album = editAlbumDao.getById(idParameter);
+			}
+
+		} catch (Exception e) {
+
+			// TODO --
+			e.printStackTrace();
+
+		} finally {
+
+			// Setting the attribute (user object)
+			request.setAttribute("album", album);
+
+			// Calling the JSP forwarding the request
+			request.getRequestDispatcher("new-album.jsp").forward(request, response);
+		}	
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -31,10 +62,10 @@ public class NewAlbumController extends HttpServlet {
 		boolean isRedirect = false;
 
 		// Instancing new albumDAO (via Singleton pattern)
-		AlbumDao newAlbumDao = AlbumDao.getInstance();
+		AlbumDao albumDao = AlbumDao.getInstance();
 
 		// Creating new album object
-		Album newAlbum = new Album();
+		Album album = new Album();
 
 		// Creating new feedback object
 		Feedback feedback = new Feedback();
@@ -45,25 +76,35 @@ public class NewAlbumController extends HttpServlet {
 		try {
 
 			// Getting the values from the form (new-album.jsp)
-			String title = request.getParameter("albumTitle");
-			String artist = request.getParameter("artist");
-			int year = Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers
+			int id 			= Integer.parseInt(request.getParameter("id"));			
+			String title 	= request.getParameter("albumTitle");
+			String artist 	= request.getParameter("artist");
+			int year 		= Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers
 			String comments = request.getParameter("comments");
-			String cover = request.getParameter("cover");
+			String cover	= request.getParameter("cover");
 
 			// Setting the ID and name on the Album object
-			newAlbum.setTitle(title);
-			newAlbum.setArtist(artist);
-			newAlbum.setYear(year);
-			newAlbum.setComments(comments);
-			newAlbum.setCover(cover);
+			album.setId(id);
+			album.setTitle(title);
+			album.setArtist(artist);
+			album.setYear(year);
+			album.setComments(comments);
+			album.setCover(cover);
 
 			// Validating entered values in Album field
 			if ( (artist != null) && (artist.length() >= 2) && (artist.length() <= 100) && ( (year >= 1500) && (year <= 2050) ) ) {
 
-				// Sending Album object to AlbumDAO
-				newAlbumDao.insert(newAlbum);
-
+				if (id == 0) {
+					
+					// Create the registry in the DB
+					albumDao.insert(album);
+				
+				} else { // if id != 0, the registry already exists in the DB, so update it
+					
+					// Update the registry in the DB
+					albumDao.update(album);				
+				}	
+				
 				// Creating some feedback to the user
 				feedback = new Feedback("success", "Album properly saved");
 
@@ -76,7 +117,7 @@ public class NewAlbumController extends HttpServlet {
 				feedback = new Feedback("danger", "The Artist field must contain at least 2 characters and Year field must be between 1500 and 2050");
 
 				// Sending back the object to the form view to repopulate the form fields with the entered values
-				request.setAttribute("newAlbum", newAlbum);
+				request.setAttribute("newAlbum", album);
 				
 				// The entered values are not correct, so we are going to send back the user to the new album form via forward (we are not modifying the isRedirect boolean)
 			}

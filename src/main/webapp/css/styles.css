@@ -24,19 +24,21 @@ body {
 /* -------------------------  End navbar ------------------------- */
 
 
+
+
 #newalbumform {
 	margin-top: 50px;
 }
 
+/* Font awesome icons */
+i.far {
+/*     margin-top: 50%;     */
+    color:#2fad0c;
+}
 
-
-
-
-
-
-
-
-
+i.fas {
+    color: #fc0390;
+}
 
 
 
