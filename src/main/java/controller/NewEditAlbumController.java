@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -130,6 +131,12 @@ public class NewEditAlbumController extends HttpServlet {
 				
 				// The entered values are not correct, so we are going to send back the user to the new album form via forward (we are not modifying the isRedirect boolean)
 			}
+		
+		// Catching the SQLException of already existing album to give more precise feedback to the user
+		} catch ( SQLException e) {	
+
+			feedback = new Feedback( "danger", "The album '" + album.getTitle() + "' already exists in your collection");
+						
 
 		} catch (Exception e) {
 
