@@ -16,11 +16,12 @@
 
 	<h1 class="my-5">Welcome to melomania</h1>
 	
-	<h3>In this page will appear your last five Albums (work in progress)</h3>	
+	<h3>In this page will appear your last five Albums <span id="workinprogress">(work in progress)</span></h3>	
 
 </div>
 
-<!-- Getting the <footer> -->
+<!----------------- Getting the <footer> ---------------->
 <jsp:include page="includes/footer.jsp" />
 <!-- Getting the foot -->
 <jsp:include page="includes/foot.jsp" />
+<!------------------------------------------------------->

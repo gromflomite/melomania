@@ -6,9 +6,6 @@
 <!-- Datatables plug in -->
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
-<!-- bootbox -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
-
 <!-- Own custom JS's (includes Datatables function) -->
 <script src="js/custom.js"></script>
 

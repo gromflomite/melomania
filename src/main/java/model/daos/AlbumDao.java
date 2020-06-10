@@ -146,7 +146,7 @@ public class AlbumDao {
 			// Replace ? in the SQL query
 			preparedStatement.setString	(	1, 	newAlbum.getTitle());
 			preparedStatement.setString	(	2, 	newAlbum.getArtist());
-			preparedStatement.setInt		(	3, 	newAlbum.getYear());
+			preparedStatement.setInt	(	3, 	newAlbum.getYear());
 			preparedStatement.setString	(	4, 	newAlbum.getComments());
 			preparedStatement.setString	(	5,	newAlbum.getCover());
 			
@@ -155,7 +155,7 @@ public class AlbumDao {
 			
 			if (affectedRows == 1) {
 				
-				// TODO ??
+				// TODO Manage feedback if necessary
 				
 			} else {
 				

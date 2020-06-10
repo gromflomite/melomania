@@ -14,10 +14,10 @@ import model.pojos.Album;
 
 @WebServlet("/album")
 public class AlbumController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// Instancing new albumDAO (via Singleton pattern)
 		AlbumDao dao = AlbumDao.getInstance();
@@ -32,10 +32,9 @@ public class AlbumController extends HttpServlet {
 		request.getRequestDispatcher("albums.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 
-		// TODO Auto-generated method stub
+		// We are not using doPost()
 		doGet(request, response);
 	}
 

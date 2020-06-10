@@ -31,7 +31,7 @@ public class NewEditAlbumController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// RETRIEVING album values from album list table (using edit option) via doGet
+		// Retrieving album values from album list table (using edit option) via doGet
 		
 		Album album = new Album();
 		
@@ -53,8 +53,8 @@ public class NewEditAlbumController extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-
-			// TODO --
+			
+			// TODO Manage this exception if necessary
 			e.printStackTrace();
 
 		} finally {
@@ -127,7 +127,7 @@ public class NewEditAlbumController extends HttpServlet {
 				feedback = new Feedback("danger", "The Artist field must contain at least 2 characters and Year field must be between 1500 and 2050");
 
 				// Sending back the object to the form view to repopulate the form fields with the entered values
-				request.setAttribute("newAlbum", album);
+				request.setAttribute("album", album);
 				
 				// The entered values are not correct, so we are going to send back the user to the new album form via forward (we are not modifying the isRedirect boolean)
 			}
@@ -154,9 +154,11 @@ public class NewEditAlbumController extends HttpServlet {
 
 			} else {
 
+				// Sending back the object to the form view to repopulate the form fields with the entered values
+				request.setAttribute("album", album);
+				
 				// Calling the form view passing the feeback and the object
 				request.getRequestDispatcher("new-album.jsp").forward(request, response);
-
 			}
 
 		} // finally end --------------------------------------------------------------------------

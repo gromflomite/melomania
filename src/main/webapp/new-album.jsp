@@ -52,7 +52,8 @@
 
 </div>
 
-<!-- Getting the <footer> -->
+<!----------------- Getting the <footer> ---------------->
 <jsp:include page="includes/footer.jsp" />
 <!-- Getting the foot -->
 <jsp:include page="includes/foot.jsp" />
+<!------------------------------------------------------->

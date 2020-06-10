@@ -14,15 +14,12 @@ public class ConnectionManager {
 
 		Connection dbConnection = null;
 
-		// Checking if the connector is working properly (was added in Maven pom.xml)
+		// Checking if the connector is working properly (added in Maven pom.xml)
 		Class.forName("com.mysql.jdbc.Driver"); 
 
 		// Establish connection
 		dbConnection = DriverManager.getConnection(CONNECTION_URL, USER, PASSWORD);
 
 		return dbConnection;
-		
-		// TODO test
-
 	}
 }

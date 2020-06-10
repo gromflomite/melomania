@@ -51,6 +51,11 @@ i.fas {
 #formOptionButtons {
     padding-left: 25px;
 }
+
+#workinprogress {
+    font-style: italic;
+    color: #fca103;    
+}
 /* -------------------------  End others ------------------------- */
 
 
