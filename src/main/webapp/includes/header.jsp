@@ -23,7 +23,7 @@
 				</li>
 				
 				<li class="nav-item">
-					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="new-album.jsp">Add album</a>
+					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="newalbum?id=0">Add album</a>
 				</li>		
 						
 			</ul>

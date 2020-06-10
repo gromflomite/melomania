@@ -14,9 +14,16 @@ import model.pojos.Album;
 import model.pojos.Feedback;
 
 @WebServlet("/newalbum")
+
 public class NewEditAlbumController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
+	// Variable to save the album id value of the album to edit
+	// We are using this method to avoid the necessity to send back the id to the form (as attribute) and 
+	// get it back the value as parameter)	
+	public int albumUpdateId = 0;	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -29,13 +36,15 @@ public class NewEditAlbumController extends HttpServlet {
 		try {
 
 			int idParameter = Integer.parseInt(request.getParameter("id"));
+			
+			albumUpdateId = Integer.parseInt(request.getParameter("id"));
 
 			if (idParameter > 0) {
 
 				// Instanciating DAO
 				AlbumDao editAlbumDao = AlbumDao.getInstance();
 
-				// Getting the student registry by ID from DB
+				// Getting the album registry by ID from DB
 				album = editAlbumDao.getById(idParameter);
 			}
 
@@ -51,12 +60,10 @@ public class NewEditAlbumController extends HttpServlet {
 
 			// Calling the JSP forwarding the request
 			request.getRequestDispatcher("new-album.jsp").forward(request, response);
-		}	
-		
+		}		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// Tag to go via redirect or via forward
 		boolean isRedirect = false;
@@ -74,9 +81,8 @@ public class NewEditAlbumController extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		try {
-
 			// Getting the values from the form (new-album.jsp)
-			int id 			= Integer.parseInt(request.getParameter("id"));			
+			int id 			= albumUpdateId; // Taken the value from the global variable //Integer.parseInt(request.getParameter("id"));			
 			String title 	= request.getParameter("albumTitle");
 			String artist 	= request.getParameter("artist");
 			int year 		= Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers

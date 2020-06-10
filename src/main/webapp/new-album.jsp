@@ -15,7 +15,7 @@
 
 	<hr>
 
-	<h2>Add new album to your collection</h2>
+	<h2>Add or edit album to your collection</h2>
 
 	<hr>
 

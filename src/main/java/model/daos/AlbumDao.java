@@ -18,7 +18,7 @@ public class AlbumDao {
 
 	// executeUpdate -> returns -> integer with the number of affected rows
 	private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
-	private final String QUERY_UPDATE = " UPDATE album SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";	
+	private final String QUERY_UPDATE = " UPDATE albums SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";	
 	// --------------------------------------------------------------------------------------------
 
 	
@@ -37,8 +37,7 @@ public class AlbumDao {
 
 		return INSTANCE;
 	}
-	// End Singleton pattern ----------------------------------------------------------------------
-	
+	// End Singleton pattern ----------------------------------------------------------------------	
 	
 
 	// getAll -------------------------------------------------------------------------------------
@@ -76,7 +75,6 @@ public class AlbumDao {
 
 				// Set "album" POJO to ArrayList "dbRegisters"
 				dbRegisters.add(album);
-
 			}
 
 		} catch (Exception e) {
@@ -84,7 +82,6 @@ public class AlbumDao {
 		}
 
 		return dbRegisters;
-
 	}
 	// End getAll ---------------------------------------------------------------------------------
 	
@@ -95,7 +92,8 @@ public class AlbumDao {
 		// Create POJO and set the recovered values
 		Album album = new Album();
 		
-		try (Connection connection = ConnectionManager.getConnection();
+		try (
+				Connection connection = ConnectionManager.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GETBYID);) {
 
 			// Replacing ? in the SQL query
@@ -125,7 +123,6 @@ public class AlbumDao {
 			} else {
 				
 				throw new Exception("The inserted ID (" + albumId + ") does not exists in the DB");
-
 			}
 		}
 
@@ -134,12 +131,11 @@ public class AlbumDao {
 	// End getById method -------------------------------------------------------------------------
 	
 
-	
 	// insert method ------------------------------------------------------------------------------
-
 	public Album insert(Album newAlbum) throws Exception {
 
-		try (Connection dbConnection = ConnectionManager.getConnection();
+		try (
+				Connection dbConnection = ConnectionManager.getConnection();
 				/**
 				 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry
 				 */
@@ -164,58 +160,44 @@ public class AlbumDao {
 				
 				throw new Exception("The album " + newAlbum.getTitle() + " has not been saved");
 			}
-
 		}
 		
 		return newAlbum;
-
 	}
-
-	// End insert method --------------------------------------------------------------------------
-	
-	
-	
-	
-	
+	// End insert method --------------------------------------------------------------------------	
 	
 	
 	// update method ------------------------------------------------------------------------------
 	public Album update(Album updateAlbum) throws Exception {
 
-		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);) {
-			
-			//UPDATE album SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?;
-			
+		try (
+				Connection connection = ConnectionManager.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);) {			
+
 			// Replace ? in the SQL query
-			preparedStatement.setString(1, updateAlbum.getTitle());
-			preparedStatement.setString(2, updateAlbum.getArtist());
-			preparedStatement.setInt(3, updateAlbum.getYear());
-			preparedStatement.setString(4, updateAlbum.getComments());
-			preparedStatement.setString(5, updateAlbum.getCover());
-			preparedStatement.setInt(6, updateAlbum.getId());
+			preparedStatement.setString(	1, updateAlbum.getTitle());
+			preparedStatement.setString(	2, updateAlbum.getArtist());
+			preparedStatement.setInt(		3, updateAlbum.getYear());
+			preparedStatement.setString(	4, updateAlbum.getComments());
+			preparedStatement.setString(	5, updateAlbum.getCover());
+			preparedStatement.setInt(		6, updateAlbum.getId());
+
+			System.out.println(preparedStatement);
 			
 			// Exectute update. executeUpdate returns the numbers of affected rows
 			if (preparedStatement.executeUpdate() != 1) {
 
 				throw new Exception("The album " + updateAlbum.getTitle() + " can not be updated");
-
 			}
-			
-			
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			
+			e.printStackTrace();
+			
 		}
 
 		return updateAlbum;
-
 	}
-	
-	
-	
-	// End update method --------------------------------------------------------------------------
-	
-	
+	// End update method --------------------------------------------------------------------------	
 
 } // Class end ------------------------------------------------------------------------------------
