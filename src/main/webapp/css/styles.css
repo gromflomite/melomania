@@ -1,3 +1,4 @@
+/* -------------------------  Generics ------------------------- */
 html {
 	position: relative;
 	min-height: 100%;
@@ -8,6 +9,9 @@ body {
     margin-bottom: 75px;
     font-family: 'Comfortaa', cursive;
 }
+/* -------------------------  End generics ------------------------- */
+
+
 
 /* -------------------------  Navbar ------------------------- */
 .navbar {
@@ -24,19 +28,30 @@ body {
 /* -------------------------  End navbar ------------------------- */
 
 
+
+/* -------------------------  Others ------------------------- */
 #newalbumform {
 	margin-top: 50px;
 }
 
+/* Font awesome icons */
+i.far {
+    color:#bbd113;
+}
 
+i.fas {
+    color: #a60c0c;
+}
 
+.table > tbody > tr > td {
+     vertical-align: middle;
+     padding-left: 20px;
+}
 
-
-
-
-
-
-
+#formOptionButtons {
+    padding-left: 25px;
+}
+/* -------------------------  End others ------------------------- */
 
 
 

@@ -1,10 +1,10 @@
 <!-- Including head and header - Setting the page title and "active" tag to navbar -->
 <jsp:include page="includes/head.jsp">
-	<jsp:param name="title" value="Albums" />
+	<jsp:param name="title" value="Your collection" />
 </jsp:include>
 
 <jsp:include page="includes/header.jsp">
-	<jsp:param name="activeTag" value="albums" />
+	<jsp:param name="activeTag" value="collection" />
 </jsp:include>
 <!-- ----------------------------------------------------------------------------- -->
 
@@ -17,36 +17,41 @@
 	
 	<hr>
 	
-	<h2 class="my-3">Your collection</h2>
+	<h2 class="my-3">My album collection</h2>
 	
 	<hr>
 
 	<table id="table" class="tabla table table-striped">
 
 		<thead>
-			<tr>
-				<td>Id</td>
+			
+			<tr>				
 				<td>Title</td>
 				<td>Artist</td>
 				<td>Year</td>
 				<td>Comments</td>
 				<td>Cover</td>
+				<td>Manage</td>
 			</tr>
+		
 		</thead>
 
 		<tbody>
 
 			<c:forEach items="${albums}" var="a">
 
-				<tr>
-					<td>${a.id}</td>
+				<tr>					
 					<td>${a.title}</td>
 					<td>${a.artist}</td>
 					<td>${a.year}</td>
 					<td>${a.comments}</td>
 					<td>
 						<img src="${a.cover}" alt="Album cover">
-					</td>
+					</td>					
+					<td id="formOptionButtons">
+						<a href="newalbum?id=${a.id}" class="mr-2"><i class="far fa-edit fa-1x" title="Edit"></i></a>
+						<a href="deletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')"><i class="fas fa-trash fa-1x" title="Delete"></i></a>
+					</td>					
 				</tr>
 
 			</c:forEach>
