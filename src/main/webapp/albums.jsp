@@ -1,10 +1,10 @@
 <!-- Including head and header - Setting the page title and "active" tag to navbar -->
 <jsp:include page="includes/head.jsp">
-	<jsp:param name="title" value="Albums" />
+	<jsp:param name="title" value="Your collection" />
 </jsp:include>
 
 <jsp:include page="includes/header.jsp">
-	<jsp:param name="activeTag" value="albums" />
+	<jsp:param name="activeTag" value="collection" />
 </jsp:include>
 <!-- ----------------------------------------------------------------------------- -->
 
@@ -24,6 +24,7 @@
 	<table id="table" class="tabla table table-striped">
 
 		<thead>
+			
 			<tr>
 				<td>Id</td>
 				<td>Title</td>
@@ -33,6 +34,7 @@
 				<td>Cover</td>
 				<td>Options</td>
 			</tr>
+		
 		</thead>
 
 		<tbody>
@@ -48,13 +50,9 @@
 					<td>
 						<img src="${a.cover}" alt="Album cover">
 					</td>					
-					<td>
-						<a href="newalbum?id=${a.id}" class="mr-4">
-							<i class="far fa-edit fa-1x" title="Edit"></i>
-						</a>
-						<a href="">
-							<i class="fas fa-trash fa-1x" title="Delete"></i>
-						</a>
+					<td id="formOptionButtons">
+						<a href="newalbum?id=${a.id}" class="mr-2"><i class="far fa-edit fa-1x" title="Edit"></i></a>
+						<a href=""><i class="fas fa-trash fa-1x" title="Delete"></i></a>
 					</td>					
 				</tr>
 

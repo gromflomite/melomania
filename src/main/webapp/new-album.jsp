@@ -10,12 +10,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
 <div class="container">
 
 	<hr>
 
-	<h2>Add or edit album to your collection</h2>
+	<h2>Add or edit album of your collection</h2>
 
 	<hr>
 
@@ -47,7 +46,7 @@
 			<input type="text" name="cover" class="form-control" id="cover" value="${album.cover}" placeholder="Album cover URL (optional)">
 		</div>
 
-		<button type="submit" class="btn btn-primary">Save album</button>
+		<button type="submit" class="btn btn-info">Save album</button>
 
 	</form>
 

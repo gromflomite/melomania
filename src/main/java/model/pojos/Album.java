@@ -14,8 +14,8 @@ public class Album {
 		this.id = 0;
 		this.title = "";
 		this.artist = "";
-		this.year = 0;
-		this.comments = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+		this.year = 2020;
+		this.comments = "One of the greatest albums of all time.";
 		this.cover = "https://i.imgur.com/bo3KIgS.jpg";
 	}
 
@@ -25,7 +25,7 @@ public class Album {
 		this.title = title;
 		this.artist = artist;
 		this.year = year;
-		this.comments = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+		this.comments = "One of the greatest albums of all time.";
 		this.cover = "https://i.imgur.com/bo3KIgS.jpg";
 	}
 

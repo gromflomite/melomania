@@ -19,11 +19,11 @@
 				</li>
 			
 				<li class="nav-item">
-					<a class="nav-link ${ ('albums' eq param.activeTag) ? 'active' : '' }" href="album">Albums</a>
+					<a class="nav-link ${ ('collection' eq param.activeTag) ? 'active' : '' }" href="album">Collection</a>
 				</li>
 				
 				<li class="nav-item">
-					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="newalbum?id=0">Add album</a>
+					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="newalbum?id=0">+Album</a>
 				</li>		
 						
 			</ul>
