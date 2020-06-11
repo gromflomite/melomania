@@ -2,19 +2,23 @@ package model.pojos;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Album {
 	
 	private int id;
 	
-	@NotNull(message = "Album title is necessary")
+	@NotBlank(message = "Album title is necessary")
 	private String title;
 	
-	@NotNull(message = "Artist name is necessary")
+	@Size(min = 2, message = "The Artist name must have at least 2 characters")
+	@NotBlank(message = "Artist name is necessary")
 	private String artist;
 	
-	@Min(value = 1800, message = "Publishing year must be greater than 1800")
+	@NotNull
+	@Min(value = 1900, message = "Publishing year must be greater than 1900")
     @Max(value = 2025, message = "Publishing year must not be greater than 2025")
 	private int year;
 	
@@ -97,8 +101,7 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments="
-				+ comments + ", cover=" + cover + "]";
+		return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments="	+ comments + ", cover=" + cover + "]";
 	}
 
 }

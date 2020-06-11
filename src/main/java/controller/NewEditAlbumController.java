@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -36,8 +35,8 @@ public class NewEditAlbumController extends HttpServlet {
 	private static int albumUpdateId = 0;	
 
 	// Validations
-	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-	private Validator validator = factory.getValidator();	
+	private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+	private static Validator validator = factory.getValidator();	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -111,18 +110,11 @@ public class NewEditAlbumController extends HttpServlet {
 			album.setComments(comments);
 			album.setCover(cover);		
 
-			// Validating entered values in Album field
-			
-			//Sending the created object to validate and saving the validation results in a Set
-			Set<ConstraintViolation<Album>> validations =  validator.validate(album);
-			
-			for (ConstraintViolation<Album> violation : validations) {
-
-				feedback = new Feedback("danger", violation.getMessage());
-
-			}
-			
-			if (validations.isEmpty()) { // If empty --> No validation errors
+			// Validating entered values in Album fields (for validation annotations, see Album.java)			
+			//Sending the created object to validate and pushing the validation results in a Set
+			Set<ConstraintViolation<Album>> violations =  validator.validate(album);			
+						
+			if (violations.isEmpty()) { // If empty --> No validation errors
 
 				if (id == 0) {
 					
@@ -141,14 +133,20 @@ public class NewEditAlbumController extends HttpServlet {
 				// The entered values are correct, so we are going back to view via redirect
 				isRedirect = true;
 
-			} else {
+			} else { // validations !empty --> There are validations error (messages in validation annotations (Album.java) will show as feedback)
+				
+				String validationErrorMessages = "";
 
-				// Sending feedback to user 
-				feedback = new Feedback("danger", "The Artist field must contain at least 2 characters and Year field must be between 1500 and 2050");
+				// Iterating the "violations" Set to extract validations messages and create a String with them in order to send them back to view as Feedback object
+				for (ConstraintViolation<Album> v : violations) {
+					validationErrorMessages += "<p>" + v.getMessage() + "</p>";
+				}
+
+				feedback = new Feedback("danger", validationErrorMessages);				
 
 				// Sending back the object to the form view to repopulate the form fields with the entered values
 				request.setAttribute("album", album);
-				
+
 				// The entered values are not correct, so we are going to send back the user to the new album form via forward (we are not modifying the isRedirect boolean)
 			}
 		
@@ -160,7 +158,7 @@ public class NewEditAlbumController extends HttpServlet {
 
 		} catch (Exception e) {
 
-			feedback = new Feedback("danger", "We were not able to save the album: " + e.getMessage());
+			feedback = new Feedback("danger", "Sorry, we were not able to save the album: " + e.getMessage());
 
 		} finally {
 

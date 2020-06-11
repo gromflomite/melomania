@@ -26,14 +26,14 @@
 		</div>
 
 		<div class="form-group">
-			<label for="artist">Artist:</label>
-			<input type="text" name="artist" class="form-control" id="artist" value="${album.artist}" placeholder="Artist (minimum 2 characters)" required>
+			<label for="artist">Artist <span class="formRestriction"> (2 characters minimum) </span> :</label>
+			<input type="text" name="artist" class="form-control" id="artist" value="${album.artist}" placeholder="Artist" required>
 			
 		</div>
 
 		<div class="form-group">
-			<label for="year">Publishing year:</label>
-			<input type="text" name="year" class="form-control" id="year" value="${album.year}" placeholder="Year (between 1500 and 2050)" required>
+			<label for="year">Publishing year <span class="formRestriction"> (between 1900 and 2025) </span> :</label>
+			<input type="text" name="year" class="form-control" id="year" value="${album.year}" placeholder="Year" required>
 		</div>
 
 		<div class="form-group">

@@ -86,13 +86,13 @@
 			<version>6.1.5.Final</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api -->
 		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.el</artifactId>
-			<version>3.0.3</version>
+			<groupId>jakarta.el</groupId>
+			<artifactId>jakarta.el-api</artifactId>
+			<version>4.0.0.M1</version>
+			<scope>provided</scope>
 		</dependency>
-
-
 
 		<!-- Testing -->
 		<dependency>
