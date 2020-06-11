@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import model.daos.AlbumDao;
 import model.pojos.Album;
@@ -28,6 +34,10 @@ public class NewEditAlbumController extends HttpServlet {
 	 * need to show it on the view, so there is no point on sending the id# to the view).	 *
 	 */	
 	private static int albumUpdateId = 0;	
+
+	// Validations
+	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+	private Validator validator = factory.getValidator();	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -99,10 +109,20 @@ public class NewEditAlbumController extends HttpServlet {
 			album.setArtist(artist);
 			album.setYear(year);
 			album.setComments(comments);
-			album.setCover(cover);
+			album.setCover(cover);		
 
 			// Validating entered values in Album field
-			if ( (artist != null) && (artist.length() >= 2) && (artist.length() <= 100) && ( (year >= 1500) && (year <= 2050) ) ) {
+			
+			//Sending the created object to validate and saving the validation results in a Set
+			Set<ConstraintViolation<Album>> validations =  validator.validate(album);
+			
+			for (ConstraintViolation<Album> violation : validations) {
+
+				feedback = new Feedback("danger", violation.getMessage());
+
+			}
+			
+			if (validations.isEmpty()) { // If empty --> No validation errors
 
 				if (id == 0) {
 					

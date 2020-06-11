@@ -1,12 +1,25 @@
 package model.pojos;
 
-public class Album {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+public class Album {
+	
 	private int id;
+	
+	@NotNull(message = "Album title is necessary")
 	private String title;
+	
+	@NotNull(message = "Artist name is necessary")
 	private String artist;
+	
+	@Min(value = 1800, message = "Publishing year must be greater than 1800")
+    @Max(value = 2025, message = "Publishing year must not be greater than 2025")
 	private int year;
+	
 	private String comments;
+	
 	private String cover;
 
 	// Default constructor
