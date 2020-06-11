@@ -1,6 +1,6 @@
 # melomania
 
-**A basic app to practice with Java EE, JSP, Expression Language, MySQL, Bootstrap, etc.**
+**An app to practice JavaEE, JSP, Expression Language, MySQL, Bootstrap, etc.**
 
 A very simple CRUD to manage a personal music albums collection.
 
