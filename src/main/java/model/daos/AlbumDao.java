@@ -181,9 +181,7 @@ public class AlbumDao {
 			preparedStatement.setInt	(	3, updateAlbum.getYear());
 			preparedStatement.setString	(	4, updateAlbum.getComments());
 			preparedStatement.setString	(	5, updateAlbum.getCover());
-			preparedStatement.setInt	(	6, updateAlbum.getId());
-
-			System.out.println(preparedStatement);
+			preparedStatement.setInt	(	6, updateAlbum.getId());			
 			
 			// Exectute update. executeUpdate returns the numbers of affected rows
 			if (preparedStatement.executeUpdate() != 1) {
@@ -193,12 +191,10 @@ public class AlbumDao {
 
 		} catch (Exception e) {
 			
-			e.printStackTrace();
-			
+			e.printStackTrace();			
 		}
 
-		return updateAlbum;
-	}
+		return updateAlbum;	}
 	// End update() -------------------------------------------------------------------------------	
 	
 	
