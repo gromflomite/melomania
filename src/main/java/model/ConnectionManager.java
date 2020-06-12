@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
 	private final static String CONNECTION_URL = "jdbc:mysql://localhost/audio";
-	private final static String USER = "root";
-	private final static String PASSWORD = "secret";
+	private final static String USER = "debian-sys-maint";
+	private final static String PASSWORD = "o8lAkaNtX91xMUcV";
 
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 

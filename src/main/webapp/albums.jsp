@@ -13,10 +13,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<div class="container">
-	
-	<hr>
-	
+<div class="container">	
+	<hr>	
 	<h2 class="my-3">My album collection</h2>
 	
 	<hr>

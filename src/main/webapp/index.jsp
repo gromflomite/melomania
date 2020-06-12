@@ -14,14 +14,26 @@
 
 <div class="container">
 
-	<h1 class="my-5">Welcome to melomania</h1>
-	
-	<h3>In this page will appear your last five Albums <span id="workinprogress">(work in progress)</span></h3>	
+	<div class="jumbotron mt-5">
+		<h1 class="display-4">Welcome to melomania!</h1>
+		<p class="lead">A simple app to manage your music collection</p>
+		<hr class="my-5">
+		<p>Right now, you can :</p>
+
+		<a class="btn btn-info btn-lg" href="album" role="button">Check your collection</a>
+
+		<a class="btn btn-info btn-lg ml-5" href="newalbum?id=0" role="button">Add an album</a>
+
+		<hr class="my-5">
+
+		<p class="lead">Here will appear your last five Albums <span id="workinprogress">(a work in progress)</span></p>
+
+	</div>
 
 </div>
 
-<!----------------- Getting the <footer> ---------------->
+<!----------------- Getting the <footer> ----------------->
 <jsp:include page="includes/footer.jsp" />
 <!-- Getting the foot -->
 <jsp:include page="includes/foot.jsp" />
-<!------------------------------------------------------->
+<!-------------------------------------------------------->
