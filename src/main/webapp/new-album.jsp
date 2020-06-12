@@ -20,19 +20,33 @@
 
 	<form id="newalbumform" action="newalbum" method="post">
 
+		<div class="form-group" hidden>
+			<label for="albumId">Album ID:</label>
+			<input type="text" name="albumId" class="form-control" id="albumId" value="${album.id}" placeholder="Album title" readonly>
+		</div>
+
+
 		<div class="form-group">
 			<label for="albumTitle">Album title:</label>
 			<input type="text" name="albumTitle" class="form-control" id="albumTitle" value="${album.title}" placeholder="Album title" required>
 		</div>
 
 		<div class="form-group">
-			<label for="artist">Artist <span class="formRestriction"> (2 characters minimum) </span> :</label>
+			<label for="artist">
+				Artist
+				<span class="formRestriction"> (2 characters minimum) </span>	
+				:
+			</label>
 			<input type="text" name="artist" class="form-control" id="artist" value="${album.artist}" placeholder="Artist" required>
-			
+
 		</div>
 
 		<div class="form-group">
-			<label for="year">Publishing year <span class="formRestriction"> (between 1900 and 2025) </span> :</label>
+			<label for="year">
+				Publishing year
+				<span class="formRestriction"> (between 1900 and 2025) </span>
+				:
+			</label>
 			<input type="text" name="year" class="form-control" id="year" value="${album.year}" placeholder="Year" required>
 		</div>
 

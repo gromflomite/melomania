@@ -24,6 +24,7 @@
 		<thead>
 			
 			<tr>				
+				<td hidden>Album ID</td>
 				<td>Title</td>
 				<td>Artist</td>
 				<td>Year</td>
@@ -38,7 +39,8 @@
 
 			<c:forEach items="${albums}" var="a">
 
-				<tr>					
+				<tr>
+					<td hidden>${a.id}</td>					
 					<td>${a.title}</td>
 					<td>${a.artist}</td>
 					<td>${a.year}</td>

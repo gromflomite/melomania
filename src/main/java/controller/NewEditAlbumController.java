@@ -24,16 +24,7 @@ import model.pojos.Feedback;
 public class NewEditAlbumController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Variable to save the album id# of the album to edit.
-	 * 
-	 * We are using this method to avoid the logic of sending id# to the view (as attribute) and
-	 * get it back unmodified as parameter (user must not be able to modify this value and there is no
-	 * need to show it on the view, so there is no point on sending the id# to the view).	 *
-	 */	
-	private static int albumUpdateId = 0;	
-
+	
 	// Validations
 	private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	private static Validator validator = factory.getValidator();	
@@ -48,9 +39,7 @@ public class NewEditAlbumController extends HttpServlet {
 		// It comes with forced "0" from the form view
 		try {
 
-			int idParameter = Integer.parseInt(request.getParameter("id"));
-			
-			albumUpdateId = Integer.parseInt(request.getParameter("id"));
+			int idParameter = Integer.parseInt(request.getParameter("id"));			
 
 			if (idParameter > 0) {
 
@@ -94,8 +83,8 @@ public class NewEditAlbumController extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		try {
-			// Getting the values from the form (new-album.jsp)
-			int id 			= albumUpdateId; // Taken album id# the value from the global variable			
+			// Getting the values from the form (new-album.jsp)			
+			int id 			= Integer.parseInt(request.getParameter("albumId"));
 			String title 	= request.getParameter("albumTitle");
 			String artist 	= request.getParameter("artist");
 			int year 		= Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers
