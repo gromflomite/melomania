@@ -15,8 +15,11 @@
 <div class="container">
 
 	<div class="jumbotron mt-5">
+		
 		<h1 class="display-4">Welcome to melomania!</h1>
+		
 		<p class="lead">A simple app to manage your music collection</p>
+		
 		<hr class="my-5">
 		<p>Right now, you can :</p>
 
