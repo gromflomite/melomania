@@ -6,19 +6,17 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-	private final static String CONNECTION_URL = "jdbc:mysql://localhost/audio";
-	private final static String USER = "root";
-	private final static String PASSWORD = "secret";	
+	private final static String CONNECTION_URL = "jdbc:sqlite:/melomania.db";	
 
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 
 		Connection dbConnection = null;
 
 		// Checking if the connector is working properly (added in Maven pom.xml)
-		Class.forName("com.mysql.jdbc.Driver"); 
+		Class.forName("org.sqlite.JDBC"); 
 
 		// Establish connection
-		dbConnection = DriverManager.getConnection(CONNECTION_URL, USER, PASSWORD);
+		dbConnection = DriverManager.getConnection(CONNECTION_URL);
 
 		return dbConnection;
 	}
