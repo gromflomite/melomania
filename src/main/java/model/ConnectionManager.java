@@ -6,9 +6,15 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-	private final static String CONNECTION_URL = "jdbc:mysql://localhost/audio";
-	private final static String USER = "root";
-	private final static String PASSWORD = "secret";	
+	private static DbCredentials dbCredentials = new DbCredentials();
+	
+	private static String dbUsername = dbCredentials.getDbUsername();
+	private static String dbPassword = dbCredentials.getDbPassword();
+	private static String dbLocation = dbCredentials.getDbLocation();
+	
+	private final static String CONNECTION_URL 	= dbLocation;
+	private final static String USER 			= dbUsername;
+	private final static String PASSWORD		= dbPassword;	
 
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 
