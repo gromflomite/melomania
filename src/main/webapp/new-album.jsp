@@ -20,7 +20,7 @@
 
 	<form id="newalbumform" action="newalbum" method="post">
 
-		<div class="form-group" hidden>
+		<div class="form-group" hidden="">
 			<label for="albumId">Album ID:</label>
 			<input type="text" name="albumId" class="form-control" id="albumId" value="${album.id}" placeholder="Album title" readonly>
 		</div>
