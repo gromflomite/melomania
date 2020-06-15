@@ -7,18 +7,18 @@ import java.sql.DriverManager;
 
 public class ConnectionManager {	
 
-	public static Connection getConnection() throws Exception {		
-		
-		// Checking if the connector is working properly (added in Maven pom.xml)
-		Class.forName("org.sqlite.JDBC");
+	public static Connection getConnection() throws Exception {	
 
 		// Getting the path to DB file (DB saved in /resources)
 		URL resource = ConnectionManager.class.getResource("melomania.db");
-		String dbPath = new File(resource.toURI()).getAbsolutePath();
+		String path = new File(resource.toURI()).getAbsolutePath();
 
+		// Checking if the connector is working properly (added in Maven pom.xml)
+		Class.forName("org.sqlite.JDBC");
+		
 		// Calling the DB with obtained path
-		Connection dbConnection = DriverManager.getConnection(String.format("jdbc:sqlite:%s", dbPath));//		
+		Connection conn = DriverManager.getConnection(String.format("jdbc:sqlite:%s", path));
 
-		return dbConnection;
+		return conn;
 	}
 }
