@@ -52,10 +52,10 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_type` varchar(25) NOT NULL,
+  `name` varchar(25) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `roles_type` (`role_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='Users role table.';
+  UNIQUE KEY `roles_names` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COMMENT='Users role table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Admin'),(3,'Listener'),(2,'Mod');
+INSERT INTO `roles` VALUES (4,'Admin'),(6,'Listener'),(5,'Mod');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,14 +79,14 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `role` int(11) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `id_role` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email` (`email`),
   UNIQUE KEY `users_name` (`name`),
-  KEY `fk_roles` (`role`),
-  CONSTRAINT `fk_roles` FOREIGN KEY (`role`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='Users table.';
+  KEY `fk_roles` (`id_role`),
+  CONSTRAINT `fk_roles` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='Users table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','root@admin.com',1,'123456'),(2,'Mod','mod@mod.com',2,'123456'),(3,'Alpha','alpha@mail.com',3,'123456'),(4,'Beta','beta@mail.com',3,'123456');
+INSERT INTO `users` VALUES (5,'Admin','admin@root.com','123456',4),(6,'Mod','mod@mod.com','123456',5),(7,'Alpha','alpha@gmail.com','123456',6),(8,'Beta','beta@gmail.com','123456',6),(9,'Gamma','gamma@gmail.com','123456',6);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-16 18:17:58
+-- Dump completed on 2020-06-16 19:24:05

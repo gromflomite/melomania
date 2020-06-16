@@ -5,7 +5,7 @@ public class UserDao {
 	// SQL queries --------------------------------------------------------------------------------
 	// executeQuery -> returns -> ResulSet
 	private final String SQL_GETALL		= " SELECT u.id, u.name, u.email, u.role, u.password, r.role_type AS 'role_type' FROM users AS u INNER JOIN roles AS r ON u.id = r.id ORDER BY u.id ASC; ";
-	private final String QUERY_GETBYID 	= " SELECT u.id, u.name, u.email, u.role, u.password, r.role_type AS 'role_type' FROM users AS u INNER JOIN roles AS r ON u.id = r.id WHERE u.id = ? ";	
+	private final String QUERY_GETBYID 	= " SELECT u.id, u.name, u.email, u.role, u.password, r.role_type AS 'role_type' FROM users AS u INNER JOIN roles AS r ON u.id = r.id WHERE u.id = ?; ";	
 
 	// executeUpdate -> returns -> integer with the number of affected rows
 	private final String QUERY_INSERT 	= " INSERT INTO users (name, email, role, password) VALUES (?,?,?,?); ";
