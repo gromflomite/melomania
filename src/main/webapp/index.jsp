@@ -15,11 +15,11 @@
 <div class="container">
 
 	<div class="jumbotron mt-5">
-		
+
 		<h1 class="display-4">Welcome to melomania!</h1>
-		
+
 		<p class="lead">A simple app to manage your music collection</p>
-		
+
 		<hr class="my-5">
 		<p>Right now, you can :</p>
 
@@ -29,8 +29,21 @@
 
 		<hr class="my-5">
 
-		<p class="lead">Here will appear your last five Albums <span id="workinprogress">(a work in progress)</span></p>
+		<p class="lead">
+			Here will appear your last five Albums
+			<span id="workinprogress">(a work in progress)</span>
+		</p>
 
+	</div>
+
+	<div class="container">
+
+		<ul>
+			<c:forEach items="${albums}" var="album">
+				<li>${album}</li>
+			</c:forEach>			
+		</ul>
+		
 	</div>
 
 </div>
