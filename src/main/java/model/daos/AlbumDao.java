@@ -7,12 +7,25 @@ import java.util.ArrayList;
 
 import model.ConnectionManager;
 import model.pojos.Album;
+import model.pojos.Genre;
 
 public class AlbumDao {
 
 	// SQL queries --------------------------------------------------------------------------------
 	// executeQuery -> returns -> ResulSet
-	private final String QUERY_GETALL	= " SELECT id, title, artist, year, comments, cover FROM albums ORDER BY id ASC; ";
+	private final String QUERY_GETALL = 	"SELECT " + 
+						"a.id AS album_id, " + 
+						"a.title AS album_title, " + 
+						"a.artist AS album_artist, " + 
+						"a.year AS album_year, " + 
+						"a.comments AS album_comments, " + 
+						"a.cover AS album_cover, " + 
+						"g.id AS genre_id, " + 
+						"g.name AS genre_name " + 
+						"FROM albums AS a, genres AS g " + 
+						"WHERE a.id_genre = g.id " + 
+						"ORDER BY a.id ASC LIMIT 500; ";
+	
 	private final String QUERY_GETBYID	= " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
 
 	// executeUpdate -> returns -> integer with the number of affected rows
@@ -56,26 +69,37 @@ public class AlbumDao {
 			while (resulSet.next()) {
 
 				// Getting the values from the resultSet (values from the DB)
-				int id 			= resulSet.getInt("id");
-				String title 	= resulSet.getString("title");
-				String artist 	= resulSet.getString("artist");
-				int year		= resulSet.getInt("year");
-				String comments = resulSet.getString("comments");
-				String cover 	= resulSet.getString("cover");
+				int albumId 	= resulSet.getInt	("album_id");
+				String title 	= resulSet.getString	("album_title");
+				String artist 	= resulSet.getString	("album_artist");
+				int year	= resulSet.getInt	("album_year");
+				String comments = resulSet.getString	("album_comments");
+				String cover 	= resulSet.getString	("album_cover");
+				
+				int genreId	= resulSet.getInt	("genre_id");				
+				String genreName= resulSet.getString	("genre_name");
 
-				// Create POJO and set the recovered values
+				// Create POJOS and set the recovered values ----------------------
+
+				// Set the recovered values to Album object
 				Album album = new Album();
-
-				// Set the recovered values to POJO
-				album.setId(id);
+				album.setId(albumId);
 				album.setTitle(title);
 				album.setArtist(artist);
 				album.setYear(year);
 				album.setComments(comments);
-				album.setCover(cover);
+				album.setCover(cover);				
+				
+				// Setting the genre object attributes
+				Genre genre = new Genre();				
+				genre.setId(genreId);
+				genre.setGenre(genreName);
+				
+				// Setting the Genre object to Album		
+				album.setGenre(genre);
 
 				// Set "album" POJO to ArrayList "dbRegisters"
-				dbRegisters.add(album);
+				dbRegisters.add(album);				
 			}
 
 		} catch (Exception e) {

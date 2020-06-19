@@ -26,7 +26,7 @@ public class Album {
 	
 	private String cover;
 	
-	// Adding the genre object
+	// Adding the Genre object
 	private Genre genre;
 
 	// Default constructor --------------------------------------------------------------------
