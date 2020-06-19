@@ -19,14 +19,17 @@ public class Album {
 	
 	@NotNull
 	@Min(value = 1900, message = "Publishing year must be greater than 1900")
-    @Max(value = 2025, message = "Publishing year must not be greater than 2025")
+	@Max(value = 2025, message = "Publishing year must not be greater than 2025")
 	private int year;
 	
 	private String comments;
 	
 	private String cover;
+	
+	// Adding the genre object
+	private Genre genre;
 
-	// Default constructor
+	// Default constructor --------------------------------------------------------------------
 	public Album() {
 		this.id = 0;
 		this.title = "";
@@ -34,9 +37,10 @@ public class Album {
 		this.year = 2020;
 		this.comments = "One of the greatest albums of all time.";
 		this.cover = "https://i.imgur.com/bo3KIgS.jpg";
+		this.genre = new Genre();
 	}
 
-	public Album(int id, String title, String artist, int year, String comments, String cover) {
+	public Album(int id, String title, String artist, int year, String comments, String cover, Genre genre) {
 		this();
 		this.id = id;
 		this.title = title;
@@ -44,64 +48,73 @@ public class Album {
 		this.year = year;
 		this.comments = "One of the greatest albums of all time.";
 		this.cover = "https://i.imgur.com/bo3KIgS.jpg";
+		this.genre = new Genre();
 	}
 
-	public Album(int id) {
-		this();
-		this.id = id;
-	}
-
+	// Getters and Setters --------------------------------------------------------------------
 	public int getId() {
-		return id;
+	    return id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+	    this.id = id;
 	}
 
 	public String getTitle() {
-		return title;
+	    return title;
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+	    this.title = title;
 	}
 
 	public String getArtist() {
-		return artist;
+	    return artist;
 	}
 
 	public void setArtist(String artist) {
-		this.artist = artist;
+	    this.artist = artist;
 	}
 
 	public int getYear() {
-		return year;
+	    return year;
 	}
 
 	public void setYear(int year) {
-		this.year = year;
+	    this.year = year;
 	}
 
 	public String getComments() {
-		return comments;
+	    return comments;
 	}
 
 	public void setComments(String comments) {
-		this.comments = comments;
+	    this.comments = comments;
 	}
 
 	public String getCover() {
-		return cover;
+	    return cover;
 	}
 
 	public void setCover(String cover) {
-		this.cover = cover;
+	    this.cover = cover;
 	}
 
+	public Genre getGenre() {
+	    return genre;
+	}
+
+	public void setGenre(Genre genre) {
+	    this.genre = genre;
+	}
+
+	// toString() -----------------------------------------------------------------------------
 	@Override
 	public String toString() {
-		return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments="	+ comments + ", cover=" + cover + "]";
+	    return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments=" + comments + ", cover=" + cover + ", genre=" + genre + "]";
 	}
+	
+	
 
+	
 }
