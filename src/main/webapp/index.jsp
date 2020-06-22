@@ -41,22 +41,10 @@
 		<ul>
 			<c:forEach items="${albums}" var="album">
 				<li>${album}</li>
-			</c:forEach>			
+			</c:forEach>
 		</ul>
-		
-	</div>
-	
-	<div class="container">
 
-		<ul>
-			<c:forEach items="${genres}" var="genre">
-				<li>${genre}</li>
-			</c:forEach>			
-		</ul>
-		
 	</div>
-	
-	
 
 </div>
 

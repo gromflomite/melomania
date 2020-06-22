@@ -14,10 +14,11 @@ public class AlbumDao {
     // SQL queries
     // --------------------------------------------------------------------------------------------
     // executeQuery -> returns -> ResulSet
+    private final String QUERY_GETALLBYGENRE = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND g.id = ? ORDER BY a.id ASC LIMIT 100; ";
     private final String QUERY_GETALL	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 100; ";
     private final String QUERY_GETLAST	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id DESC LIMIT ?; ";
     private final String QUERY_GETBYID	= " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
-
+        
     // executeUpdate -> returns -> integer with the number of affected rows
     private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
     private final String QUERY_UPDATE = " UPDATE albums SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";
@@ -43,6 +44,35 @@ public class AlbumDao {
     // End Singleton pattern
     // --------------------------------------------------------------------------------------------
 
+    
+    public ArrayList<Album> getByGenre(int genreId) {
+
+	// ArrayList to push the POJO album and genres items recovered form DB
+	ArrayList<Album> dbRegisters = new ArrayList<Album>();
+
+	// try with resources (autoclosable)
+	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETALLBYGENRE);
+
+	) {
+	    preparedStatement.setInt(1, genreId);
+
+	    try (ResultSet resulSet = preparedStatement.executeQuery();) {
+			
+		while (resulSet.next()) {
+
+		    // Set "album" POJO to ArrayList "dbRegisters"
+		    dbRegisters.add(mapper(resulSet));
+		}
+	    }
+
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+
+	return dbRegisters;	
+    }
+    
+    
     
     /**
      * 

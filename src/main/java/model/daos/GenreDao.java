@@ -13,7 +13,7 @@ public class GenreDao {
     // SQL queries
     // --------------------------------------------------------------------------------------------
     // executeQuery -> returns -> ResulSet
-    private final static String QUERY_GETALL = " SELECT name FROM genres ORDER BY name ASC LIMIT 100; ";
+    private final static String QUERY_GETALL = " SELECT id, name FROM genres ORDER BY id ASC LIMIT 100; ";
     // --------------------------------------------------------------------------------------------
 
     // Singleton pattern
@@ -63,7 +63,7 @@ public class GenreDao {
     }
 
     // End getAll()
-    // --------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------   
     
     
     // mapper()
@@ -71,11 +71,13 @@ public class GenreDao {
     private static Genre mapper(ResultSet resultSet) throws Exception {	
 
 	// Getting the values from the resultSet (values from the DB)	
-	String genreName = resultSet.getString("name");	
+	int	genreId	   = resultSet.getInt("id");	
+	String	genreName  = resultSet.getString("name");	
 	
 	Genre genre = new Genre();
 	
-	genre.setGenre(genreName);
+	genre.setId(genreId);
+	genre.setGenre(genreName);	
 	
 	return genre;
     }

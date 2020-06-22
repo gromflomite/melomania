@@ -34,7 +34,7 @@
 						<div class="dropdown-menu">
 
 							<c:forEach items="${genres}" var="genre">
-								<a class="dropdown-item" href="#">${genre.genre}</a>
+								<a class="dropdown-item" href="home?idGenre=${genre.id}">${genre.genre}</a>
 							</c:forEach>
 							
 						</div>

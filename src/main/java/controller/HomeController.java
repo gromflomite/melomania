@@ -13,28 +13,47 @@ import model.daos.GenreDao;
 
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     private static final AlbumDao albumDao = AlbumDao.getInstance();
     private static final GenreDao genreDao = GenreDao.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	// We are not going to use the doGet method
-	doPost(request, response);
+	// Getting the genre ID selected in navbar dropdown
+	String idGenreParameter = request.getParameter("idGenre");
+
+	/**
+	 * 
+	 * At the initial web charge, we have not genre ID selected so, is null.
+	 * 
+	 * If is null, show the last N albums.
+	 * 
+	 * If the user has selected a genre, show the albums with this genre.
+	 * 
+	 */
+	if (idGenreParameter != null) {
+
+	    int idGenre = Integer.parseInt(idGenreParameter);
+	    request.setAttribute("albums", albumDao.getByGenre(idGenre));
+
+	} else {
+
+	    // Calling getLast() method from AlbumDao to retrieve the last N albums that we
+	    // will show in index.jsp
+	    request.setAttribute("albums", albumDao.getLast(3));
+	}
+
+	request.setAttribute("genres", genreDao.getAll());
+
+	// request.getRequestDispatcher("header.jsp").forward(request, response);
+	request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	// Calling getLast() method from AlbumDao to retrieve the last N albums that we will show in index.jsp
-	request.setAttribute("albums", albumDao.getLast(5));	
-	
-	// Calling getAll() method from GenreDao to retrieve all the genres that we will show in a dropdown
-	request.setAttribute("genres", genreDao.getAll());	
-	
-	// Calling index.jsp sending request and response
-	request.getRequestDispatcher("index.jsp").forward(request, response);
-	request.getRequestDispatcher("header.jsp").forward(request, response);
+
+	// We are going to use only doGet()
+	doGet(request, response);
     }
 }
