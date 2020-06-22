@@ -45,6 +45,18 @@
 		</ul>
 		
 	</div>
+	
+	<div class="container">
+
+		<ul>
+			<c:forEach items="${genres}" var="genre">
+				<li>${genre}</li>
+			</c:forEach>			
+		</ul>
+		
+	</div>
+	
+	
 
 </div>
 

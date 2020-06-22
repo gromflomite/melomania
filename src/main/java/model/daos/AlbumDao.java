@@ -14,7 +14,7 @@ public class AlbumDao {
     // SQL queries
     // --------------------------------------------------------------------------------------------
     // executeQuery -> returns -> ResulSet
-    private final String QUERY_GETALL	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 500; ";
+    private final String QUERY_GETALL	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 100; ";
     private final String QUERY_GETLAST	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id DESC LIMIT ?; ";
     private final String QUERY_GETBYID	= " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
 

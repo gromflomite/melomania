@@ -25,6 +25,14 @@ body {
     margin-right: 50px;
     padding-top: 0;
 }
+
+#dropdownMenuButton {
+    padding-top: 9px;
+	border-top-width: 0;
+	padding-bottom: 9px;
+	border-bottom-width: 0px;
+	font-size: 1.2rem;    
+}
 /* -------------------------  End navbar ------------------------- */
 
 
