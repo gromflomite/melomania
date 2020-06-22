@@ -26,10 +26,9 @@ public class HomeController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	request.setAttribute("albums", albumDAO.getAll());
+	request.setAttribute("albums", albumDAO.getLast(5));
 	
 	request.getRequestDispatcher("index.jsp").forward(request, response);	
-	
     }
 
 }
