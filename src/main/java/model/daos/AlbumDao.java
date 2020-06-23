@@ -45,6 +45,9 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
 
     
+    // getByGenre()
+    // --------------------------------------------------------------------------------------------
+    
     public ArrayList<Album> getByGenre(int genreId) {
 
 	// ArrayList to push the POJO album and genres items recovered form DB
@@ -71,7 +74,8 @@ public class AlbumDao {
 
 	return dbRegisters;	
     }
-    
+    // End getByGenre()
+    // --------------------------------------------------------------------------------------------
     
     
     /**

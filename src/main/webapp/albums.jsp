@@ -46,7 +46,7 @@
 					<td>${a.year}</td>
 					<td>${a.comments}</td>
 					<td>
-						<img src="${a.cover}" alt="Album cover">
+						<img id="album-cover" src="${a.cover}" alt="Album cover">
 					</td>					
 					<td id="formOptionButtons">
 						<a href="newalbum?id=${a.id}" class="mr-2"><i class="far fa-edit fa-1x" title="Edit"></i></a>

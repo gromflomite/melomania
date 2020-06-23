@@ -31,13 +31,15 @@
 				<li class="nav-item">
 					<div class="dropdown genres-dropdown">
 						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Genres</button>
+						
 						<div class="dropdown-menu">
-
-							<c:forEach items="${genres}" var="genre">
-								<a class="dropdown-item" href="home?idGenre=${genre.id}">${genre.genre}</a>
-							</c:forEach>
+							<a class="dropdown-item" href="home">Show all albums</a>
 							
+							<c:forEach items="${genres}" var="genre">
+								<a class="dropdown-item" href="home?idGenre=${genre.id}&genre=${genre.genre}">${genre.genre}</a>
+							</c:forEach>							
 						</div>
+					
 					</div>
 				</li>
 

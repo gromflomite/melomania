@@ -36,8 +36,40 @@ body {
 /* -------------------------  End navbar ------------------------- */
 
 
+/* -------------------------  index.jsp cards ------------------------- */
+
+#card-deck-title {
+    margin: 3rem 0rem 1rem 0rem;
+}
+
+.card-deck {
+    justify-content: space-between;
+}
+
+.card-deck .card {
+    flex: 0 25%;
+    margin-top: 10px;
+    margin-bottom: 3em;
+}
+
+#album-title {
+    font-weight: bold;
+}
+
+#album-year {
+    color: #98a2b3;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+/* ------------------------- End index.jsp cards ------------------------- */
+
 
 /* -------------------------  Others ------------------------- */
+#album-cover {
+    max-width: 60%;
+    height: auto;    
+}
+
 #newalbumform {
 	margin-top: 50px;
 }
@@ -75,7 +107,6 @@ i.fas {
   width: 5%;
   height: auto;    
 }
-
 /* -------------------------  End others ------------------------- */
 
 
