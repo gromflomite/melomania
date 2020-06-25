@@ -33,42 +33,39 @@
 	<div class="container">
 
 		<div id="card-deck-title">
-			<c:if test="${allalbums}">
-				<h2>${cardDeckTitle}(${fn:length(albums)} albums):</h2>
-			</c:if>
-			<c:if test="${!allalbums}">
-				<h2>${cardDeckTitle} albums - You have ${fn:length(albums)} albums of this genre:</h2>
-			</c:if>
+
+			<h3>${cardDeckTitle}</h3>
+
 		</div>
 
 		<div class="card-deck">
 
-		<c:forEach items="${albums}" var="album">
+			<c:forEach items="${albums}" var="album">
 
-			<div class="card" id="album-card">
+				<div class="card" id="album-card">
 
-				<img class="card-img-top" src="${album.cover}" alt="Album cover">
+					<img class="card-img-top" src="${album.cover}" alt="Album cover">
 
-				<div class="card-body">
-					<h5 class="card-title my-2">
-						<span id="album-title">${album.title} </span>
-						<span id="album-year"> (${album.year})</span>
-					</h5>
-					<hr>
-					<h5 class="card-text mt-3">${album.artist}</h5>
-					<hr>
-					<h6 class="card-text mt-3">${album.genre.genre}</h6>
-					<hr>
-					<p class="card-text mt-3">${album.comments}</p>
+					<div class="card-body">
+						<h5 class="card-title my-2">
+							<span id="album-title">${album.title} </span>
+							<span id="album-year"> (${album.year})</span>
+						</h5>
+						<hr>
+						<h5 class="card-text mt-3">${album.artist}</h5>
+						<hr>
+						<h6 class="card-text mt-3">${album.genre.genre}</h6>
+						<hr>
+						<p class="card-text mt-3">${album.comments}</p>
+					</div>
+
 				</div>
 
-			</div>
+			</c:forEach>
 
-		</c:forEach>
+		</div>
 
 	</div>
-
-</div>
 
 </div>
 

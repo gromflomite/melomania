@@ -6,7 +6,7 @@
 
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
 
-		<a class="navbar-brand" href="index.jsp">melomania</a>
+		<a class="navbar-brand" href="home">melomania</a>
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
 			<ul class="navbar-nav mr-auto">
 
 				<li class="nav-item">
-					<a class="nav-link ${ ('home' eq param.activeTag) ? 'active' : '' }" href="index.jsp">Home</a>
+					<a class="nav-link ${ ('home' eq param.activeTag) ? 'active' : '' }" href="home">Home</a>
 				</li>
 
 				<li class="nav-item">
