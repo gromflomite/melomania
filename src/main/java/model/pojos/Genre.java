@@ -1,15 +1,19 @@
 package model.pojos;
 
+import java.util.ArrayList;
+
 public class Genre {
 
     private int id;
     private String genre;
+    private ArrayList<Album> albums;
 
     // Default constructor
     public Genre() {
 	super();
 	this.id = 0;
 	this.genre = "";
+	this.albums = new ArrayList<Album>();
     }
 
     // Getters and Setters
@@ -27,6 +31,14 @@ public class Genre {
 
     public void setGenre(String genre) {
 	this.genre = genre;
+    }    
+
+    public ArrayList<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(ArrayList<Album> albums) {
+        this.albums = albums;
     }
 
     // toString()
