@@ -12,15 +12,15 @@ public class ConnectionManager {
 	private static String dbPassword = dbCredentials.getDbPassword();
 	private static String dbLocation = dbCredentials.getDbLocation();
 
-	private final static String CONNECTION_URL = dbLocation;
-	private final static String USER = dbUsername;
-	private final static String PASSWORD = dbPassword;
+	private final static String CONNECTION_URL	= dbLocation;
+	private final static String USER		= dbUsername;
+	private final static String PASSWORD		= dbPassword;
 
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 
 		Connection dbConnection = null;
 
-		// Checking if the connector is working properly (added in Maven pom.xml)
+		// Calling the correct driver for the DB we are using (added in Maven pom.xml)
 		Class.forName("com.mysql.jdbc.Driver");
 
 		// Establish connection
