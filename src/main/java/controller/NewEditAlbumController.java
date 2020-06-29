@@ -84,10 +84,10 @@ public class NewEditAlbumController extends HttpServlet {
 
 		try {
 			// Getting the values from the form (new-album.jsp)			
-			int id 			= Integer.parseInt(request.getParameter("albumId"));
+			int id 		= Integer.parseInt(request.getParameter("albumId"));
 			String title 	= request.getParameter("albumTitle");
 			String artist 	= request.getParameter("artist");
-			int year 		= Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers
+			int year 	= Integer.parseInt(request.getParameter("year")); // TODO Check if user entered just numbers
 			String comments = request.getParameter("comments");
 			String cover	= request.getParameter("cover");
 

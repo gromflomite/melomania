@@ -5,6 +5,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import org.apache.log4j.Logger;
+
 import model.daos.GenreDao;
 
 /**
@@ -14,12 +16,16 @@ import model.daos.GenreDao;
 @WebListener
 public class AppListener implements ServletContextListener {
     
+    private final static Logger LOG = Logger.getLogger(AppListener.class);    
+    
     public void contextDestroyed(ServletContextEvent sce)  { 
          // To execute at app end
     }
 	
     public void contextInitialized(ServletContextEvent sce)  { 
          // To execute at app start
+	
+	LOG.info("*** melomania app started ***");
 	
 	// Initiating a ServletContext
 	// This content affects all the app. We can retrieve data from this context in every .jsp or Servlet
