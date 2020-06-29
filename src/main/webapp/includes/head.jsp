@@ -11,6 +11,9 @@
 
 <title>${param.title} | melomania</title>
 
+<!-- Using relative paths without including the context root name -->
+<base href="${pageContext.request.contextPath}/" />
+
 <!-- CSS normalize (https://necolas.github.io/normalize.css/) -->
 <link rel="stylesheet" href="./css/normalize.css">
 

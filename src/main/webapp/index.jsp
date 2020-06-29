@@ -69,8 +69,8 @@
 
 </div>
 
-<!----------------- Getting the <footer> ----------------->
-<jsp:include page="includes/footer.jsp" />
+<!----------------- Getting the <footer> ---------------->
+<%@include file="../includes/footer.jsp" %>
 <!-- Getting the foot -->
-<jsp:include page="includes/foot.jsp" />
-<!-------------------------------------------------------->
+<%@include file="../includes/foot.jsp" %>
+<!------------------------------------------------------->

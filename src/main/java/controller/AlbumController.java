@@ -29,7 +29,7 @@ public class AlbumController extends HttpServlet {
 		request.setAttribute("albums", albums);
 		
 		// Calling albums.jsp pushing request and response
-		request.getRequestDispatcher("albums.jsp").forward(request, response);
+		request.getRequestDispatcher("views/albums/albums.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {

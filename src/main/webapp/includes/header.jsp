@@ -49,7 +49,7 @@
 
 	</nav>
 
-	<!-- Including the .jsp to show feedback -->
-	<jsp:include page="feedback.jsp"></jsp:include>
+	<!-- Including the .jsp to show feedback -->	
+	<%@ include file="feedback.jsp" %>
 
 </header>
