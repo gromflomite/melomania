@@ -38,7 +38,7 @@ public class UserController extends HttpServlet {
 	    
 	    request.setAttribute("users", users);
 	    
-	    request.getRequestDispatcher("index.jsp").forward(request, response);
+	    request.getRequestDispatcher("views/users/users.jsp").forward(request, response);
 	    
 	    
 	    

@@ -14,7 +14,9 @@
 
 
 <div class="container">	
-	<hr>	
+	
+	<hr>
+		
 	<h2 class="my-3">My album collection</h2>
 	
 	<hr>

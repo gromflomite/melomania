@@ -27,6 +27,10 @@
 				<li class="nav-item">
 					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="newalbum?id=0">+Album</a>
 				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link ${ ('users' eq param.activeTag) ? 'active' : '' }" href="user">Users</a>
+				</li>
 
 				<li class="nav-item">
 					<div class="dropdown genres-dropdown">
