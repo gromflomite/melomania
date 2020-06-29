@@ -61,7 +61,7 @@ public class NewEditAlbumController extends HttpServlet {
 			request.setAttribute("album", album);
 
 			// Calling the JSP forwarding the request
-			request.getRequestDispatcher("new-album.jsp").forward(request, response);
+			request.getRequestDispatcher("views/albums/new-album.jsp").forward(request, response);
 		}		
 	}
 

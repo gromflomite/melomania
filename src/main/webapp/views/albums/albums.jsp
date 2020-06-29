@@ -1,9 +1,9 @@
 <!-- Including head and header - Setting the page title and "active" tag to navbar -->
-<jsp:include page="../includes/head.jsp">
+<jsp:include page="../../includes/head.jsp">
 	<jsp:param name="title" value="Your collection" />
 </jsp:include>
 
-<jsp:include page="../includes/header.jsp">
+<jsp:include page="../../includes/header.jsp">
 	<jsp:param name="activeTag" value="collection" />
 </jsp:include>
 <!-- ----------------------------------------------------------------------------- -->
@@ -63,7 +63,7 @@
 </div>
 
 <!----------------- Getting the <footer> ---------------->
-<%@include file="../includes/footer.jsp" %>
+<%@include file="../../includes/footer.jsp" %>
 <!-- Getting the foot -->
-<%@include file="../includes/foot.jsp" %>
+<%@include file="../../includes/foot.jsp" %>
 <!------------------------------------------------------->
