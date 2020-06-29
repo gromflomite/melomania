@@ -8,7 +8,7 @@ public class Role {
 	// Default constructor
 	public Role() {
 		super();
-		this.id_role = 1;
+		this.id_role = 6; // 6 is the id number for "listener" role
 		this.type_role = "";
 	}
 
