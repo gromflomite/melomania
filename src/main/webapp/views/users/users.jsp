@@ -50,7 +50,7 @@
 					<td hidden="">${user.role.id_role}</td>
 					<td>${user.role.type_role}</td>					
 					<td id="formOptionButtons">
-						<a href="newalbum?id=${a.id}" class="mr-2">
+						<a href="newuser?userid=${user.id}" class="mr-2">
 							<i class="far fa-edit fa-1x" title="Edit"></i>
 						</a>
 						<a href="deletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">

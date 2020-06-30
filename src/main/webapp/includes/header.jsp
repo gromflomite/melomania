@@ -29,12 +29,15 @@
 				</li>				
 				
 				<li class="nav-item">
-					<div class="dropdown genres-dropdown">
+					
+					<div class="dropdown users-dropdown">
+						
 						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Users</button>
 						
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="user">Show users</a>													
-						</div>
+							<a class="dropdown-item" href="user">Show users</a>
+							<a class="dropdown-item" href="newuser?id=0">Create user</a>													
+						</div>		
 					
 					</div>
 				</li>

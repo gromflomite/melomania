@@ -11,7 +11,7 @@ public class User {
 	// Default constructor
 	public User() {
 		super();
-		this.id = 1;
+		this.id = 0;
 		this.name = "";
 		this.email = "";
 		this.role = new Role();
