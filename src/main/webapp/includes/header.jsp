@@ -26,10 +26,17 @@
 
 				<li class="nav-item">
 					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="newalbum?id=0">+Album</a>
-				</li>
+				</li>				
 				
 				<li class="nav-item">
-					<a class="nav-link ${ ('users' eq param.activeTag) ? 'active' : '' }" href="user">Users</a>
+					<div class="dropdown genres-dropdown">
+						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Users</button>
+						
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="user">Show users</a>													
+						</div>
+					
+					</div>
 				</li>
 
 				<li class="nav-item">
