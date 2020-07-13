@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.daos.UserDao;
 import model.pojos.Feedback;
+import model.pojos.Role;
 import model.pojos.User;
 
 @WebServlet("/newuser")
@@ -39,6 +40,7 @@ public class NewEditUserController extends HttpServlet {
 		// Call DAO getById method passing the user ID
 		dbRegister = editUser.getById(idUserParameter);
 	    }
+	    
 	} catch (Exception e) {
 
 	    // TODO: handle exception
@@ -64,22 +66,33 @@ public class NewEditUserController extends HttpServlet {
 	// New User object
 	User user = new User();	
 
-	// Get the parameters from the view form
+	// Get the parameters from the view form	
 	String idString = request.getParameter("id");
 	String name = request.getParameter("userName");
+	String email = request.getParameter("userEmail");
 	String idRoleString = request.getParameter("idRol");
 	String password = request.getParameter("password");
 	String passwordChange = request.getParameter("passwordChange");
-	String passwordChangeConfirm = request.getParameter("passwordChangeConfirm");
-
-	int id; // To put the idString parsed value
-	int idRole; // To put the idRoleString parsed value
-
+	String passwordChangeConfirm = request.getParameter("passwordChangeConfirm");	
+		
+	int id;		// To put the idString parsed value	
+	int idRole;	// To put the idRoleString parsed value	
+	
+	Role role = new Role();
+	
 	try {
 
-	    // Parsing the string attributes received
-	    id = Integer.parseInt(idString);
-	    idRole = Integer.parseInt(idRoleString);
+	    // Parsing the string attributes received	   
+	    idRole = 	  Integer.parseInt(idRoleString);
+	    id = Integer.parseInt(idString);	    
+	    
+	    // Setting the values on User object	
+	    user.setName(name);
+	    user.setEmail(email);
+	    
+	    // Instanciating new Role object, setting the id role to it setting the Role to user
+	    role.setId_role(idRole);
+	    user.setRole(role);
 
 	    // Password management --------------------------------------------
 	    if (password != null) { // New user password
@@ -109,7 +122,7 @@ public class NewEditUserController extends HttpServlet {
 	    }
 
 	    // Creating some feedback to the user
-	    feedback = new Feedback("success", "User properly saved with ID: " + user.getId());
+	    feedback = new Feedback("success", "User properly saved with new ID: " + user.getId());
 
 	} catch (Exception e) {
 	    // TODO: handle exception
@@ -123,7 +136,7 @@ public class NewEditUserController extends HttpServlet {
 	    request.setAttribute("user", user);
 
 	    // Go back to the view (new-user.jsp)
-	    request.getRequestDispatcher("new-user.jsp").forward(request, response);
+	    request.getRequestDispatcher("views/users/new-user.jsp").forward(request, response);
 
 	}
 

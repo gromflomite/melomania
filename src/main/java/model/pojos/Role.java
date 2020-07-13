@@ -2,6 +2,9 @@ package model.pojos;
 
 public class Role {
 
+    	public static final int ADMIN = 4; // Values from DB
+    	public static final int USER = 6;  	
+    
 	private int id_role;
 	private String type_role;
 

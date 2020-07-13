@@ -18,7 +18,7 @@ public class UserDao {
     private final String QUERY_GETBYID = " SELECT u.id, u.name, u.email, u.id_role AS 'id_role' , u.password, r.name AS 'name_role' FROM users AS u, roles AS r WHERE u.id_role = r.id AND u.id = ?; ";
 
     // executeUpdate -> returns -> integer with the number of affected rows
-    //private final String QUERY_INSERT = " INSERT INTO users (name, email, role, password) VALUES (?,?,?,?); ";
+    private final String QUERY_INSERT = " INSERT INTO users (name, email, id_role, password) VALUES (?,?,?,?); ";
     //private final String QUERY_UPDATE = " UPDATE users SET name = ?, email = ?, role = ?, password = ? WHERE id = ?; ";
     //private final String QUERY_DELETE = " DELETE FROM users WHERE id = ?; ";
     // --------------------------------------------------------------------------------------------
@@ -90,6 +90,7 @@ public class UserDao {
 	}
 
 	return dbRegisters; // Returning the ArrayList with the user object values
+	
     }
 
     // End getAll()
@@ -153,9 +154,48 @@ public class UserDao {
     
     // insert()
     // ---------------------------------------------------------------------------
-    public User insert(User pojo) throws Exception {
+    public User insert(User user) throws Exception {
 
-	return null;
+	try (
+		Connection dbConnection = ConnectionManager.getConnection();
+		/**
+		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB
+		 *      has assigned to the new created entry
+		 */
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+	    // Replace ? in the SQL query
+	    preparedStatement.setString	(1, user.getName());
+	    preparedStatement.setString	(2, user.getEmail());
+	    preparedStatement.setInt	(3, user.getRole().getId_role());
+	    preparedStatement.setString	(4, user.getPassword());
+
+	    // Execute the query and save the number of affected rows
+	    int affectedRows = preparedStatement.executeUpdate();
+
+	    if (affectedRows == 1) {
+
+		// Knowing and getting the id number that DB has assigned to the new created register
+		try (ResultSet rsNewAssignedId = preparedStatement.getGeneratedKeys()) {
+
+		    // Check and save the results from the ResulSet from RETURN_GENERATED_KEYS
+		    if (rsNewAssignedId.next()) {
+
+			int id = rsNewAssignedId.getInt(1); // Column position (one-based index in SQL, NOT zero-based) to retrive the id number
+			user.setId(id);
+			
+		    }
+		}
+
+	    } else {
+		
+		throw new Exception("The user " + user.getName() + " has not been created");
+	    
+	    }
+
+	}
+
+	return user;
     }
 
     // End insert()

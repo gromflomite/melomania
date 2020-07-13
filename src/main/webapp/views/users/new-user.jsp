@@ -42,6 +42,11 @@
 			<input type="text" class="form-control" name="userName" id="userName" value="${user.name}" placeholder="User name" required>
 		</div>
 		
+		<div class="form-group">
+			<label for="userName">Email:</label>
+			<input type="text" class="form-control" name="userEmail" id="userEmail" value="${user.email}" placeholder="User email" required>
+		</div>
+		
 		<!-- If new user (id == 0) show just the initial password field -->
 		<c:if test="${user.id == 0}">
 
@@ -94,26 +99,7 @@
 
 	</form>
 
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!----------------- Getting the <footer> ---------------->
 <%@include file="../../includes/footer.jsp"%>
