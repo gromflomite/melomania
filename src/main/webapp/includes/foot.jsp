@@ -6,6 +6,9 @@
 <!-- Datatables plug in -->
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
+<!-- SHA256 cipher -->
+<script src="js/sha256.js"></script>
+
 <!-- Own custom JS's (includes Datatables function) -->
 <script src="js/custom.js"></script>
 

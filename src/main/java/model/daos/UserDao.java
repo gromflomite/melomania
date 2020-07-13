@@ -159,8 +159,7 @@ public class UserDao {
 	try (
 		Connection dbConnection = ConnectionManager.getConnection();
 		/**
-		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB
-		 *      has assigned to the new created entry
+		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry
 		 */
 		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
@@ -178,10 +177,11 @@ public class UserDao {
 		// Knowing and getting the id number that DB has assigned to the new created register
 		try (ResultSet rsNewAssignedId = preparedStatement.getGeneratedKeys()) {
 
-		    // Check and save the results from the ResulSet from RETURN_GENERATED_KEYS
+		    // Check and save the results from the ResultSet from RETURN_GENERATED_KEYS
 		    if (rsNewAssignedId.next()) {
 
 			int id = rsNewAssignedId.getInt(1); // Column position (one-based index in SQL, NOT zero-based) to retrive the id number
+			
 			user.setId(id);
 			
 		    }

@@ -20,19 +20,17 @@ public class NewEditUserController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	// Getting the user values using the id number received by parameter in the URL
-	// from the view -------------------
-
-	// Get and parse the id from the URL parameter
+	
 	User dbRegister = new User();
 
 	try {
 
+	    // Getting the user values using the id number received by parameter in the URL from the view
+	    
+	    // Get and parse the id from the URL parameter
 	    int idUserParameter = Integer.parseInt(request.getParameter("userid"));
 
-	    if (idUserParameter > 0) { // If user ID is greater than 0, the users exists and we already have their ID
-				       // (via URL parameter from the view)
+	    if (idUserParameter > 0) { // If user ID is greater than 0, the users exists and we already have their ID (via URL parameter from the view)
 
 		// Inst. user DAO
 		UserDao editUser = UserDao.getInstance();
@@ -67,13 +65,13 @@ public class NewEditUserController extends HttpServlet {
 	User user = new User();	
 
 	// Get the parameters from the view form	
-	String idString = request.getParameter("id");
-	String name = request.getParameter("userName");
-	String email = request.getParameter("userEmail");
-	String idRoleString = request.getParameter("idRol");
-	String password = request.getParameter("password");
-	String passwordChange = request.getParameter("passwordChange");
-	String passwordChangeConfirm = request.getParameter("passwordChangeConfirm");	
+	String idString = 		request.getParameter("id");
+	String name = 			request.getParameter("userName");
+	String email = 			request.getParameter("userEmail");
+	String idRoleString = 		request.getParameter("idRol");
+	String password = 		request.getParameter("password");
+	String passwordChange = 	request.getParameter("passwordChange");
+	String passwordChangeConfirm = 	request.getParameter("passwordChangeConfirm");	
 		
 	int id;		// To put the idString parsed value	
 	int idRole;	// To put the idRoleString parsed value	
@@ -83,8 +81,8 @@ public class NewEditUserController extends HttpServlet {
 	try {
 
 	    // Parsing the string attributes received	   
-	    idRole = 	  Integer.parseInt(idRoleString);
-	    id = Integer.parseInt(idString);	    
+	    idRole = Integer.parseInt(idRoleString);
+	    id =     Integer.parseInt(idString);	    
 	    
 	    // Setting the values on User object	
 	    user.setName(name);
@@ -106,18 +104,22 @@ public class NewEditUserController extends HttpServlet {
 		    user.setPassword(passwordChange);
 
 		} else {
+		    
 		    // TODO LOG.trace
 		    // TODO feedback
+		    
 		}
 	    }
 	    // End password management -----------------------------------------
 
 	    // if id == 0, the registry does not exists in the DB, so create it
 	    if (id == 0) {		
+		
 		userDao.insert(user); // Create the registry in the DB
 		
 	    // if id != 0, the registry alreadt exists in the DB, so update it 
 	    } else { 
+		
 		userDao.update(user); // Update the registry in the DB
 	    }
 

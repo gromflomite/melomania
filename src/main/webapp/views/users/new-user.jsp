@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	<form action="newuser" method="post" onsubmit="cipherPassword()">
+	<form action="newuser" method="post" accept-charset="UTF-8" onsubmit="cipherPassword()">
 
 		<div class="form-group">
 			<label for="id">ID:</label>
