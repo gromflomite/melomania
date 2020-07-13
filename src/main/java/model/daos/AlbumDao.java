@@ -16,7 +16,8 @@ public class AlbumDao {
     // executeQuery -> returns -> ResulSet
     private final String QUERY_GETALLBYGENRE = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND g.id = ? ORDER BY a.id ASC LIMIT 100; ";
     private final String QUERY_GETALL	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 100; ";
-    private final String QUERY_GETLAST	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id DESC LIMIT ?; ";
+    // QUERY_GETLAST modified to show just the approved albums (where approved_date is not null)
+    private final String QUERY_GETLAST	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT ?; ";
     private final String QUERY_GETBYID	= " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
         
     // executeUpdate -> returns -> integer with the number of affected rows
