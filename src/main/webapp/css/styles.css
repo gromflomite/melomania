@@ -33,6 +33,10 @@ body {
 	border-bottom-width: 0px;
 	font-size: 1.2rem;    
 }
+
+.user-badge {
+	margin-top : 0.8em;
+}
 /* -------------------------  End navbar ------------------------- */
 
 

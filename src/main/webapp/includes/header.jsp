@@ -61,27 +61,30 @@
 
 			<!-- User session button common to all users (logged or not) ------------------------------>
 			<ul class="navbar-nav float-right">
-				
-				<li class="nav-item">
-					
-					<c:if test="${empty userLogin}">
-						<a class="nav-link" href="views/login/login.jsp">Log in</a>
-					</c:if>
-				
-				</li>
+			
+				<c:if test="${empty userLogin}">
 
-				<li class="nav-item">
-				
-					<c:if test="${not empty userLogin}">
-						<a href="new-edit-student?id=${userLogin.id}" class="badge badge-warning mr-3 p-2">${userLogin.name}</a>
-						<a class="nav-link btn btn-outline-danger" href="logout">Log out</a>
-					</c:if>
-				
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="views/login/login.jsp">Log in</a>
+					</li>
+
+				</c:if>
+
+				<c:if test="${not empty userLogin}">
+
+					<li class="nav-item">
+						<a href="newuser?userid=${userLogin.id}" class="badge badge-warning mr-3 user-badge">${userLogin.name}</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="logout">Log out</a>
+					</li>
+
+				</c:if>
 				
 			</ul>
 			<!-- User session button end ------------------------------------------------------------->
-			
+
 		</div>
 
 	</nav>

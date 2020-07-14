@@ -13,14 +13,15 @@ public class UserDao {
 
     // SQL queries
     // --------------------------------------------------------------------------------
-    // executeQuery -> returns -> ResulSet
-    private final String QUERY_GETALL  = " SELECT u.id, u.name, u.email, u.id_role AS 'id_role' , u.password, r.name AS 'name_role' FROM users AS u, roles AS r WHERE u.id_role = r.id ORDER BY u.id ASC LIMIT 20; ";
-    private final String QUERY_GETBYID = " SELECT u.id, u.name, u.email, u.id_role AS 'id_role' , u.password, r.name AS 'name_role' FROM users AS u, roles AS r WHERE u.id_role = r.id AND u.id = ?; ";
-
+    // executeQuery -> returns -> ResultSet
+    private final String QUERY_GETALL	  = " SELECT u.id, u.name, u.email, u.id_role AS 'id_role' , u.password, r.name AS 'name_role' FROM users AS u, roles AS r WHERE u.id_role = r.id ORDER BY u.id ASC LIMIT 20; ";
+    private final String QUERY_GETBYID	  = " SELECT u.id, u.name, u.email, u.id_role AS 'id_role' , u.password, r.name AS 'name_role' FROM users AS u, roles AS r WHERE u.id_role = r.id AND u.id = ?; ";
+    private final String QUERY_CHECKLOGIN = " SELECT u.id, u.name, u.email, u.password, u.id_role, r.name AS 'name_role' FROM users AS u, roles AS r WHERE u.name = ? AND u.password = ? AND u.id_role = r.id;  ";
+    
     // executeUpdate -> returns -> integer with the number of affected rows
-    private final String QUERY_INSERT = " INSERT INTO users (name, email, id_role, password) VALUES (?,?,?,?); ";
-    //private final String QUERY_UPDATE = " UPDATE users SET name = ?, email = ?, role = ?, password = ? WHERE id = ?; ";
-    //private final String QUERY_DELETE = " DELETE FROM users WHERE id = ?; ";
+    private final String QUERY_INSERT	  = " INSERT INTO users (name, email, id_role, password) VALUES (?,?,?,?); ";
+    //private final String QUERY_UPDATE   = " UPDATE users SET name = ?, email = ?, role = ?, password = ? WHERE id = ?; ";
+    //private final String QUERY_DELETE	  = " DELETE FROM users WHERE id = ?; ";
     // --------------------------------------------------------------------------------------------
 
     // Singleton pattern
@@ -201,6 +202,68 @@ public class UserDao {
     // End insert()
     // ---------------------------------------------------------------------------
 
+    
+    
+    // checkLogin()
+    // ---------------------------------------------------------------------------
+    public User checkLogin(String userName, String userPassword) {
+
+	User userLogin = new User();
+	Role userRole  = new Role();
+
+	userLogin = null;
+	userRole  = null;
+
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_CHECKLOGIN);) {
+
+	    preparedStatement.setString(1, userName);
+	    preparedStatement.setString(2, userPassword);
+
+	    try (ResultSet dbResultSet = preparedStatement.executeQuery()) {
+
+		if (dbResultSet.next()) {
+		    
+		    // Setting values ------------------------------------------
+
+		    // User values
+		    userLogin = new User();
+
+		    userLogin.setId(		dbResultSet.getInt("id"));
+		    userLogin.setName(		dbResultSet.getString("name"));
+		    userLogin.setEmail(		dbResultSet.getString("email"));
+		    userLogin.setPassword(	dbResultSet.getString("password"));
+
+		    // Role values
+		    userRole = new Role();
+		    
+		    userRole.setId_role(	dbResultSet.getInt("id_role"));
+		    userRole.setType_role(	dbResultSet.getString("name_role"));		    
+		    
+		    userLogin.setRole(userRole);
+
+		}
+
+	    }
+
+	} catch (Exception e) {
+	    
+	    // TODO: handle exception
+	    
+	}
+
+	return userLogin;
+    }
+    
+    
+    
+    
+    // End checkLogin()
+    // ---------------------------------------------------------------------------
+    
+    
+    
     // update()
     // ---------------------------------------------------------------------------
     public User update(User pojo) throws Exception {

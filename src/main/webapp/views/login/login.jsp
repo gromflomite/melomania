@@ -15,20 +15,20 @@
 <!-- ----------------------------------------------------------------------------- -->
 
 
-<div class="container">
+<div class="container w-25">
 
-	<h2 class="my-4">Log in</h2>
+	<h2 class="mt-5">Log in</h2>
 
 	<form action="login" method="post" onsubmit="cipherPassword()">
 
-		<div class="form-group my-5">
+		<div class="form-group my-3">
 			<label for="username">Username:</label>
-			<input type="text" name="user" class="form-control" id="username" placeholder="Enter your username">
+			<input type="text" name="userName" class="form-control" id="username" placeholder="Enter your username">
 		</div>
 
 		<div class="form-group">
 			<label for="password">Password:</label>
-			<input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+			<input type="password" name="userPassword" class="form-control" id="password" placeholder="Enter your password">
 		</div>
 		
 		<button type="submit" class="btn btn-info mt-3">Log in</button>
@@ -38,10 +38,6 @@
 	<br>
 
 </div>
-
-
-
-
 
 <!----------------- Getting the <footer> ---------------->
 <%@include file="../../includes/footer.jsp" %>
