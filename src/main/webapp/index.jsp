@@ -16,19 +16,19 @@
 
 <div class="container">
 
-	<div class="jumbotron mt-5">
+<!-- 	<div class="jumbotron mt-5"> -->
 
-		<h1 class="display-4">Welcome to melomania!</h1>
+<!-- 		<h1 class="display-4">Welcome to melomania!</h1> -->
 
-		<p class="lead">A simple app to manage your music collection</p>
+<!-- 		<p class="lead">A simple app to manage your music collection</p> -->
 
-		<hr class="my-5">
+<!-- 		<hr class="my-5"> -->
 
-		<a class="btn btn-info btn-lg" href="album" role="button">Check your collection</a>
+<!-- 		<a class="btn btn-info btn-lg" href="album" role="button">Check your collection</a> -->
 
-		<a class="btn btn-info btn-lg ml-5" href="newalbum?id=0" role="button">Add an album</a>
+<!-- 		<a class="btn btn-info btn-lg ml-5" href="newalbum?id=0" role="button">Add an album</a> -->
 
-	</div>
+<!-- 	</div> -->
 
 	<div class="container">
 

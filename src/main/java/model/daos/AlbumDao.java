@@ -18,7 +18,7 @@ public class AlbumDao {
     private final String QUERY_GETALL	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 100; ";
     // QUERY_GETLAST modified to show just the approved albums (where approved_date is not null)
     private final String QUERY_GETLAST	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT ?; ";
-    private final String QUERY_GETBYID	= " SELECT id, title, artist, year, comments, cover FROM albums WHERE id = ? ; ";
+    private final String QUERY_GETBYID	= " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id WHERE a.id = ? ORDER BY a.id ASC LIMIT 100; ";
         
     // executeUpdate -> returns -> integer with the number of affected rows
     private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover) VALUES (?,?,?,?,?); ";
@@ -140,7 +140,10 @@ public class AlbumDao {
 	ArrayList<Album> dbRegisters = new ArrayList<Album>();
 
 	// try with resources (autoclosable)
-	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETALL); ResultSet resulSet = preparedStatement.executeQuery();
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETALL); 
+		ResultSet resulSet = preparedStatement.executeQuery();
 
 	) {
 	    while (resulSet.next()) {
@@ -159,6 +162,7 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
     
 
+    
     // getById()
     // --------------------------------------------------------------------------------------------
     public Album getById(int albumId) throws Exception {
@@ -166,17 +170,19 @@ public class AlbumDao {
 	// Create POJO and set the recovered values
 	Album album = new Album();
 
-	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETBYID);) {
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETBYID);) {
 
 	    // Replacing ? in the SQL query
 	    preparedStatement.setInt(1, albumId);
 
 	    // Executing the query against the DB and getting the ResultSet with the values
-	    ResultSet resulSet = preparedStatement.executeQuery();
+	    ResultSet resultSet = preparedStatement.executeQuery();
 
-	    if (resulSet.next()) {
+	    if (resultSet.next()) {
 
-		album = mapper(resulSet);
+		album = mapper(resultSet);
 
 	    } else {
 
@@ -190,6 +196,7 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
     
 
+    
     // insert()
     // --------------------------------------------------------------------------------------------
     public Album insert(Album newAlbum) throws Exception {
@@ -259,6 +266,7 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
     
 
+    
     // delete()
     // --------------------------------------------------------------------------------------------
     public Album delete(int deleteAlbumId) throws Exception {
@@ -287,23 +295,26 @@ public class AlbumDao {
 
     // mapper()
     // --------------------------------------------------------------------------------------------
-    private Album mapper(ResultSet resulSet) throws Exception {
+    private Album mapper(ResultSet resultSet) throws Exception {
 
 	// Getting the values from the resultSet (values from the DB)
-	int albumId = resulSet.getInt("album_id");
-	String title = resulSet.getString("album_title");
-	String artist = resulSet.getString("album_artist");
-	int year = resulSet.getInt("album_year");
-	String comments = resulSet.getString("album_comments");
-	String cover = resulSet.getString("album_cover");
+	
+	int	albumId		= resultSet.getInt("album_id");
+	String	title 		= resultSet.getString("album_title");
+	String	artist 		= resultSet.getString("album_artist");
+	int 	year 		= resultSet.getInt("album_year");
+	String 	comments 	= resultSet.getString("album_comments");
+	String 	cover 		= resultSet.getString("album_cover");
+	
 	// Genres
-	int genreId = resulSet.getInt("genre_id");
-	String genreName = resulSet.getString("genre_name");
+	int 	genreId 	= resultSet.getInt("genre_id");
+	String 	genreName 	= resultSet.getString("genre_name");
 
 	// Create POJOS and set the recovered values ----------------
 
 	// Set the recovered values to Album object
 	Album album = new Album();
+	
 	album.setId(albumId);
 	album.setTitle(title);
 	album.setArtist(artist);
@@ -313,6 +324,7 @@ public class AlbumDao {
 
 	// Setting the genre object attributes
 	Genre genre = new Genre();
+	
 	genre.setId(genreId);
 	genre.setGenre(genreName);
 

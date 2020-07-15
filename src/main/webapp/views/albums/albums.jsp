@@ -30,6 +30,7 @@
 				<td>Title</td>
 				<td>Artist</td>
 				<td>Year</td>
+				<td>Genre</td>
 				<td>Comments</td>
 				<td>Cover</td>
 				<td>Manage</td>
@@ -40,12 +41,13 @@
 		<tbody>
 
 			<c:forEach items="${albums}" var="a">
-
+						
 				<tr>
 					<td hidden="">${a.id}</td>					
 					<td>${a.title}</td>
-					<td>${a.artist}</td>
+					<td>${a.artist}</td>					
 					<td>${a.year}</td>
+					<td>${a.genre.genre}</td>
 					<td>${a.comments}</td>
 					<td>
 						<img id="album-cover" src="${a.cover}" alt="Album cover">

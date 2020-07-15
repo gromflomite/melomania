@@ -18,6 +18,8 @@
 
 	<hr>
 
+	${album}
+
 	<form id="newalbumform" action="newalbum" method="post">
 
 		<div class="form-group" hidden="">
@@ -49,6 +51,10 @@
 			</label>
 			<input type="text" name="year" class="form-control" id="year" value="${album.year}" placeholder="Year" required>
 		</div>
+	
+		
+		
+
 
 		<div class="form-group">
 			<label for="comments">Comments:</label>
