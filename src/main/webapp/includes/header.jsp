@@ -73,7 +73,7 @@
 				<c:if test="${not empty userLogin}">
 
 					<li class="nav-item">
-						<a href="newuser?userid=${userLogin.id}" class="badge badge-warning mr-3 user-badge">${userLogin.name}</a>
+						<a href="newuser?userid=${userLogin.id}" class="badge badge-warning mr-3 user-badge">${userLogin.name} (${userLogin.role.type_role})</a>
 					</li>
 
 					<li class="nav-item">

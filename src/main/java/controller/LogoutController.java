@@ -36,7 +36,7 @@ public class LogoutController extends HttpServlet {
 	} finally {
 
 	    // Go back to index
-	    request.getRequestDispatcher("index.jsp").forward(request, response);
+	    request.getRequestDispatcher("home").forward(request, response);
 
 	}
 

@@ -109,7 +109,9 @@ public class AlbumDao {
 	ArrayList<Album> dbRegisters = new ArrayList<Album>();
 
 	// try with resources (autoclosable)
-	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETLAST);
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETLAST);
 
 	) {
 	    preparedStatement.setInt(1, numAlbums);
@@ -201,7 +203,8 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
     public Album insert(Album newAlbum) throws Exception {
 
-	try (Connection dbConnection = ConnectionManager.getConnection();
+	try (
+		Connection dbConnection = ConnectionManager.getConnection();
 		/**
 		 * 
 		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry

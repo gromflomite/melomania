@@ -1,14 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>BO</title>
-</head>
-<body>
+<!-- Including head and header - Setting the page title and "active" tag to navbar -->
+<jsp:include page="../../includes/head.jsp">
+	<jsp:param name="title" value="Backoffice" />
+</jsp:include>
 
-<h1>BO</h1>
+<jsp:include page="../../includes/header.jsp">
+	<jsp:param name="activeTag" value="backoffice" />
+</jsp:include>
+<!-- ----------------------------------------------------------------------------- -->
 
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<div class="container">
+	<h1>BACKOFFICE</h1>
+</div>
+
+<!----------------- Getting the <footer> ---------------->
+<%@include file="../../includes/footer.jsp"%>
+<!-- Getting the foot -->
+<%@include file="../../includes/foot.jsp"%>
+<!------------------------------------------------------->
+

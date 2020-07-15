@@ -1,10 +1,10 @@
 <!-- Including head and header - Setting the page title and "active" tag to navbar -->
 <jsp:include page="../../includes/head.jsp">
-	<jsp:param name="title" value="Frontoffice" />
+	<jsp:param name="title" value="Not authorized" />
 </jsp:include>
 
 <jsp:include page="../../includes/header.jsp">
-	<jsp:param name="activeTag" value="frontoffice" />
+	<jsp:param name="activeTag" value="not-authorized" />
 </jsp:include>
 <!-- ----------------------------------------------------------------------------- -->
 
@@ -13,7 +13,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <div class="container">
-	<h1>Frontoffice</h1>
+	<h1>NOT AUTHORIZED!!</h1>
 </div>
 
 <!----------------- Getting the <footer> ---------------->
