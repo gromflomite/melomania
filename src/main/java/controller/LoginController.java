@@ -42,6 +42,8 @@ public class LoginController extends HttpServlet {
 
 	    // Go back to index
 	    request.getRequestDispatcher("home").forward(request, response);
+	    
+	    // TODO Redirect user to frontoffice
 
 	} else { // Entered login values not correct
 

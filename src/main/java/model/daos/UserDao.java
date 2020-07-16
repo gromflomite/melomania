@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import model.ConnectionManager;
+import model.connectionManagers.ConnectionManager;
+import model.connectionManagers.PoolConnectionManager;
 import model.pojos.Role;
 import model.pojos.User;
 

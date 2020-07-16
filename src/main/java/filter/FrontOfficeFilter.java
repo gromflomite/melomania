@@ -33,7 +33,7 @@ public class FrontOfficeFilter implements Filter {
 
 	/**
 	 * 
-	 * Users that can navigate frontoffice: ADMIN & LISTENERS
+	 * Users that can navigate frontoffice: LISTENERS
 	 * 
 	 */
 
@@ -60,7 +60,7 @@ public class FrontOfficeFilter implements Filter {
 
 	    httpResponse.sendRedirect(rootPath + "/views/unauthorized/index.jsp"); // Absolute path
 
-	} else if (userLogin.getRole().getId_role() != Role.LISTENER || userLogin.getRole().getId_role() != Role.ADMIN) { // For more explanation about the constant, see the Role model
+	} else if (userLogin.getRole().getId_role() != Role.LISTENER) { // For more explanation about the constant, see the Role model
 
 	    // Create feedback
 	    feedback = new Feedback("danger", "You have no privileges to view that page (you are a " + userLogin.getRole().getType_role() + ")");

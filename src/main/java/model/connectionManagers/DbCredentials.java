@@ -1,4 +1,4 @@
-package model;
+package model.connectionManagers;
 
 public class DbCredentials {
 
