@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.connectionManagers.ConnectionManager;
-import model.connectionManagers.PoolConnectionManager;
 import model.pojos.Album;
 import model.pojos.Genre;
 
