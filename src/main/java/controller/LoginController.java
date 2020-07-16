@@ -10,28 +10,29 @@ import javax.servlet.http.HttpSession;
 
 import model.daos.UserDao;
 import model.pojos.Feedback;
+import model.pojos.Role;
 import model.pojos.User;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;    
+    private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
 	// Get parameters from view (login.jsp)
-	String userName 	= request.getParameter("userName");
-	String userPassword	= request.getParameter("userPassword");
-	
+	String userName = request.getParameter("userName");
+	String userPassword = request.getParameter("userPassword");
+
 	// Get Session
 	HttpSession session = request.getSession();
-	
+
 	// Check against the DB the values entered by user -----------------
-	
+
 	UserDao dao = UserDao.getInstance();
-	
+
 	User userLogin = dao.checkLogin(userName, userPassword); // User values if login is correct or null if not
-	
+
 	if (userLogin != null) {
 
 	    // Set attribute to session
@@ -40,10 +41,11 @@ public class LoginController extends HttpServlet {
 	    // Set feedback
 	    request.setAttribute("feedback", new Feedback("success", "Welcome again!!"));
 
-	    // Go back to index
-	    request.getRequestDispatcher("home").forward(request, response);
-	    
-	    // TODO Redirect user to frontoffice
+	    if (userLogin.getRole().getId_role() == Role.ADMIN) {
+		request.getRequestDispatcher("/views/backoffice/bohome").forward(request, response);
+	    } else {
+		request.getRequestDispatcher("/views/frontoffice/fohome").forward(request, response);
+	    }	  
 
 	} else { // Entered login values not correct
 
@@ -56,8 +58,8 @@ public class LoginController extends HttpServlet {
 	    // Go back to loging page
 	    request.getRequestDispatcher("views/login/login.jsp").forward(request, response);
 
-	}	
-	
+	}
+
     }
 
 }

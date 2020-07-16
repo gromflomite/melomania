@@ -13,7 +13,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <div class="container">
-	<h1>BACKOFFICE</h1>
+	<h1 class="mt-5">Backoffice (admin zone)</h1>
+	
+	<h3 class="mt-5">Albums approved: ${albums_approved}</h3>
+	<h3>Albums pending: ${albums_pending}</h3>
+	
 </div>
 
 <!----------------- Getting the <footer> ---------------->

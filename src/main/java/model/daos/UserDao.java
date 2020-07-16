@@ -32,8 +32,7 @@ public class UserDao {
 
     public static UserDao INSTANCE = null;
 
-    public static synchronized UserDao getInstance(
-	    ) {
+    public static synchronized UserDao getInstance() {
 
 	if (INSTANCE == null) {
 	    INSTANCE = new UserDao();
