@@ -7,35 +7,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 
- * IMPORTANT: 
- *
- */
-@WebServlet("/views/frontoffice/fohome") 
+@WebServlet("/views/frontoffice/fohome") // IMPORTANT: As we are using a filter (FrontOfficeFilter.java) in order to
+					 // check authentication and in that filter we are using "/views/frontoffice/*"
+					 // as pattern to filtrate, we must set the same path in this controller
+					 // (remember to call this controller using the specified path).
+
 public class FOHomeController extends HttpServlet {
-	
-    private static final long serialVersionUID = 1L;       
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	    // Hardcoding some values to show them in frontoffice
-	    // TODO Get these values from DB
-	    request.setAttribute("albums_approved", 3);
-	    request.setAttribute("albums_pending", 2);
-	    
-	    // Get the path
-	    //String contextPath = request.getContextPath();
-	    //String finalView = contextPath + "/views/frontoffice/index.jsp";
-	    
-	    request.getRequestDispatcher("index.jsp").forward(request, response);
-	    
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	    	// Using just doPost()
-		doGet(request, response);
-	}
+
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// Hardcoding some values to show them in frontoffice
+	// TODO Get these values from DB
+	request.setAttribute("albums_approved", 3);
+	request.setAttribute("albums_pending", 2);
+
+	/**
+	 * IMPORTANT: Note the controller URL pattern specified above:
+	 * "/views/frontoffice/fohome"
+	 * 
+	 * So, in the .getRequestDispatcher we must indicate just the .jsp because the last part (fohome)
+	 * will be removed --> "/views/frontoffice/fohome" + "index.jsp" = "/views/frontoffice/index.jsp"
+	 * 
+	 */
+	request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// Using just doPost()
+	doGet(request, response);
+    }
 
 }

@@ -8,35 +8,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 
- * IMPORTANT: 
- *
- */
-@WebServlet("/views/backoffice/bohome") 
+@WebServlet("/views/backoffice/bohome") // IMPORTANT: As we are using a filter (BackOfficeFilter.java) in order to
+					// check authentication and in that filter we are using "/views/backoffice/*"
+					// as pattern to filtrate, we must set the same path in this controller
+					// (remember to call this controller using the specified path).
+
 public class BOHomeController extends HttpServlet {
-	
-    private static final long serialVersionUID = 1L;       
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	    // Hardcoding some values to show them in frontoffice
-	    // TODO Get these values from DB
-	    request.setAttribute("albums_approved", 666);
-	    request.setAttribute("albums_pending", 2234568);
-	    
-	    // Get the path
-	    //String contextPath = request.getContextPath();
-	    //String finalView = contextPath + "/views/frontoffice/index.jsp";
-	    
-	    request.getRequestDispatcher("index.jsp").forward(request, response);
-	    
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	    	// Using just doPost()
-		doGet(request, response);
-	}
+
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// Hardcoding some values to show them in frontoffice
+	// TODO Get these values from DB
+	request.setAttribute("albums_approved", 666);
+	request.setAttribute("albums_pending", 2234568);
+
+	/**
+	 * IMPORTANT: Note the controller URL pattern specified above:
+	 * "/views/backoffice/bohome"
+	 * 
+	 * So, in the .getRequestDispatcher we must indicate just the .jsp because the
+	 * last part (bohome) will be removed --> "/views/backoffice/bohome" + "index.jsp" = "/views/frontoffice/index.jsp"
+	 * 
+	 */
+	request.getRequestDispatcher("index.jsp").forward(request, response);
+
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// Using just doPost()
+	doGet(request, response);
+    }
 
 }
