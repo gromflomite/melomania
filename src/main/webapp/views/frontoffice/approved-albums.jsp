@@ -13,7 +13,7 @@
 
 <div class="container">
 	
-	<h1 class="mt-5">Welcome!</h1>
+	<h3 class="mt-5">Albums approved: ${albums_approved}</h3>	
 	
 </div>
 
