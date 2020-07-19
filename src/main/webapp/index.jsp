@@ -30,8 +30,8 @@
 
 <!-- 	</div> -->
 
-	<div class="container">
-
+	<div class="container">		
+	
 		<div id="card-deck-title">
 
 			<h3>${cardDeckTitle}</h3>
