@@ -19,14 +19,20 @@
 <!-- Using relative paths without including the context root name -->
 <base href="${pageContext.request.contextPath}/" />
 
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+<!-- Google fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Yellowtail&display=swap" rel="stylesheet"> 
 
+<!-- Font awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<!-- Datatables plugin -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<!--  Template CSS -->
 <link href="css/dashboard-styles.css" rel="stylesheet" />
-
-<!-- Own CSS -->
-
 
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="57x57" href="./img/apple-icon-57x57.png">

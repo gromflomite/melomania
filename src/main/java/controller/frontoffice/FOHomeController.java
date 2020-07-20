@@ -26,6 +26,8 @@ public class FOHomeController extends HttpServlet {
 	 * will be removed --> "/views/frontoffice/fohome" + "index.jsp" = "/views/frontoffice/index.jsp"
 	 * 
 	 */
+	
+	
 	request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

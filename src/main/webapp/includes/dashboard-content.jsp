@@ -10,26 +10,33 @@
 						</div>
 						Home
 					</a>
-					
+
 					<a class="nav-link" href="index.html">
 						<div class="sb-nav-link-icon">
-							<i class="fas fa-id-card"></i></i>
+							<i class="fas fa-id-card"></i>
 						</div>
 						Profile
 					</a>
 
 					<div class="sb-sidenav-menu-heading">Your albums</div>
 
+					<a class="nav-link" href="views/frontoffice/fonewalbum">
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-plus-square"></i>
+						</div>
+						Create new album
+					</a>
+
 					<a class="nav-link" href="views/frontoffice/user-albums?albumsrequest=approved">
 						<div class="sb-nav-link-icon">
-						<i class="fas fa-thumbs-up"></i>
+							<i class="fas fa-thumbs-up"></i>
 						</div>
 						Approved albums
 					</a>
 
 					<a class="nav-link" href="views/frontoffice/user-albums?albumsrequest=not-approved">
 						<div class="sb-nav-link-icon">
-						<i class="far fa-pause-circle"></i>
+							<i class="far fa-pause-circle"></i>
 						</div>
 						Pending albums
 					</a>
@@ -45,56 +52,29 @@
 	</div>
 	<div id="layoutSidenav_content">
 		<main>
-			<div class="container-fluid">
-				<h1 class="mt-4">Personal area</h1>
+
+			<!-- Including the .jsp to show feedback -->
+			<%@ include file="feedback.jsp"%>
+
+			<div class="container-fluid mt-2">
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item active">Personal area</li>
 				</ol>
-				<div class="row">
-					<div class="col-xl-3 col-md-6">
-						<div class="card bg-primary text-white mb-4">
-							<div class="card-body">Primary Card</div>
-							<div class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View Details</a>
-								<div class="small text-white">
-									<i class="fas fa-angle-right"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-md-6">
-						<div class="card bg-warning text-white mb-4">
-							<div class="card-body">Warning Card</div>
-							<div class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View Details</a>
-								<div class="small text-white">
-									<i class="fas fa-angle-right"></i>
-								</div>
-							</div>
-						</div>
-					</div>
+
+				<div class="row justify-content-md-center">
+
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-success text-white mb-4">
-							<div class="card-body">Success Card</div>
-							<div class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View Details</a>
-								<div class="small text-white">
-									<i class="fas fa-angle-right"></i>
-								</div>
-							</div>
+							<div class="card-body">Approved albums:</div>
 						</div>
 					</div>
+
 					<div class="col-xl-3 col-md-6">
-						<div class="card bg-danger text-white mb-4">
-							<div class="card-body">Danger Card</div>
-							<div class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View Details</a>
-								<div class="small text-white">
-									<i class="fas fa-angle-right"></i>
-								</div>
-							</div>
+						<div class="card bg-warning text-white mb-4">
+							<div class="card-body">Pending albums:</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</main>

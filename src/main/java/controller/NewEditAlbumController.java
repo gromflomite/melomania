@@ -23,7 +23,7 @@ import model.pojos.Feedback;
 
 public class NewEditAlbumController extends HttpServlet {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;	
 	
 	// Validations
 	private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

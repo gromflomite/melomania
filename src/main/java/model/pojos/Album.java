@@ -7,114 +7,124 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Album {
-	
-	private int id;
-	
-	@NotBlank(message = "Album title is necessary")
-	private String title;
-	
-	@Size(min = 2, message = "The Artist name must have at least 2 characters")
-	@NotBlank(message = "Artist name is necessary")
-	private String artist;
-	
-	@NotNull
-	@Min(value = 1900, message = "Publishing year must be greater than 1900")
-	@Max(value = 2025, message = "Publishing year must not be greater than 2025")
-	private int year;
-	
-	private String comments;
-	
-	private String cover;
-	
-	// Adding the Genre object
-	private Genre genre;
 
-	// Default constructor --------------------------------------------------------------------
-	public Album() {
-		this.id = 0;
-		this.title = "";
-		this.artist = "";
-		this.year = 2020;
-		this.comments = "One of the greatest albums of all time.";
-		this.cover = "https://i.imgur.com/bo3KIgS.jpg";
-		this.genre = new Genre();
-	}
+    private int id;
 
-	public Album(int id, String title, String artist, int year, String comments, String cover, Genre genre) {
-		this();
-		this.id = id;
-		this.title = title;
-		this.artist = artist;
-		this.year = year;
-		this.comments = "One of the greatest albums of all time.";
-		this.cover = "https://i.imgur.com/bo3KIgS.jpg";
-		this.genre = new Genre();
-	}
+    @NotBlank(message = "Album title is necessary")
+    private String title;
 
-	// Getters and Setters --------------------------------------------------------------------
-	public int getId() {
-	    return id;
-	}
+    @Size(min = 2, message = "The Artist name must have at least 2 characters")
+    @NotBlank(message = "Artist name is necessary")
+    private String artist;
 
-	public void setId(int id) {
-	    this.id = id;
-	}
+    @NotNull
+    @Min(value = 1900, message = "Publishing year must be greater than 1900")
+    @Max(value = 2025, message = "Publishing year must not be greater than 2025")
+    private int year;
 
-	public String getTitle() {
-	    return title;
-	}
+    private String comments;
 
-	public void setTitle(String title) {
-	    this.title = title;
-	}
+    private String cover;
 
-	public String getArtist() {
-	    return artist;
-	}
+    private User user; // Adding the User (userId) object
 
-	public void setArtist(String artist) {
-	    this.artist = artist;
-	}
+    private Genre genre; // Adding the Genre object
 
-	public int getYear() {
-	    return year;
-	}
+    // Default constructor
+    // --------------------------------------------------------------------
+    public Album() {
+	this.id = 0;
+	this.title = "";
+	this.artist = "";
+	this.year = 2020;
+	this.comments = "One of the greatest albums of all time.";
+	this.cover = "https://i.imgur.com/bo3KIgS.jpg";
+	this.user = new User();
+	this.genre = new Genre();
+    }
 
-	public void setYear(int year) {
-	    this.year = year;
-	}
+    public Album(int id, String title, String artist, int year, String comments, String cover, Genre genre) {
+	this();
+	this.id = id;
+	this.title = title;
+	this.artist = artist;
+	this.year = year;
+	this.comments = "One of the greatest albums of all time.";
+	this.cover = "https://i.imgur.com/bo3KIgS.jpg";
+	this.user = new User();
+	this.genre = new Genre();
+    }
 
-	public String getComments() {
-	    return comments;
-	}
+    // Getters and Setters
+    // --------------------------------------------------------------------
+    public int getId() {
+	return id;
+    }
 
-	public void setComments(String comments) {
-	    this.comments = comments;
-	}
+    public void setId(int id) {
+	this.id = id;
+    }
 
-	public String getCover() {
-	    return cover;
-	}
+    public String getTitle() {
+	return title;
+    }
 
-	public void setCover(String cover) {
-	    this.cover = cover;
-	}
+    public void setTitle(String title) {
+	this.title = title;
+    }
 
-	public Genre getGenre() {
-	    return genre;
-	}
+    public String getArtist() {
+	return artist;
+    }
 
-	public void setGenre(Genre genre) {
-	    this.genre = genre;
-	}
+    public void setArtist(String artist) {
+	this.artist = artist;
+    }
 
-	// toString() -----------------------------------------------------------------------------
-	@Override
-	public String toString() {
-	    return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments=" + comments + ", cover=" + cover + ", genre=" + genre + "]";
-	}
-	
-	
+    public int getYear() {
+	return year;
+    }
 
-	
+    public void setYear(int year) {
+	this.year = year;
+    }
+
+    public String getComments() {
+	return comments;
+    }
+
+    public void setComments(String comments) {
+	this.comments = comments;
+    }
+
+    public String getCover() {
+	return cover;
+    }
+
+    public void setCover(String cover) {
+	this.cover = cover;
+    }
+
+    public User getUser() {
+	return user;
+    }
+
+    public void setUser(User user) {
+	this.user = user;
+    }
+
+    public Genre getGenre() {
+	return genre;
+    }
+
+    public void setGenre(Genre genre) {
+	this.genre = genre;
+    }
+
+    // toString()
+    // -----------------------------------------------------------------------------
+    @Override
+    public String toString() {
+	return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments=" + comments + ", cover=" + cover + ", user=" + user + ", genre=" + genre + "]";
+    }
 }

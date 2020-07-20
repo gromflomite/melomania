@@ -13,7 +13,9 @@
 
 <div class="container">
 	
-	<h3 class="mt-5">Albums approved: ${albums_approved}</h3>	
+	<h1 class="my-5">Approved albums</h1>
+	
+	<h3>${albums_approved}</h3>	
 	
 </div>
 

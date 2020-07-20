@@ -11,9 +11,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<div class="container mt-5">	
+<div class="container">	
 
-	<h3>Albums pending: ${albums_pending}</h3>
+	<h1 class="my-5">Pending albums</h1>
+
+	<h3>${albums_pending}</h3>
 	
 </div>
 
