@@ -13,7 +13,7 @@
 
 <div class="container">
 	
-	<h1 class="mt-5">Welcome!</h1>
+	<h1 class="mt-5">Welcome to your personal area</h1>
 	
 </div>
 

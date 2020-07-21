@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import model.connectionManagers.ConnectionManager;
 import model.pojos.Album;
 import model.pojos.Genre;
+import model.pojos.UserAlbums;
 
 public class AlbumDao {
 
@@ -25,6 +26,9 @@ public class AlbumDao {
     private final String QUERY_GETALLBYUSER_APPROVED = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND u.id = ? AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT 100; ";
     // QUERY_GETALLBYUSER_PENDINGALBUMS -> Returns all user pending albums
     private final String QUERY_GETALLBYUSER_PENDING = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND u.id = ? AND approved_date IS NULL ORDER BY a.id DESC LIMIT 100; ";
+    
+    // QUERY_GETUSERALBUMS_VIEW --> Query against a DB view. Returns JUST THE NUMBER of user approved and pending albums
+    private final String QUERY_GETUSERALBUMS_VIEW = " SELECT vua.id_user AS userId, vua.approved_albums AS userApprovedAlbums , vua.pending_albums AS userPendingAlbums FROM view_user_albums vua WHERE vua.id_user = ?; ";
     
     //-----------------------------------
     
@@ -201,6 +205,48 @@ public class AlbumDao {
     // End getAllbyUser()
     // --------------------------------------------------------------------------------------------
 
+    
+    // getUserAlbumsDbView()
+    // --------------------------------------------------------------------------------------------
+    public UserAlbums getUserAlbumsDbView(int userId) {
+
+	// Create POJO and set the recovered values
+	UserAlbums userAlbums = new UserAlbums();
+
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETUSERALBUMS_VIEW);) {
+
+	    // Replacing ? in the SQL query
+	    preparedStatement.setInt(1, userId);
+
+	    // Execute the SQL query
+	    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+		// Set the DB values into the UserAlbums object
+		if (resultSet.next()) {
+		    userAlbums.setId_user(resultSet.getInt("userId"));
+		    userAlbums.setUserAlbumsApproved(resultSet.getInt("userApprovedAlbums"));
+		    userAlbums.setUserAlbumsPending(resultSet.getInt("userPendingAlbums"));
+		}
+
+	    }
+
+	} catch (Exception e) {
+	    
+	    // TODO: handle exception
+	
+	}
+
+	return userAlbums;
+    }
+    
+    
+    
+    // End getUserAlbumsDbView()
+    // --------------------------------------------------------------------------------------------
+    
+    
     // getById()
     // --------------------------------------------------------------------------------------------
     public Album getById(int albumId) throws Exception {
