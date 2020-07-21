@@ -1,0 +1,13 @@
+/* -------------------------  Datatables ------------------------- */
+
+/*Images on datatables*/
+#album-cover {
+    max-width: 40%;
+    height: auto;    
+}
+
+/*Center text in datatables*/
+.table > tbody > tr > td {
+     vertical-align: middle;
+     padding-left: 20px;
+}

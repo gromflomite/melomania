@@ -29,10 +29,13 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
 <!-- Datatables plugin -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
 <!--  Template CSS -->
 <link href="css/dashboard-styles.css" rel="stylesheet" />
+
+<!--  Own CSS -->
+<link href="css/own-dashboard-styles.css" rel="stylesheet" />
 
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="57x57" href="./img/apple-icon-57x57.png">
