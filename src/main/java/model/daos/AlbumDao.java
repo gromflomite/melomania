@@ -23,9 +23,9 @@ public class AlbumDao {
     private final String QUERY_GETBYID = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id WHERE a.id = ? ORDER BY a.id ASC LIMIT 100; ";
     
     // QUERY_GETALLBYUSER_APPROVEDALBUMS -> Returns all user validated albums    
-    private final String QUERY_GETALLBYUSER_APPROVED = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND (u.id = ? AND a.id_user = ?) AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT 100; ";
+    private final String QUERY_GETALLBYUSER_APPROVED = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND a.id_user = u.id AND a.id_user = ? AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT 100; ";
     // QUERY_GETALLBYUSER_PENDINGALBUMS -> Returns all user pending albums
-    private final String QUERY_GETALLBYUSER_PENDING = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND (u.id = ? AND a.id_user = ?) AND approved_date IS NULL ORDER BY a.id DESC LIMIT 100; ";
+    private final String QUERY_GETALLBYUSER_PENDING = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND a.id_user = u.id AND a.id_user = ? AND approved_date IS NULL ORDER BY a.id DESC LIMIT 100; ";
     
     // QUERY_GETUSERALBUMS_VIEW --> Query against a DB view. Returns JUST THE NUMBER of user approved and pending albums
     private final String QUERY_GETUSERALBUMS_VIEW = " SELECT vua.id_user AS userId, vua.approved_albums AS userApprovedAlbums , vua.pending_albums AS userPendingAlbums FROM view_user_albums vua WHERE vua.id_user = ?; ";
@@ -172,20 +172,15 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
     public ArrayList<Album> getAllbyUser(int idUser, boolean areApproved) {
 
-	ArrayList<Album> dbRegisters = new ArrayList<Album>();
+	ArrayList<Album> dbRegisters = new ArrayList<Album>();	
 
-	String sqlQuery = QUERY_GETALLBYUSER_APPROVED; // By default, approved
-
-	if (!areApproved) {
-	    sqlQuery = QUERY_GETALLBYUSER_PENDING; // Change if the parameter from view is "not-approved"
-	}
+	String sqlQuery = (areApproved) ? QUERY_GETALLBYUSER_APPROVED : QUERY_GETALLBYUSER_PENDING ;	
 
 	try (
 		Connection dbConnection = ConnectionManager.getConnection(); 
 		PreparedStatement preparedStatement = dbConnection.prepareStatement(sqlQuery);) {
 
-	    preparedStatement.setInt(1, idUser);
-	    preparedStatement.setInt(2, idUser); // Yes, the same, idUser
+	    preparedStatement.setInt(1, idUser);	    
 
 	    try (ResultSet resultSet = preparedStatement.executeQuery()) {
 

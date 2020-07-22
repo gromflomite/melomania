@@ -1,6 +1,6 @@
 <!-- --------------------- Includes --------------------- -->
 <!-- head and header -->
-<jsp:include page="/includes/dashboard-head.jsp" />
+<jsp:include page="/includes/dashboard-head.jsp" />	
 <!-- navbar -->
 <jsp:include page="/includes/dashboard-navbar.jsp" />
 <!-- content -->
@@ -12,9 +12,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <div class="container">
-
-	<h2 class="my-3">Add album to your collection</h2>
-
+	
+	<h3 class="my-5">Edit album</h3>
+	
 	<form id="newalbumform" action="views/frontoffice/fonewalbum" method="post">
 
 		<div class="form-group" hidden="">
@@ -66,7 +66,7 @@
 			<input type="text" name="cover" class="form-control" id="cover" value="${album.cover}" placeholder="Album cover URL (optional)">
 		</div>
 
-		<button type="submit" class="btn btn-info">Add album</button>
+		<button type="submit" class="btn btn-info">Save album</button>
 
 	</form>
 	
@@ -75,3 +75,4 @@
 <!----------------- Including footer ---------------->
 <%@include file="../../includes/dashboard-foot.jsp"%>
 <!------------------------------------------------------->
+
