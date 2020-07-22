@@ -50,7 +50,7 @@
 						<a href="newalbum?id=${a.id}" class="mr-2">
 							<i class="far fa-edit fa-1x" title="Edit"></i>
 						</a>
-						<a href="deletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">
+						<a href="views/frontoffice/fodeletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">
 							<i class="fas fa-trash fa-1x" title="Delete"></i>
 						</a>
 					</td>

@@ -3,6 +3,7 @@ package model.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.connectionManagers.ConnectionManager;
@@ -27,7 +28,7 @@ public class AlbumDao {
     // QUERY_GETALLBYUSER_PENDINGALBUMS -> Returns all user pending albums
     private final String QUERY_GETALLBYUSER_PENDING = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND a.id_user = u.id AND a.id_user = ? AND approved_date IS NULL ORDER BY a.id DESC LIMIT 100; ";
     
-    // QUERY_GETUSERALBUMS_VIEW --> Query against a DB view. Returns JUST THE NUMBER of user approved and pending albums
+    // QUERY_GETUSERALBUMS_VIEW -> Query against a DB view. Returns JUST THE NUMBER of user approved and pending albums
     private final String QUERY_GETUSERALBUMS_VIEW = " SELECT vua.id_user AS userId, vua.approved_albums AS userApprovedAlbums , vua.pending_albums AS userPendingAlbums FROM view_user_albums vua WHERE vua.id_user = ?; ";
     
     //-----------------------------------
@@ -36,6 +37,10 @@ public class AlbumDao {
     private final String QUERY_INSERT = " INSERT INTO albums (title, artist, year, comments, cover, id_genre, id_user) VALUES (?,?,?,?,?,?,?); ";
     private final String QUERY_UPDATE = " UPDATE albums SET title = ?, artist = ?, year = ?, comments = ?, cover = ? WHERE id = ?; ";
     private final String QUERY_DELETE = " DELETE FROM albums WHERE id = ? ; ";
+    
+    // QUERY_DELETE_CHECKING_USER -> Delete album checking if it belongs to the user
+    private final String QUERY_DELETE_CHECKING_USER = " DELETE FROM albums WHERE id = ? AND id_user = ?; ";
+    
     // --------------------------------------------------------------------------------------------
 
     // Singleton pattern
@@ -117,7 +122,9 @@ public class AlbumDao {
 	ArrayList<Album> dbRegisters = new ArrayList<Album>();
 
 	// try with resources (autoclosable)
-	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETLAST);
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETLAST);
 
 	) {
 	    preparedStatement.setInt(1, numAlbums);
@@ -250,7 +257,9 @@ public class AlbumDao {
 	// Create POJO and set the recovered values
 	Album album = new Album();
 
-	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETBYID);) {
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_GETBYID);) {
 
 	    // Replacing ? in the SQL query
 	    preparedStatement.setInt(1, albumId);
@@ -315,7 +324,9 @@ public class AlbumDao {
     // --------------------------------------------------------------------------------------------
     public Album update(Album updateAlbum) throws Exception {
 
-	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_UPDATE);) {
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_UPDATE);) {
 
 	    // Replace ? in the SQL query
 	    preparedStatement.setString(1, updateAlbum.getTitle());
@@ -341,7 +352,7 @@ public class AlbumDao {
     // End update()
     // --------------------------------------------------------------------------------------------
 
-    // delete()
+    // delete() -- Delete an album with NO verification of ID user. To be used it by the admin.
     // --------------------------------------------------------------------------------------------
     public Album delete(int deleteAlbumId) throws Exception {
 
@@ -365,7 +376,51 @@ public class AlbumDao {
     }
     // End delete()
     // --------------------------------------------------------------------------------------------
+    
 
+    
+    // deleteCheckingUser() -- Delete an album with ID user verification. To be used it by the user
+    // --------------------------------------------------------------------------------------------
+    public void deleteCheckingUser(int idAlbum, int idUser) throws Exception {
+
+	try (
+		Connection dbConnection = ConnectionManager.getConnection(); 
+		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_DELETE_CHECKING_USER);) {
+
+	    // Get the album before try deleting it in order to fill the feedback below
+	    //Album albumToDelete = getById(idAlbum);
+
+	    // Changing the ? in the SQL query
+	    preparedStatement.setInt(1, idAlbum);
+	    preparedStatement.setInt(2, idUser);	   
+	    
+	    // Execute que SQL query and get the # of affected rows (value returned by executeUpdate())
+	    int affectedRows = preparedStatement.executeUpdate();
+
+	    if (affectedRows != 1) { // The DB returns not affected rows
+		
+		throw new Exception("The album can not be deleted."); // TODO Add name of the album (albumToDelete.getTitle(idAlbum))		
+		
+		// TODO: Log		
+	    }
+	
+	} catch (SQLException sqlException) {
+	    
+	    throw new Exception("Sorry, we were unable to delete the album (database error: " + sqlException + "), contact the admin.");
+	    
+	    // TODO: Log
+	    
+	} catch (Exception globalException) {
+	    
+	    throw new Exception("Sorry, we were unable to delete the album (Catastrophe: " + globalException + "), just pray.");
+	    
+	    // TODO: Log	
+	} 
+    }   
+    // End deleteCheckingUser()
+    // --------------------------------------------------------------------------------------------    
+    
+    
     // mapper()
     // --------------------------------------------------------------------------------------------
     private Album mapper(ResultSet resultSet) throws Exception {
