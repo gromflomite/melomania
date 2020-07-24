@@ -30,8 +30,8 @@
 
 <!-- 	</div> -->
 
-	<div class="container">		
-	
+	<div class="container">
+
 		<div id="card-deck-title">
 
 			<h3>${cardDeckTitle}</h3>
@@ -69,8 +69,10 @@
 
 </div>
 
+
+
 <!----------------- Getting the <footer> ---------------->
-<%@include file="../includes/footer.jsp" %>
+<%@include file="../includes/footer.jsp"%>
 <!-- Getting the foot -->
-<%@include file="../includes/foot.jsp" %>
+<%@include file="../includes/foot.jsp"%>
 <!------------------------------------------------------->

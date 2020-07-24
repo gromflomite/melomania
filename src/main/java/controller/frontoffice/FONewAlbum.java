@@ -14,7 +14,6 @@ import model.pojos.Album;
 import model.pojos.Feedback;
 import model.pojos.Genre;
 import model.pojos.User;
-import model.pojos.UserAlbums;
 
 @WebServlet("/views/frontoffice/fonewalbum")
 public class FONewAlbum extends HttpServlet {
