@@ -13,7 +13,12 @@
 
 <div class="container">
 	
-	<h1 class="mt-5 text-center">Welcome to your personal area</h1>
+	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid bg-info text-white text-center">
+		<div class="container">
+			<h2 class="display-4">Personal area</h2>
+			<p class="lead">Welcome!</p>
+		</div>
+	</div>
 	
 </div>
 

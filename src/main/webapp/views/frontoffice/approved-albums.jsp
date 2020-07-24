@@ -13,7 +13,12 @@
 
 <div class="container">
 
-	<h3 class="my-5">Your approved albums</h3>
+	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid bg-success text-white">
+		<div class="container">
+			<h3 class="display-5">Your collection</h3>
+			<p class="lead">Your albums collection (these albums have been approved).</p>
+		</div>
+	</div>
 
 	<table id="table" class="tabla table table-striped">
 
@@ -47,7 +52,7 @@
 						<img id="album-cover" src="${a.cover}" alt="Album cover">
 					</td>
 					<td id="formOptionButtons">
-						<a href="newalbum?id=${a.id}" class="mr-2">
+						<a href="views/frontoffice/foeditalbum?idAlbum=${a.id}" class="mr-2">
 							<i class="far fa-edit fa-1x" title="Edit"></i>
 						</a>
 						<a href="views/frontoffice/fodeletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">

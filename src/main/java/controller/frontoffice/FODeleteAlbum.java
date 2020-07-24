@@ -12,7 +12,7 @@ import model.daos.AlbumDao;
 import model.pojos.Feedback;
 import model.pojos.User;
 
-@WebServlet("/fodeletealbum")
+@WebServlet("/views/frontoffice/fodeletealbum")
 public class FODeleteAlbum extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -48,7 +48,7 @@ public class FODeleteAlbum extends HttpServlet {
 	} finally {
 	    
 	    request.setAttribute("feedback", feedback); // Add feedback to request	    
-	    request.getRequestDispatcher("views/frontoffice/fohome").forward(request, response); // Go home
+	    request.getRequestDispatcher("fohome").forward(request, response); // Go home
 	}
 
     }
@@ -58,5 +58,4 @@ public class FODeleteAlbum extends HttpServlet {
 	// Using just doGet()
 	doGet(request, response);
     }
-
 }

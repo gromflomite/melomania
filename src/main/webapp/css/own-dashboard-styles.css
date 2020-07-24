@@ -11,3 +11,13 @@
      vertical-align: middle;
      padding-left: 20px;
 }
+
+#personalized-jumbo {
+    margin-top: 1em;
+    padding: 1em 0em 1em 0em;
+    border-radius: 10px;
+}
+
+#personalized-jumbo h3 {
+    padding-bottom: 0.5em;
+}

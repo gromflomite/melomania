@@ -13,7 +13,12 @@
 
 <div class="container">
 
-	<h2 class="my-3">Add album to your collection</h2>
+	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid bg-secondary text-white">
+		<div class="container">
+			<h3 class="display-5">Add album to your collection</h3>
+			<p class="lead">Remember: Your new albums must be approved by an admin.</p>
+		</div>
+	</div>
 
 	<form id="newalbumform" action="views/frontoffice/fonewalbum" method="post">
 
@@ -69,7 +74,7 @@
 		<button type="submit" class="btn btn-info">Add album</button>
 
 	</form>
-	
+
 </div>
 
 <!----------------- Including footer ---------------->

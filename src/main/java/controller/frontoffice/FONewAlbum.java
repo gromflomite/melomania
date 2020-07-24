@@ -14,13 +14,14 @@ import model.pojos.Album;
 import model.pojos.Feedback;
 import model.pojos.Genre;
 import model.pojos.User;
+import model.pojos.UserAlbums;
 
 @WebServlet("/views/frontoffice/fonewalbum")
 public class FONewAlbum extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final AlbumDao albumDao = AlbumDao.getInstance();
+    private static final AlbumDao ALBUMDAO = AlbumDao.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -38,9 +39,8 @@ public class FONewAlbum extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	Album newAlbum = new Album();
-	Feedback feedback = new Feedback();
-	HttpSession session = request.getSession(); // To get the logged user details and to put the feedback (we are using
-						    // redirect)
+	Feedback feedback = new Feedback();	
+	HttpSession session = request.getSession(); // To get the logged user details and to put the feedback (we are using redirect)
 
 	// Get values from form
 	// String idParameter = request.getParameter(""); // Not using this value yet,
@@ -79,8 +79,8 @@ public class FONewAlbum extends HttpServlet {
 	    newAlbum.setUser(user); // User
 	    newAlbum.setGenre(albumGenre); // Genre
 
-	    // Call DAO
-	    albumDao.insert(newAlbum);
+	    // Call DAO sending the Album object
+	    ALBUMDAO.insert(newAlbum);
 
 	    // Create feedback
 	    feedback = new Feedback("success", "Album created!! An admin will check your new album");

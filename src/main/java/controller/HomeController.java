@@ -44,8 +44,7 @@ public class HomeController extends HttpServlet {
 	    
 	    dbRegisters = albumDao.getByGenre(idGenre);	   
 	   	   
-	    request.setAttribute("cardDeckTitle", genre + " (" + dbRegisters.size() + " albums of this genre)" );
-	    
+	    request.setAttribute("cardDeckTitle", genre + " (" + dbRegisters.size() + " albums of this genre)" );	    
 	    
 	} else {
 
@@ -53,7 +52,7 @@ public class HomeController extends HttpServlet {
 	    // getLast() shows just approved albums (see AlbumDAO for more info)
 	    dbRegisters = albumDao.getLast(99);   
 	 
-	    request.setAttribute("cardDeckTitle", "Approved albums in your collection (you have " + dbRegisters.size() + " albums)");
+	    request.setAttribute("cardDeckTitle", "melomania approved albums (" + dbRegisters.size() + " albums in our collection)");
 	}
 	
 	request.setAttribute("albums", dbRegisters);

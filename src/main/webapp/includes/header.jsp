@@ -20,27 +20,24 @@
 					<a class="nav-link ${ ('home' eq param.activeTag) ? 'active' : '' }" href="home">Home</a>
 				</li>
 
-				<li class="nav-item">
-					<a class="nav-link ${ ('collection' eq param.activeTag) ? 'active' : '' }" href="album">Collection</a>
-				</li>
+<!-- 				<li class="nav-item"> -->
+<%-- 					<a class="nav-link ${ ('collection' eq param.activeTag) ? 'active' : '' }" href="album">Collection</a> --%>
+<!-- 				</li> -->
 
-				<li class="nav-item">
-					<a class="nav-link ${ ('new-album' eq param.activeTag) ? 'active' : '' }" href="newalbum?id=0">+Album</a>
-				</li>
+<!-- 				<li class="nav-item"> -->
 
-				<li class="nav-item">
+<!-- 					<div class="dropdown users-dropdown"> -->
 
-					<div class="dropdown users-dropdown">
+<!-- 						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Users</button> -->
 
-						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Users</button>
+<!-- 						<div class="dropdown-menu"> -->
+<!-- 							<a class="dropdown-item" href="user">Show users</a> -->
+<!-- 							<a class="dropdown-item" href="newuser?id=0">Create user</a> -->
+<!-- 						</div> -->
 
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="user">Show users</a>
-							<a class="dropdown-item" href="newuser?id=0">Create user</a>
-						</div>
+<!-- 					</div> -->
 
-					</div>
-				</li>
+<!-- 				</li> -->
 
 				<li class="nav-item">
 					<div class="dropdown genres-dropdown">
@@ -61,7 +58,7 @@
 
 			<!-- User session button common to all users (logged or not) ------------------------------>
 			<ul class="navbar-nav float-right">
-			
+
 				<c:if test="${empty userLogin}">
 
 					<li class="nav-item">
@@ -81,7 +78,7 @@
 					</li>
 
 				</c:if>
-				
+
 			</ul>
 			<!-- User session button end ------------------------------------------------------------->
 

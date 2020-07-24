@@ -13,9 +13,14 @@
 
 <div class="container">
 	
-	<h3 class="my-5">Edit album</h3>
+	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h3 class="display-5">Edit albums</h3>
+			<p class="lead">Remember: If you do changes, this album will go to pending of approved list.</p>
+		</div>
+	</div>
 	
-	<form id="newalbumform" action="views/frontoffice/fonewalbum" method="post">
+	<form id="newalbumform" action="views/frontoffice/foeditalbum" method="post">
 
 		<div class="form-group" hidden="">
 			<label for="albumId">Album ID:</label>

@@ -13,7 +13,12 @@
 
 <div class="container">	
 
-	<h3 class="my-5">Your pending albums</h3>
+	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid bg-warning text-dark">
+		<div class="container">
+			<h3 class="display-5">Albums pending of approval</h3>
+			<p class="lead">This albums are waiting to be checked by an admin.</p>
+		</div>
+	</div>
 
 	<table id="table" class="tabla table table-striped">
 
@@ -47,10 +52,10 @@
 						<img id="album-cover" src="${a.cover}" alt="Album cover">
 					</td>
 					<td id="formOptionButtons">
-						<a href="newalbum?id=${a.id}" class="mr-2">
+						<a href="views/frontoffice/foeditalbum?idAlbum=${a.id}" class="mr-2">
 							<i class="far fa-edit fa-1x" title="Edit"></i>
 						</a>
-						<a href="fodeletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">
+						<a href="views/frontoffice/fodeletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">
 							<i class="fas fa-trash fa-1x" title="Delete"></i>
 						</a>
 					</td>
