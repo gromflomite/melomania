@@ -19,7 +19,7 @@ import model.pojos.Genre;
 @WebListener
 public class AppListener implements ServletContextListener {
 
-    private final static Logger LOG = Logger.getLogger(AppListener.class);
+    private final static Logger LOGGER = Logger.getLogger(AppListener.class);    
 
     public void contextDestroyed(ServletContextEvent sce) {
 	// To execute at app end
@@ -28,8 +28,8 @@ public class AppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
 	// To execute at app start
 
-	LOG.info("*** melomania app started ***");
-
+	LOGGER.info("*** melomania app started ***");
+	
 	// Initializing a ServletContext
 	
 	// This content affects all the app. We can retrieve data from this context in

@@ -20,7 +20,10 @@ import model.pojos.User;
 /**
  * Servlet Filter implementation class BackOfficeFilter
  */
-@WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ERROR }, urlPatterns = { "/views/frontoffice/*" })
+@WebFilter(
+	dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ERROR }, 
+	urlPatterns = { "/views/frontoffice/*" })
+
 public class FrontOfficeFilter implements Filter {
 
     public void init(FilterConfig fConfig) throws ServletException {
@@ -55,7 +58,7 @@ public class FrontOfficeFilter implements Filter {
 	if (userLogin == null) { // User not logged
 
 	    // Create feedback
-	    feedback = new Feedback("danger", "You are being a dick, don't be a dick!!");
+	    feedback = new Feedback("danger", "You are not logged or not authorized");
 	    session.setAttribute("feedback", feedback);
 
 	    httpResponse.sendRedirect(rootPath + "/views/unauthorized/index.jsp"); // Absolute path

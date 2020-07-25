@@ -15,7 +15,8 @@ import model.pojos.Album;
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;        
+    private static final long serialVersionUID = 1L;
+    
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -50,8 +51,8 @@ public class HomeController extends HttpServlet {
 
 	    // Calling getLast() method from AlbumDao to retrieve the last N albums that we will show in index.jsp
 	    // getLast() shows just approved albums (see AlbumDAO for more info)
-	    dbRegisters = albumDao.getLast(99);   
-	 
+	    dbRegisters = albumDao.getLast(99);
+	    
 	    request.setAttribute("cardDeckTitle", "melomania approved albums (" + dbRegisters.size() + " albums in our collection)");
 	}
 	

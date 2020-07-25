@@ -2,7 +2,7 @@
 		
 		<a class="navbar-brand" href="index.html"><i class="fas fa-headphones-alt"></i> melomania</a>		
 		
-		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle">
 			<i class="fas fa-bars"></i>
 		</button>		
 		<!-- Navbar-->
