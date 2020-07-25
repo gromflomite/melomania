@@ -7,7 +7,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import model.daos.GenreDao;
 import model.pojos.Genre;
@@ -19,7 +20,7 @@ import model.pojos.Genre;
 @WebListener
 public class AppListener implements ServletContextListener {
 
-    private final static Logger LOGGER = Logger.getLogger(AppListener.class);    
+    private final static Logger LOGGER = LogManager.getLogger(AppListener.class);    
 
     public void contextDestroyed(ServletContextEvent sce) {
 	// To execute at app end
