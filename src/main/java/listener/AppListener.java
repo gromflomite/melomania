@@ -20,22 +20,26 @@ import model.pojos.Genre;
 @WebListener
 public class AppListener implements ServletContextListener {
 
-    private final static Logger LOGGER = LogManager.getLogger(AppListener.class);    
+    private final static Logger logger = LogManager.getLogger("melomania-log");    
 
     public void contextDestroyed(ServletContextEvent sce) {
-	// To execute at app end
+	
+	logger.info("*** melomania finished ***");
+	
+	// To execute at app end	
     }
 
     public void contextInitialized(ServletContextEvent sce) {
-	// To execute at app start
+	
+	logger.info("*** melomania started ***");
+	
+	// To execute at app start		
 
-	LOGGER.info("*** melomania app started ***");
-	
 	// Initializing a ServletContext
-	
 	// This content affects all the app. We can retrieve data from this context in
 	// every .jsp or Servlet
 	ServletContext appContext = sce.getServletContext();
+	logger.debug("Asked for appContext: " + appContext.getContextPath());
 
 	// Instantiating a new GenreDao
 	GenreDao genreDao = GenreDao.getInstance();
@@ -44,12 +48,14 @@ public class AppListener implements ServletContextListener {
 	// context to use it in navbar dropdown
 	try {
 
-	    ArrayList<Genre> allGenres = genreDao.getAll(); 
+	    ArrayList<Genre> allGenres = genreDao.getAll();
+	    logger.debug("Called genreDao.getAll: " + allGenres);
 	    
-	    appContext.setAttribute("genres", allGenres);
- 
+	    appContext.setAttribute("genres", allGenres);	    
+
 	} catch (Exception e) {
-	    // TODO: handle exception
+	    
+	    logger.fatal("Unable to execute genreDao.getAll().", e);	  
 	}
 
     }

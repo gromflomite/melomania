@@ -20,7 +20,7 @@ import model.pojos.UserAlbums;
 public class FOEditAlbum extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
+    
     // Validations
     //private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     //private static Validator validator = factory.getValidator();

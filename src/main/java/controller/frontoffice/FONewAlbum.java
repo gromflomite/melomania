@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import model.daos.AlbumDao;
 import model.pojos.Album;
 import model.pojos.Feedback;
@@ -19,6 +22,8 @@ import model.pojos.User;
 public class FONewAlbum extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+    
+    private final static Logger logger = LogManager.getLogger("melomania-log");
 
     private static final AlbumDao ALBUMDAO = AlbumDao.getInstance();
 
@@ -29,23 +34,19 @@ public class FONewAlbum extends HttpServlet {
 
 	// Genres are already set via Listener "AppListener.java" into the app context
 
-	request.setAttribute("album", initForm);
+	request.setAttribute("album", initForm);	
 
 	request.getRequestDispatcher("new-album.jsp").forward(request, response);
-
+	logger.debug("Instantiated new Album object and pre-defined values sended to new-album.jsp: " + initForm);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	Album newAlbum = new Album();
 	Feedback feedback = new Feedback();	
-	HttpSession session = request.getSession(); // To get the logged user details and to put the feedback (we are using redirect)
+	HttpSession session = request.getSession(); // To get the logged user details and to put the feedback (we are using redirect)	
 
 	// Get values from form
-	// String idParameter = request.getParameter(""); // Not using this value yet,
-	// we will use to do an edit if album already exists
-	// or a insert if not
-
 	String albumIdString = request.getParameter("albumId");
 	String albumTitle = request.getParameter("albumTitle");
 	String albumArtist = request.getParameter("artist");
@@ -80,13 +81,14 @@ public class FONewAlbum extends HttpServlet {
 
 	    // Call DAO sending the Album object
 	    ALBUMDAO.insert(newAlbum);
+	    logger.debug("Called AlbumDao.insert():" + newAlbum);
 
 	    // Create feedback
 	    feedback = new Feedback("success", "Album created!! An admin will check your new album");
 
 	} catch (Exception e) {
 
-	    // TODO: handle exception
+	    logger.fatal("Unable to save new album: ", e);
 
 	} finally {
 	    
@@ -94,7 +96,7 @@ public class FONewAlbum extends HttpServlet {
 
 	    // Send the user to their list of pending albums
 	    // request.getRequestDispatcher("user-albums?albumsrequest=not-approved").forward(request, response);
-	    response.sendRedirect("user-albums?albumsrequest=not-approved");
+	    response.sendRedirect("user-albums?albumsrequest=not-approved");	    
 	}
 
     }
