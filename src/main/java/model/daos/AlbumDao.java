@@ -13,6 +13,8 @@ import model.pojos.User;
 import model.pojos.UserAlbums;
 
 public class AlbumDao {
+    
+    //private final static Logger LOGGER = LogManager.getLogger("melomania-log");
 
     // SQL queries
     // --------------------------------------------------------------------------------------------
@@ -114,16 +116,18 @@ public class AlbumDao {
 	) {
 	    preparedStatement.setInt(1, genreId);
 
-	    try (ResultSet resulSet = preparedStatement.executeQuery();) {
+	    try (ResultSet resultSet = preparedStatement.executeQuery();) {
 
-		while (resulSet.next()) {
-		    
-		    dbRegisters.add(albumMapper(resulSet)); // Set "album" POJO to ArrayList "dbRegisters"
+		while (resultSet.next()) {
+
+		    dbRegisters.add(albumMapper(resultSet)); // Set "album" POJO to ArrayList "dbRegisters"
 		}
-	    }
+	    } 
 
 	} catch (Exception e) {
-	    e.printStackTrace();
+
+	   // TODO Log
+
 	}
 
 	return dbRegisters;

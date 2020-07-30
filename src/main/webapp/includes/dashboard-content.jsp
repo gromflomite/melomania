@@ -11,7 +11,7 @@
 						Home
 					</a>
 
-					<a class="nav-link" href="index.html">
+					<a class="nav-link" href="views/frontoffice/fouserprofile">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-id-card"></i>
 						</div>
