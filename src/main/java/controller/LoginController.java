@@ -21,7 +21,7 @@ public class LoginController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     
-    private final static Logger logger = LogManager.getLogger("melomania-log"); 
+    private final static Logger LOGGER = LogManager.getLogger("melomania-log"); 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,24 +37,24 @@ public class LoginController extends HttpServlet {
 	UserDao dao = UserDao.getInstance();
 
 	User userLogin = dao.checkLogin(userName, userPassword); // User values if login is correct or null if not
-	logger.debug("Called UserDao.checkLogin: " + userLogin + " (!! If null, probably entered not valid user or pass values)");
+	LOGGER.debug("Called UserDao.checkLogin: " + userLogin + " (!! If null, probably entered not valid user or pass values)");
 
 	if (userLogin != null) {
 
 	    // Set attribute to session
 	    session.setAttribute("userLogin", userLogin);
-	    logger.debug("Session att. set (userLogin): " + userLogin);
+	    LOGGER.debug("Session att. set (userLogin): " + userLogin);
 
 	    // Set feedback
 	    request.setAttribute("feedback", new Feedback("success", "Welcome again!!"));
 
 	    if (userLogin.getRole().getId_role() == Role.ADMIN) {
 		request.getRequestDispatcher("/views/backoffice/bohome").forward(request, response);
-		logger.info("Logged user ("+ userName +") (admin role) -> getRequestDispatcher to /views/backoffice/bohome");
+		LOGGER.info("Logged user ("+ userName +") (admin role) -> getRequestDispatcher to /views/backoffice/bohome");
 		
 	    } else {
 		request.getRequestDispatcher("/views/frontoffice/fohome").forward(request, response);
-		logger.info("Logged user: " + userName + " (listener role) -> getRequestDispatcher to /views/backoffice/fohome");		
+		LOGGER.info("Logged user: " + userName + " (listener role) -> getRequestDispatcher to /views/backoffice/fohome");		
 	    }	  
 
 	} else { // Entered login values not correct
@@ -67,7 +67,7 @@ public class LoginController extends HttpServlet {
 
 	    // Go back to loging page
 	    request.getRequestDispatcher("views/login/login.jsp").forward(request, response);
-	    logger.info("Entered incorrect login values (user): " + userName + " -> getRequestDispatcher to views/login/login.jsp");
+	    LOGGER.info("Entered incorrect login values (user): " + userName + " -> getRequestDispatcher to views/login/login.jsp");
 	}
 
     }

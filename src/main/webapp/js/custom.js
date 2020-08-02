@@ -15,7 +15,7 @@ function cipherPassword() {
 	
 	if (newPassword){
 	 
-	 var newPasswordHash = md5(newPassword.value);	 
+	 var newPasswordHash = sha256(newPassword.value);	 
 	 
 	 document.getElementById('passwordChangeConfirm').value = newPasswordHash;	 
 	} 

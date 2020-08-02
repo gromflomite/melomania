@@ -254,10 +254,7 @@ public class UserDao {
 	}
 
 	return userLogin;
-    }
-    
-    
-    
+    }    
     
     // End checkLogin()
     // ---------------------------------------------------------------------------
@@ -267,6 +264,14 @@ public class UserDao {
     // update()
     // ---------------------------------------------------------------------------
     public User update(User pojo) throws Exception {
+	
+	User userUpdate = new User();
+	Role userRole = new Role();
+	
+	
+	
+	
+	
 
 	return null;
 

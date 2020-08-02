@@ -21,3 +21,7 @@
 #personalized-jumbo h3 {
     padding-bottom: 0.5em;
 }
+
+.profile-table-details {
+    border-bottom: 1px solid #dee2e6;
+}
