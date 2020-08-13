@@ -448,10 +448,7 @@ public class AlbumDao {
 	    preparedStatement.setInt(6, editAlbum.getGenre().getId());	  
 	    preparedStatement.setInt(7, editAlbum.getId());
 	    
-	    int userIdFromAlbum = editAlbum.getUser().getId();
-	    
-	    System.out.println(preparedStatement);
-	    System.out.println(userIdFromAlbum);
+	    int userIdFromAlbum = editAlbum.getUser().getId();	   
 	    
 	    if (userIdFromAlbum != idUser) {
 
