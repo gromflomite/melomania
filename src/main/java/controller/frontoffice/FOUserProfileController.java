@@ -116,9 +116,7 @@ public class FOUserProfileController extends HttpServlet {
 		userUpdate.setPassword(changeUserPasswordConfirm); // Set the password entered into the view fiels
 
 	    }
-	    // End password change check
-	    
-	    
+	    // End password change check	    
 
 	    // Set values to Role object
 	    userRole.setId_role(userRoleId);
