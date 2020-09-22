@@ -21,7 +21,7 @@ public class ConnectionManager {
 		Connection dbConnection = null;
 
 		// Calling the correct driver for the DB we are using (added in Maven pom.xml)
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		// Establish connection
 		dbConnection = DriverManager.getConnection(CONNECTION_URL, USER, PASSWORD);
