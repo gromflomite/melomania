@@ -44,7 +44,7 @@
 
 	<div class="collapse" id="edit-user-details">
 
-		<form id="edit-user-details" action="views/frontoffice/fouserprofile" method="post">
+		<form id="edit-user-details" action="views/frontoffice/fouserprofile" method="post" onsubmit="cipherPassword()">
 
 			<div class="form-group">
 				<label for="userName">Your name:</label>
