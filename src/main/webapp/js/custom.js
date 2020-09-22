@@ -1,6 +1,6 @@
 // Password hash cipher function
 function cipherPassword() {
-		
+
 	// Retrieve password from form
 	var password = document.getElementById('password').value;
 
@@ -12,14 +12,14 @@ function cipherPassword() {
 
 	// USER EDIT SCENARIO - Check if the user wants to change the password
 	var newPassword = document.getElementById('passwordChangeConfirm');
-	
-	if (newPassword){
-	 
-	 var newPasswordHash = sha256(newPassword.value);	 
-	 
-	 document.getElementById('passwordChangeConfirm').value = newPasswordHash;	 
-	} 
-	
+
+	if (newPassword) {
+
+		var newPasswordHash = sha256(newPassword.value);
+
+		document.getElementById('passwordChangeConfirm').value = newPasswordHash;
+	}
+
 	// Send the form
 	return true; // If not true, the form will not be sended
 }
