@@ -23,6 +23,7 @@ public class FOUserProfileController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final static Logger LOGGER = LogManager.getLogger("melomania-log");
     private final static UserDao DAO = UserDao.getInstance();
+    private final static String PASSWORDFIELDEMPTYHASH = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -83,40 +84,37 @@ public class FOUserProfileController extends HttpServlet {
 	    int userRoleId = userSession.getRole().getId_role();
 	    String userPassword = userSession.getPassword();
 
-	    // Set values to User object	    
+	    // Set values to User object
 	    userUpdate.setId(userId);
 	    userUpdate.setName(userName);
 	    userUpdate.setEmail(userMail);
-	    
+
 	    /**
 	     * Check if user want to change their password
 	     * 
-	     * Problem: If change password fields are not filled into the view (profile.jsp), we understand that user
-	     * does not want to change the password --> BUT the JS method we use to cipher the password, take the empty field and calculate
+	     * Problem: If change password fields are not filled into the view (profile.jsp), we understand that user does not want 
+	     * to change the password --> BUT the JS method we use to cipher the password, take the empty field and calculate 
 	     * the hash (not filled field -> SHA256 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855).
 	     * 
-	     * So, we have to check the hashes and verify if they are "the not filled fields ones".	     
+	     * So, we have to check the hashes and verify if they are "the not filled fields ones".
 	     * 
 	     */
 	    boolean passwordChangeFieldsAreEmpty = false; // Default state: We assume that the fields are not empty
-	    
-	    if (
-		    // Check if both fields returns the hash for not filled
-		    ("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855".equals(changeUserPassword)) 
-		    && 
-		    ("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855".equals(changeUserPasswordConfirm))) {
+
+	    // Check if both fields returns the hash for not filled
+	    if ((PASSWORDFIELDEMPTYHASH.equals(changeUserPassword)) && (PASSWORDFIELDEMPTYHASH.equals(changeUserPasswordConfirm))) {
 
 		passwordChangeFieldsAreEmpty = true; // Fields are not filled, so we change the boolean
-		
-		userUpdate.setPassword(userPassword); // User does not want to change their pass: We keep the pass retrieved from session		
-			
-	    // Check if both fields have the same strings and the boolean is false
-	    } else if ( (changeUserPassword.equals(changeUserPasswordConfirm)) && (passwordChangeFieldsAreEmpty == false) ) {	
+
+		userUpdate.setPassword(userPassword); // User does not want to change their pass: We keep the pass retrieved from session
+
+		// Check if both fields have the same strings and the boolean is false
+	    } else if ((changeUserPassword.equals(changeUserPasswordConfirm)) && (passwordChangeFieldsAreEmpty == false)) {
 
 		userUpdate.setPassword(changeUserPasswordConfirm); // Set the password entered into the view fiels
 
 	    }
-	    // End password change check	    
+	    // End password change check
 
 	    // Set values to Role object
 	    userRole.setId_role(userRoleId);
