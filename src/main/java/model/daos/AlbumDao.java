@@ -23,12 +23,12 @@ public class AlbumDao {
     // QUERY_GETALLBYGENRE -> Returns all albums within a genre
     private final String QUERY_GETALLBYGENRE = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name, id_user AS id_user FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND g.id = ? ORDER BY a.id ASC LIMIT 100; ";
     
-    private final String QUERY_GETALL = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 100; ";
+    private final String QUERY_GETALL = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name, id_user AS id_user FROM albums AS a, genres AS g WHERE a.id_genre = g.id ORDER BY a.id ASC LIMIT 100; ";
 
     // QUERY_GETLAST -> Returns all the approved albums from ALL users
     private final String QUERY_GETLAST = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name, id_user AS id_user FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT ?; ";
     
-    private final String QUERY_GETBYID = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name FROM albums AS a, genres AS g WHERE a.id_genre = g.id WHERE a.id = ? ORDER BY a.id ASC LIMIT 100; ";
+    private final String QUERY_GETBYID = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name, id_user AS id_user FROM albums AS a, genres AS g WHERE a.id_genre = g.id AND a.id = ? ORDER BY a.id ASC LIMIT 100; ";
 
     // QUERY_GETALLBYUSER_APPROVEDALBUMS -> Returns all user validated albums
     private final String QUERY_GETALLBYUSER_APPROVED = " SELECT a.id AS album_id, a.title AS album_title, a.artist AS album_artist, a.year AS album_year, a.comments AS album_comments, a.cover AS album_cover, g.id AS genre_id, g.name AS genre_name, id_user AS id_user FROM albums AS a, genres AS g, users AS u WHERE a.id_genre = g.id AND a.id_user = u.id AND a.id_user = ? AND approved_date IS NOT NULL ORDER BY a.id DESC LIMIT 100; ";
@@ -199,6 +199,7 @@ public class AlbumDao {
 	    e.printStackTrace();
 	}
 
+	System.out.println("HERE" + dbRegisters);
 	return dbRegisters;
     }
     // End getAll()
@@ -586,7 +587,7 @@ public class AlbumDao {
 	Genre genre = new Genre();
 	
 	genre.setId(idGenre);
-	genre.setGenre(nameGenre);
+	genre.setGenre(nameGenre);	
 	
 	album.setGenre(genre); // Set Genre object to Album
 
