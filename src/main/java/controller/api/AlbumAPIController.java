@@ -146,7 +146,7 @@ public class AlbumAPIController extends HttpServlet {
 
 		LOGGER.error(e);
 		responseToClient = ("We had a problem saving your album \n" + new Gson().toJson(newAlbum));
-		returnStatusCode = HttpServletResponse.SC_CONFLICT;
+		returnStatusCode = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 	    }
 
 	}
@@ -179,7 +179,7 @@ public class AlbumAPIController extends HttpServlet {
 	try {
 
 	    Album albumToDelete = DAO.delete(albumId);
-	    responseToClient = new Gson().toJson(albumToDelete); // Returning the values of the deleted album
+	    responseToClient = ("Album properly deleted \n" + new Gson().toJson(albumToDelete)); // Returning the values of the deleted album
 	    returnStatusCode = HttpServletResponseWrapper.SC_OK;
 
 	} catch (Exception e) {
