@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.daos.UserDao;
+import model.daos.implementations.UserDaoImpl;
 import model.pojos.Feedback;
 import model.pojos.Role;
 import model.pojos.User;
@@ -22,7 +23,7 @@ public class FOUserProfileController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private final static Logger LOGGER = LogManager.getLogger("melomania-log");
-    private final static UserDao DAO = UserDao.getInstance();
+    private final static UserDao DAO = UserDaoImpl.getInstance();
     private final static String PASSWORDFIELDEMPTYHASH = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

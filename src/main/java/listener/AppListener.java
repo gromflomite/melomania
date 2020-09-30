@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.daos.GenreDao;
+import model.daos.implementations.GenreDaoImpl;
 import model.pojos.Genre;
 
 /**
@@ -42,7 +43,7 @@ public class AppListener implements ServletContextListener {
 	logger.debug("Asked for appContext: " + appContext.getContextPath());
 
 	// Instantiating a new GenreDao
-	GenreDao genreDao = GenreDao.getInstance();
+	GenreDao genreDao = GenreDaoImpl.getInstance();
 
 	// We are retrieving all the genres from the DB and sending them to the Servlet
 	// context to use it in navbar dropdown

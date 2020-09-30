@@ -19,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 
 @WebServlet("/api/album/*")
@@ -26,7 +27,7 @@ public class AlbumAPIController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private final static Logger LOGGER = LogManager.getLogger("melomania-log");
-    private static AlbumDao DAO = AlbumDao.getInstance();
+    private static AlbumDao DAO = AlbumDaoImpl.getInstance();
     private int returnStatusCode;
     private int albumId;
     private PrintWriter output;

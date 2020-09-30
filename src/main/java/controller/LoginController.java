@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.daos.UserDao;
+import model.daos.implementations.UserDaoImpl;
 import model.pojos.Feedback;
 import model.pojos.Role;
 import model.pojos.User;
@@ -34,7 +36,7 @@ public class LoginController extends HttpServlet {
 
 	// Check against the DB the values entered by user -----------------
 
-	UserDao dao = UserDao.getInstance();
+	UserDao dao = UserDaoImpl.getInstance();
 
 	User userLogin = dao.checkLogin(userName, userPassword); // User values if login is correct or null if not
 	LOGGER.debug("Called UserDao.checkLogin: " + userLogin + " (!! If null, probably entered not valid user or pass values)");

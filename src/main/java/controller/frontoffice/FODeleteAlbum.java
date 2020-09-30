@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Feedback;
 import model.pojos.User;
 
@@ -17,7 +18,7 @@ public class FODeleteAlbum extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final AlbumDao DELETE_ALBUM_CHECKING_USER_DAO = AlbumDao.getInstance();    
+    private static final AlbumDao DELETE_ALBUM_CHECKING_USER_DAO = AlbumDaoImpl.getInstance();    
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 
 @WebServlet("/album")
@@ -20,7 +21,7 @@ public class AlbumController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// Instancing new albumDAO (via Singleton pattern)
-		AlbumDao dao = AlbumDao.getInstance();
+		AlbumDao dao = AlbumDaoImpl.getInstance();
 		
 		// Saving in a ArrayList the values from DAO
 		ArrayList<Album> albums = dao.getAll();

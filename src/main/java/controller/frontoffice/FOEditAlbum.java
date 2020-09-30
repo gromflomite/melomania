@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 import model.pojos.Feedback;
 import model.pojos.Genre;
@@ -25,7 +26,7 @@ public class FOEditAlbum extends HttpServlet {
     //private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     //private static Validator validator = factory.getValidator();
 
-    private static final AlbumDao EDITALBUMDAO = AlbumDao.getInstance(); // New AlbumDAO instance
+    private static final AlbumDao EDITALBUMDAO = AlbumDaoImpl.getInstance(); // New AlbumDAO instance
 
     /**
      * Retrieve album values from DB using the album ID received as parameter from

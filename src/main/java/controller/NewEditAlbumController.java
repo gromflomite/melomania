@@ -16,6 +16,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 import model.pojos.Feedback;
 
@@ -44,7 +45,7 @@ public class NewEditAlbumController extends HttpServlet {
 			if (idParameter > 0) {
 
 				// Instanciating DAO
-				AlbumDao editAlbumDao = AlbumDao.getInstance();
+				AlbumDao editAlbumDao = AlbumDaoImpl.getInstance();
 
 				// Getting the album registry by ID from DB
 				album = editAlbumDao.getById(idParameter);
@@ -71,7 +72,7 @@ public class NewEditAlbumController extends HttpServlet {
 		boolean isRedirect = false;
 
 		// Instancing new albumDAO (via Singleton pattern)
-		AlbumDao albumDao = AlbumDao.getInstance();
+		AlbumDao albumDao = AlbumDaoImpl.getInstance();
 
 		// Creating new album object
 		Album album = new Album();

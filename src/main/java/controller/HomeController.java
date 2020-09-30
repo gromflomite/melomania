@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 
 @WebServlet("/home")
@@ -35,7 +36,7 @@ public class HomeController extends HttpServlet {
 	 * Also, we are sending to the view the text for use as title in HTML
 	 * 
 	 */	
-	AlbumDao albumDao = AlbumDao.getInstance();
+	AlbumDao albumDao = AlbumDaoImpl.getInstance();
 	
 	ArrayList<Album> dbRegisters = new ArrayList<Album>();
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.User;
 import model.pojos.UserAlbums;
 
@@ -22,7 +23,7 @@ public class FOHomeController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     
-    private static final AlbumDao DAO = AlbumDao.getInstance();
+    private static final AlbumDao DAO = AlbumDaoImpl.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 

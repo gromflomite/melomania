@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 import model.pojos.Feedback;
 
@@ -28,7 +29,7 @@ public class DeleteAlbumController extends HttpServlet {
 		int albumId = Integer.parseInt(parameterId);
 		
 		// Create an instace of AlbumDAO (Singleton pattern)		
-		AlbumDao deleteAlbumDao = AlbumDao.getInstance();
+		AlbumDao deleteAlbumDao = AlbumDaoImpl.getInstance();
 		
 		try {
 			

@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.daos.AlbumDao;
+import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Album;
 import model.pojos.Feedback;
 import model.pojos.Genre;
@@ -25,7 +26,7 @@ public class FONewAlbum extends HttpServlet {
     
     private final static Logger logger = LogManager.getLogger("melomania-log");
 
-    private static final AlbumDao ALBUMDAO = AlbumDao.getInstance();
+    private static final AlbumDao ALBUMDAO = AlbumDaoImpl.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

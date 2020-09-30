@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.daos.UserDao;
+import model.daos.implementations.UserDaoImpl;
 import model.pojos.Feedback;
 import model.pojos.Role;
 import model.pojos.User;
@@ -33,7 +34,7 @@ public class NewEditUserController extends HttpServlet {
 	    if (idUserParameter > 0) { // If user ID is greater than 0, the users exists and we already have their ID (via URL parameter from the view)
 
 		// Inst. user DAO
-		UserDao editUser = UserDao.getInstance();
+		UserDao editUser = UserDaoImpl.getInstance();
 
 		// Call DAO getById method passing the user ID
 		dbRegister = editUser.getById(idUserParameter);
@@ -56,7 +57,7 @@ public class NewEditUserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	// New UserDao instance
-	UserDao userDao = UserDao.getInstance();
+	UserDao userDao = UserDaoImpl.getInstance();
 	
 	// Creating new feedback object
 	Feedback feedback = new Feedback();
