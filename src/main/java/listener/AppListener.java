@@ -15,49 +15,49 @@ import model.daos.implementations.GenreDaoImpl;
 import model.pojos.Genre;
 
 /**
- * Application Lifecycle Listener implementation class HomeListener
+ * 
+ * @author gromflomite
+ * 
+ * Listener to get the music genres from the DB at app init. 
  *
  */
 @WebListener
 public class AppListener implements ServletContextListener {
 
-    private final static Logger logger = LogManager.getLogger("melomania-log");    
+    private final static Logger logger = LogManager.getLogger("melomania-log");
 
-    public void contextDestroyed(ServletContextEvent sce) {
-	
-	logger.info("*** melomania finished ***");
-	
-	// To execute at app end	
-    }
+    /**
+     * 
+     * Retrive all music genres from the DB and put it them into ServletContext.
+     * 
+     */
+    public void contextInitialized(ServletContextEvent sce) { // To execute at app start
 
-    public void contextInitialized(ServletContextEvent sce) {
-	
-	logger.info("*** melomania started ***");
-	
-	// To execute at app start		
+	logger.info("--- melomania started ---");
 
-	// Initializing a ServletContext
-	// This content affects all the app. We can retrieve data from this context in
-	// every .jsp or Servlet
-	ServletContext appContext = sce.getServletContext();
-	logger.debug("Asked for appContext: " + appContext.getContextPath());
+	ServletContext appContext = sce.getServletContext(); // Get the ServletContext
 
-	// Instantiating a new GenreDao
-	GenreDao genreDao = GenreDaoImpl.getInstance();
+	logger.debug("Asked for ServletContext: " + appContext.getContextPath());
 
-	// We are retrieving all the genres from the DB and sending them to the Servlet
-	// context to use it in navbar dropdown
+	GenreDao genreDao = GenreDaoImpl.getInstance(); // Instantiating a new GenreDao
+
 	try {
 
 	    ArrayList<Genre> allGenres = genreDao.getAll();
 	    logger.debug("Called genreDao.getAll: " + allGenres);
-	    
-	    appContext.setAttribute("genres", allGenres);	    
+
+	    appContext.setAttribute("genres", allGenres);
 
 	} catch (Exception e) {
-	    
-	    logger.fatal("Unable to execute genreDao.getAll().", e);	  
+
+	    logger.error("Unable to execute genreDao.getAll().", e);
 	}
+
+    }
+
+    public void contextDestroyed(ServletContextEvent sce) { // To execute at app end
+
+	logger.info("--- melomania finished ---");
 
     }
 

@@ -15,15 +15,7 @@ import model.daos.implementations.GenreDaoImpl;
 public class GenreController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    
     private static final GenreDao genreDao = GenreDaoImpl.getInstance();
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	// We are not going to use the doGet method
-	doPost(request, response);
-
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <header>
@@ -19,30 +18,13 @@
 				<li class="nav-item">
 					<a class="nav-link ${ ('home' eq param.activeTag) ? 'active' : '' }" href="home">Home</a>
 				</li>
-
-<!-- 				<li class="nav-item"> -->
-<%-- 					<a class="nav-link ${ ('collection' eq param.activeTag) ? 'active' : '' }" href="album">Collection</a> --%>
-<!-- 				</li> -->
-
-<!-- 				<li class="nav-item"> -->
-
-<!-- 					<div class="dropdown users-dropdown"> -->
-
-<!-- 						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Users</button> -->
-
-<!-- 						<div class="dropdown-menu"> -->
-<!-- 							<a class="dropdown-item" href="user">Show users</a> -->
-<!-- 							<a class="dropdown-item" href="newuser?id=0">Create user</a> -->
-<!-- 						</div> -->
-
-<!-- 					</div> -->
-
-<!-- 				</li> -->
-
+				
 				<li class="nav-item">
 					<div class="dropdown genres-dropdown">
 						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Genres</button>
 
+	
+						<!-- The dropdown values comes from a Java listener (AppListener.java) -->
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="home">Show all albums</a>
 
