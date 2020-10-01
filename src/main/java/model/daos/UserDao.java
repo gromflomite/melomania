@@ -16,4 +16,6 @@ public interface UserDao {
     
     public User update(User userUpdate) throws Exception;
     
+    public boolean searchByName (String userName);
+    
 }

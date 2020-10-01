@@ -23,14 +23,15 @@
 
 		<div class="form-group my-3">
 			<label for="username">Username:</label>
-			<input type="text" name="userName" class="form-control" id="username" placeholder="Enter your username">
+			<p id="nameCheck"></p>
+			<input type="text" id="userName" name="userName" class="form-control" id="username" placeholder="Enter your username" onkeyUp="searchUserByName(event)">
 		</div>
 
 		<div class="form-group">
 			<label for="password">Password:</label>
 			<input type="password" name="userPassword" class="form-control" id="password" placeholder="Enter your password">
 		</div>
-		
+
 		<button type="submit" class="btn btn-info mt-3">Log in</button>
 
 	</form>
@@ -40,7 +41,7 @@
 </div>
 
 <!----------------- Getting the <footer> ---------------->
-<%@include file="../../includes/footer.jsp" %>
+<%@include file="../../includes/footer.jsp"%>
 <!-- Getting the foot -->
-<%@include file="../../includes/foot.jsp" %>
+<%@include file="../../includes/foot.jsp"%>
 <!------------------------------------------------------->

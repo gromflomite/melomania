@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao {
     // executeUpdate -> returns -> integer with the number of affected rows
     private final String QUERY_INSERT = " INSERT INTO users (name, email, id_role, password) VALUES (?,?,?,?); ";
     private final String QUERY_UPDATE = " UPDATE users SET name = ?, email = ?, password = ?, id_role = ? WHERE id = ?; ";
+    private final String QUERY_SEARCH_BY_NAME = " SELECT users.name FROM users WHERE users.name = ? ";
     // private final String QUERY_DELETE = " DELETE FROM users WHERE id = ?; ";
     // --------------------------------------------------------------------------------------------
 
@@ -150,8 +151,7 @@ public class UserDaoImpl implements UserDao {
 
 	try (Connection dbConnection = ConnectionManager.getConnection();
 		/**
-		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB
-		 *      has assigned to the new created entry
+		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry
 		 */
 		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
@@ -248,15 +248,11 @@ public class UserDaoImpl implements UserDao {
     // End checkLogin()
     // ---------------------------------------------------------------------------
 
-    
-    
     // update()
     // ---------------------------------------------------------------------------
     public User update(User userUpdate) throws Exception {
 
-	try (
-		Connection dbConnection = ConnectionManager.getConnection(); 
-		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_UPDATE);) {
+	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_UPDATE);) {
 
 	    // Get the values sended by the controller
 	    int userId = userUpdate.getId();
@@ -270,7 +266,7 @@ public class UserDaoImpl implements UserDao {
 	    preparedStatement.setString(2, userMail);
 	    preparedStatement.setString(3, userPassword);
 	    preparedStatement.setInt(4, userIdRole);
-	    preparedStatement.setInt(5, userId);    
+	    preparedStatement.setInt(5, userId);
 
 	    // Execute the SQL query
 	    int updatedRows = preparedStatement.executeUpdate();
@@ -282,11 +278,45 @@ public class UserDaoImpl implements UserDao {
 	    }
 
 	}
-	
+
 	return userUpdate;
 
     }
     // End update()
+    // ---------------------------------------------------------------------------
+
+    // searchByName()
+    // ---------------------------------------------------------------------------
+    /**
+     * Get the user searching by name
+     * 
+     * We are using this method via API controller (UserAPIController)
+     * 
+     */
+    @Override
+    public boolean searchByName(String userName) {
+
+	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_SEARCH_BY_NAME);) {
+
+	    // Replace ? in the SQL query
+	    preparedStatement.setString(1, userName);
+
+	    // Execute SQL query
+	    ResultSet dbResultSet = preparedStatement.executeQuery();
+
+	    // Check if SQL returns results
+	    if (dbResultSet.next()) {
+
+		return true;
+	    }
+
+	} catch (Exception e) {
+	    // TODO: handle exception
+	}
+
+	return false;
+    }
+    // End searchByName()
     // ---------------------------------------------------------------------------
 
 }
