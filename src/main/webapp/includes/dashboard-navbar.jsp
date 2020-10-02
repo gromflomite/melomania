@@ -1,6 +1,6 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		
-		<a class="navbar-brand" href="index.html"><i class="fas fa-headphones-alt"></i> melomania</a>		
+		<a class="navbar-brand" href="home"><i class="fas fa-headphones-alt"></i> melomania</a>		
 		
 		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle">
 			<i class="fas fa-bars"></i>
@@ -12,7 +12,8 @@
 					<i class="fas fa-user fa-fw"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="views/frontoffice/fouserprofile">Profile</a>					
+					<!-- <a class="dropdown-item" href="views/frontoffice/fouserprofile">Profile</a> -->
+					<a class="dropdown-item" ${('Administrator' eq userLogin.role.type_role)? 'href="views/backoffice/bouserprofile"' : 'href="views/frontoffice/fouserprofile"'}>Profile</a>					
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="logout">Logout</a>
 				</div>

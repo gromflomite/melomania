@@ -12,8 +12,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<div class="container">
-	<h1>NOT AUTHORIZED!!</h1>
+<div class="d-flex justify-content-center mt-5">
+	<h1> - Not authorized - </h1>
 </div>
 
 <!----------------- Getting the <footer> ---------------->

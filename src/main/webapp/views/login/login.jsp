@@ -24,7 +24,7 @@
 		<div class="form-group my-3">
 			<label for="username">Username:</label>
 			<p id="nameCheck" style="display: none"></p>
-			<input type="text" id="userName" name="userName" class="form-control" id="username" placeholder="Enter your username" onkeyUp="searchUserByName(event)">
+			<input type="text" id="userName" name="userName" class="form-control" id="username" placeholder="Enter your username" autofocus onkeyUp="searchUserByName(event)">
 		</div>
 
 		<div class="form-group">

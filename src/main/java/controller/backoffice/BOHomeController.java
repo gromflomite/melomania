@@ -17,12 +17,7 @@ public class BOHomeController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	// Hardcoding some values to show them in frontoffice
-	// TODO Get these values from DB
-	request.setAttribute("albums_approved", 666);
-	request.setAttribute("albums_pending", 2234568);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 
 	/**
 	 * IMPORTANT: Note the controller URL pattern specified above:
@@ -34,8 +29,8 @@ public class BOHomeController extends HttpServlet {
 	 */
 	request.getRequestDispatcher("index.jsp").forward(request, response);
 
-    }
-
+    }    
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	// Using just doPost()

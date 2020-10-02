@@ -52,8 +52,8 @@
 				<c:if test="${not empty userLogin}">
 
 					<li class="nav-item">
-						<a href="views/frontoffice/fohome" class="badge badge-warning mr-3 user-badge">${userLogin.name} (${userLogin.role.type_role})</a>
-					</li>
+						<a class="badge badge-warning mr-3 user-badge" ${('Administrator' eq userLogin.role.type_role)? 'href="views/backoffice/bohome"' : 'href="views/frontoffice/fohome"'}>${userLogin.name} (${userLogin.role.type_role})</a>
+					</li>				
 
 					<li class="nav-item">
 						<a class="nav-link" href="logout">Log out</a>

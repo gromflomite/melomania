@@ -1,28 +1,27 @@
-<!-- Including head and header - Setting the page title and "active" tag to navbar -->
-<jsp:include page="../../includes/head.jsp">
-	<jsp:param name="title" value="Backoffice" />
-</jsp:include>
-
-<jsp:include page="../../includes/header.jsp">
-	<jsp:param name="activeTag" value="backoffice" />
-</jsp:include>
-<!-- ----------------------------------------------------------------------------- -->
+<!-- --------------------- Includes --------------------- -->
+<!-- head and header -->
+<jsp:include page="/includes/dashboard-head.jsp" />	
+<!-- navbar -->
+<jsp:include page="/includes/dashboard-navbar.jsp" />
+<!-- content -->
+<jsp:include page="/includes/dashboard-bo-content.jsp" />
+<!-- ----------------------------------------------------- -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <div class="container">
-	<h1 class="mt-5">Backoffice (admin zone)</h1>
 	
-	<h3 class="mt-5">Albums approved: ${albums_approved}</h3>
-	<h3>Albums pending: ${albums_pending}</h3>
+	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid bg-info text-white text-center">
+		<div class="container">
+			<h2 class="display-4">Admin area</h2>
+			<p class="lead">Welcome!</p>
+		</div>
+	</div>
 	
 </div>
 
-<!----------------- Getting the <footer> ---------------->
-<%@include file="../../includes/footer.jsp"%>
-<!-- Getting the foot -->
-<%@include file="../../includes/foot.jsp"%>
+<!----------------- Including footer ---------------->
+<%@include file="../../includes/dashboard-foot.jsp"%>
 <!------------------------------------------------------->
-
