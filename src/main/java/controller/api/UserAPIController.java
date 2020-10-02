@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import model.daos.UserDao;
 import model.daos.implementations.UserDaoImpl;
 
@@ -18,7 +15,7 @@ import model.daos.implementations.UserDaoImpl;
 public class UserAPIController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private final static Logger LOGGER = LogManager.getLogger("melomania-log");
+    //private final static Logger LOGGER = LogManager.getLogger("melomania-log");
     private static UserDao DAO = UserDaoImpl.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

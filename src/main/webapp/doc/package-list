@@ -1,9 +1,0 @@
-controller
-controller.api
-controller.backoffice
-controller.frontoffice
-filter
-listener
-model.connectionManagers
-model.daos
-model.pojos

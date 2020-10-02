@@ -16,7 +16,7 @@
 			<ul class="navbar-nav mr-auto">
 
 				<li class="nav-item">
-					<a class="nav-link ${ ('home' eq param.activeTag) ? 'active' : '' }" href="home">Home</a>
+					<a class="nav-link" href="home">Home</a>
 				</li>
 				
 				<li class="nav-item">
@@ -46,6 +46,10 @@
 					<li class="nav-item">
 						<a class="nav-link" href="views/login/login.jsp">Log in</a>
 					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="views/users/register.jsp">Register</a>
+					</li>					
 
 				</c:if>
 

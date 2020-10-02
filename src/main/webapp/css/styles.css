@@ -109,7 +109,15 @@ body {
 #githublogo {
   margin-left: 20px;  
   width: 5%;
-  height: auto;    
+  height: auto;     
+}
+
+#register-form, #login-form {
+	width: 100%;
+	margin: auto;
+	max-width: 330px;
+	padding: 15px;	
+	margin-top: 3em;
 }
 /* -------------------------  End others ------------------------- */
 

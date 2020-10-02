@@ -3,9 +3,7 @@
 	<jsp:param name="title" value="Login" />
 </jsp:include>
 
-<jsp:include page="../../includes/header.jsp">
-	<jsp:param name="activeTag" value="login" />
-</jsp:include>
+<%@include file="../../includes/header.jsp"%>
 <!-- ----------------------------------------------------------------------------- -->
 
 <!-- JSP additions -->
@@ -14,31 +12,24 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- ----------------------------------------------------------------------------- -->
 
+<form action="login" id="login-form" method="post" onsubmit="cipherPassword()">
 
-<div class="container w-25">
+	<h2 class="my-5">Log in</h2>
 
-	<h2 class="mt-5">Log in</h2>
+	<div class="form-group my-3">
+		<label for="username">Username (nick)</label>
+		<p id="nameCheck" style="display: none"></p>
+		<input type="text" id="userName" name="userName" class="form-control" id="username" autofocus required="required" onkeyUp="searchUserByName(event)">
+	</div>
 
-	<form action="login" method="post" onsubmit="cipherPassword()">
+	<div class="form-group">
+		<label for="password" class="mt-3">Password:</label>
+		<input type="password" name="userPassword" class="form-control" id="password" required="required">
+	</div>
 
-		<div class="form-group my-3">
-			<label for="username">Username:</label>
-			<p id="nameCheck" style="display: none"></p>
-			<input type="text" id="userName" name="userName" class="form-control" id="username" placeholder="Enter your username" autofocus onkeyUp="searchUserByName(event)">
-		</div>
+	<button type="submit" id="loginButton" class="btn btn-info mt-3" disabled>Log in</button>
 
-		<div class="form-group">
-			<label for="password">Password:</label>
-			<input type="password" name="userPassword" class="form-control" id="password" placeholder="Enter your password">
-		</div>
-
-		<button type="submit" id="loginButton" class="btn btn-info mt-3" disabled>Log in</button>
-
-	</form>
-
-	<br>
-
-</div>
+</form>
 
 <!----------------- Getting the <footer> ---------------->
 <%@include file="../../includes/footer.jsp"%>

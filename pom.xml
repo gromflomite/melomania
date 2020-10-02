@@ -49,19 +49,19 @@
 			<version>8.0.21</version>
 		</dependency>
 
-		<!-- Logging -->		
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>2.13.3</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.13.3</version>
 		</dependency>
-		
+
 		<!-- Validations -->
 		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
 		<dependency>
@@ -90,6 +90,15 @@
 			<artifactId>hibernate-validator-annotation-processor</artifactId>
 			<version>6.1.5.Final</version>
 		</dependency>
+		
+		<!-- Apache commons validator -->
+		<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.7</version>
+		</dependency>		
+		<!-- End validations -->
 
 		<!-- https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api -->
 		<dependency>
@@ -97,7 +106,7 @@
 			<artifactId>jakarta.el-api</artifactId>
 			<version>4.0.0.M1</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>		
 
 		<!-- Testing -->
 		<dependency>
@@ -106,7 +115,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Gson -->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
