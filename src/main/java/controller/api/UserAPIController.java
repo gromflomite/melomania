@@ -27,11 +27,13 @@ public class UserAPIController extends HttpServlet {
 	response.setContentType("application/json");
 	response.setCharacterEncoding("UTF-8");
 
-	// Get paramater from call
+	// Get paramater from call	
 	String userName = request.getParameter("name");
-
+	
 	// Call DAO
-	if (DAO.searchByName(userName)) { // If true -> Name exists in the DB ** false -> Name does not exist	    
+	boolean nameFound = DAO.searchByName(userName);
+	
+	if (nameFound) { // If true -> Name exists in the DB ** false -> Name does not exist	    
 
 	    response.setStatus(HttpServletResponse.SC_OK);
 

@@ -79,13 +79,13 @@ body {
 }
 
 /* Font awesome icons */
-i.far {
-    color:#bbd113;
-}
+/* i.far { */
+/*     color:#bbd113; */
+/* } */
 
-i.fas {
-    color: #a60c0c;
-}
+/* i.fas { */
+/*     color: #a60c0c; */
+/* } */
 
 .table > tbody > tr > td {
      vertical-align: middle;

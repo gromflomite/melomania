@@ -23,6 +23,7 @@ function searchUserByName(event) {
 	*/
 	let elementUserName = document.getElementById('userName'); // userName HTML form field
 	let elementNameCheck = document.getElementById('nameCheck'); // HTML <p> element
+	let elementLoginButton = document.getElementById('loginButton'); // HTML login button
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.open("GET", endpoint);
@@ -44,19 +45,27 @@ function searchUserByName(event) {
 			if (formValueEntered) { // Not empty
 
 				console.debug('userName field 1+');
+				
+				elementNameCheck.style.display = 'block';
 
 				elementNameCheck.innerHTML = '<span style="color: #228B22;"> <i class="fas fa-check"></i> </span> User found';
 				elementNameCheck.classList.add('text-success');
 				elementNameCheck.classList.remove('text-danger');
+				
+				elementLoginButton.removeAttribute('disabled'); // Enable login button
 
 				elementUserName.classList.add('text-success', 'font-weight-bold');
-				elementUserName.classList.remove('text-danger');
+				elementUserName.classList.remove('text-danger');				
 
 			} else { // Empty
 
 				console.debug('userName field 0');
+				
+				elementLoginButton.setAttribute('disabled', 'disabled'); // Disable login button
 
 				elementNameCheck.innerHTML = '';
+				elementNameCheck.style.display = 'none';
+				
 			} // End if-else empty field
 
 		} // End if REST service
@@ -75,6 +84,10 @@ function searchUserByName(event) {
 			if (formValueEntered) { // NOT empty
 
 				console.debug('userName field 1+');
+				
+				elementLoginButton.setAttribute('disabled', 'disabled'); // Disable login button
+				
+				elementNameCheck.style.display = 'block';
 
 				elementNameCheck.innerHTML = '<span style="color: #FF0000;"> <i class="fas fa-times"></i> </span> User not found';
 				elementNameCheck.classList.add('text-danger');
@@ -86,8 +99,11 @@ function searchUserByName(event) {
 			} else { // Empty
 
 				console.debug('userName field 0');
+				
+				elementLoginButton.setAttribute('disabled', 'disabled'); // Disable login button
 
 				elementNameCheck.innerHTML = '';
+				elementNameCheck.style.display = 'none';
 
 			} // End if-else empty field
 

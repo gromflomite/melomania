@@ -23,7 +23,7 @@
 
 		<div class="form-group my-3">
 			<label for="username">Username:</label>
-			<p id="nameCheck"></p>
+			<p id="nameCheck" style="display: none"></p>
 			<input type="text" id="userName" name="userName" class="form-control" id="username" placeholder="Enter your username" onkeyUp="searchUserByName(event)">
 		</div>
 
@@ -32,7 +32,7 @@
 			<input type="password" name="userPassword" class="form-control" id="password" placeholder="Enter your password">
 		</div>
 
-		<button type="submit" class="btn btn-info mt-3">Log in</button>
+		<button type="submit" id="loginButton" class="btn btn-info mt-3" disabled>Log in</button>
 
 	</form>
 

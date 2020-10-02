@@ -296,6 +296,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean searchByName(String userName) {
 
+	boolean nameFound = false;
+
 	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_SEARCH_BY_NAME);) {
 
 	    // Replace ? in the SQL query
@@ -306,15 +308,16 @@ public class UserDaoImpl implements UserDao {
 
 	    // Check if SQL returns results
 	    if (dbResultSet.next()) {
-
-		return true;
+		
+		nameFound = true;
 	    }
 
 	} catch (Exception e) {
 	    // TODO: handle exception
+	
 	}
 
-	return false;
+	return nameFound;
     }
     // End searchByName()
     // ---------------------------------------------------------------------------
