@@ -1,6 +1,6 @@
 <!-- --------------------- Includes --------------------- -->
 <!-- head and header -->
-<jsp:include page="/includes/dashboard-head.jsp" />	
+<jsp:include page="/includes/dashboard-head.jsp" />
 <!-- navbar -->
 <jsp:include page="/includes/dashboard-navbar.jsp" />
 <!-- content -->
@@ -11,12 +11,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<div class="container">	
+<div class="container">
 
 	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid bg-warning text-dark">
 		<div class="container">
 			<h3 class="display-5">Albums pending of approval</h3>
-			<p class="lead">This albums are waiting to be checked by an admin.</p>
+			<p class="lead">These albums are waiting to be checked by an admin.</p>
 		</div>
 	</div>
 
@@ -66,7 +66,7 @@
 		</tbody>
 
 	</table>
-	
+
 </div>
 
 <!----------------- Including footer ---------------->

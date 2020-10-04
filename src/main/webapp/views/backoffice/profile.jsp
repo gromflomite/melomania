@@ -1,6 +1,6 @@
 <!-- --------------------- Includes --------------------- -->
 <!-- head and header -->
-<jsp:include page="/includes/dashboard-head.jsp" />	
+<jsp:include page="/includes/dashboard-head.jsp" />
 <!-- navbar -->
 <jsp:include page="/includes/dashboard-navbar.jsp" />
 <!-- content -->
@@ -55,7 +55,7 @@
 				<label for="userMail">Email:</label>
 				<input type="text" name="userMail" class="form-control" id="userMail" value="${userMail}" placeholder="Your email">
 			</div>
-			
+
 			<a class="btn btn-link ml-0 pl-0 mb-3 text-warning" data-toggle="collapse" href="#passwordChange" role="button">I want to change my password</a>
 
 			<br>
@@ -64,7 +64,7 @@
 
 				<div class="form-group">
 					<label for="passwordChange">New password:</label>
-					<!--  id used by JS cipher, name used by Java controller -->					
+					<!--  id used by JS cipher, name used by Java controller -->
 					<input type="password" class="form-control" name="passwordChange" id="password" value="" placeholder="New password">
 				</div>
 
@@ -74,7 +74,7 @@
 					<input type="password" class="form-control" name="passwordChangeConfirm" id="passwordChangeConfirm" value="" placeholder="Type again your new password">
 				</div>
 
-			</div>			
+			</div>
 
 			<button type="submit" class="btn btn-info">Save details</button>
 

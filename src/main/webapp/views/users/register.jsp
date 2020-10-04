@@ -13,19 +13,20 @@
 <!-- ----------------------------------------------------------------------------- -->
 
 
-<form action="userRegister" id="register-form" method="post" accept-charset="UTF-8">
+<form action="userRegister" id="register-form" method="post" accept-charset="UTF-8" onsubmit="cipherPassword()">
 	<!-- onsubmit="cipherPassword()" -->
 
 	<h2 class="my-5">Register</h2>
 
 	<div class="form-group">
 		<label for="userName">Username (nick)</label>
-		<input type="text" class="form-control" name="userName" id="userName" value="${user.name}" required="required" autofocus="autofocus">
+		<p id="nameCheck" style="display: none"></p>
+		<input type="text" class="form-control" name="userName" id="userName" value="${newUser.name}" required="required" autofocus="autofocus" onkeyUp="searchUserByName(event)">
 	</div>
 
 	<div class="form-group">
 		<label for="userName" class="mt-3">Email</label>
-		<input type="text" class="form-control" name="email" id="email" value="${user.email}" required="required">
+		<input type="text" class="form-control" name="email" id="email" value="${newUser.email}" required="required">
 	</div>
 
 	<div class="form-group">
@@ -38,7 +39,7 @@
 		<input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm" required="required">
 	</div>
 
-	<button type="submit" class="btn btn-info mt-3">Sign up</button>
+	<button type="submit" id="signUpButton" class="btn btn-info mt-3" disabled>Sign up</button>
 
 </form>
 

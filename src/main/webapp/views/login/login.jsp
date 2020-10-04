@@ -12,14 +12,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- ----------------------------------------------------------------------------- -->
 
-<form action="login" id="login-form" method="post" onsubmit="cipherPassword()">
+<form action="login" id="login-form" method="post" accept-charset="UTF-8" onsubmit="cipherPassword()">
 
 	<h2 class="my-5">Log in</h2>
 
 	<div class="form-group my-3">
 		<label for="username">Username (nick)</label>
 		<p id="nameCheck" style="display: none"></p>
-		<input type="text" id="userName" name="userName" class="form-control" id="username" autofocus required="required" onkeyUp="searchUserByName(event)">
+		<input type="text" id="userName" name="userName" class="form-control" id="username" autofocus required="required">
 	</div>
 
 	<div class="form-group">
@@ -27,7 +27,7 @@
 		<input type="password" name="userPassword" class="form-control" id="password" required="required">
 	</div>
 
-	<button type="submit" id="loginButton" class="btn btn-info mt-3" disabled>Log in</button>
+	<button type="submit" id="loginButton" class="btn btn-info mt-3">Log in</button>
 
 </form>
 

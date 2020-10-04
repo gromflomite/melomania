@@ -18,7 +18,7 @@
 						Profile
 					</a>
 
-					<div class="sb-sidenav-menu-heading">Albums management</div>					
+					<div class="sb-sidenav-menu-heading">Albums management</div>
 
 					<a class="nav-link" href="views/frontoffice/user-albums?albumsrequest=approved">
 						<div class="sb-nav-link-icon">
@@ -43,7 +43,7 @@
 			</div>
 		</nav>
 	</div>
-	
+
 	<div id="layoutSidenav_content">
 		<main>
 
@@ -56,6 +56,5 @@
 					<li class="breadcrumb-item active">Personal area</li>
 				</ol>
 
-			</div>			
+			</div>
 		</main>
-		

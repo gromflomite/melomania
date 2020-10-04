@@ -18,12 +18,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="home">Home</a>
 				</li>
-				
+
 				<li class="nav-item">
 					<div class="dropdown genres-dropdown">
 						<button class="btn btn-info dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">Genres</button>
 
-	
+
 						<!-- The dropdown values comes from a Java listener (AppListener.java) -->
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="home">Show all albums</a>
@@ -46,10 +46,10 @@
 					<li class="nav-item">
 						<a class="nav-link" href="views/login/login.jsp">Log in</a>
 					</li>
-					
+
 					<li class="nav-item">
 						<a class="nav-link" href="views/users/register.jsp">Register</a>
-					</li>					
+					</li>
 
 				</c:if>
 
@@ -57,7 +57,7 @@
 
 					<li class="nav-item">
 						<a class="badge badge-warning mr-3 user-badge" ${('Administrator' eq userLogin.role.type_role)? 'href="views/backoffice/bohome"' : 'href="views/frontoffice/fohome"'}>${userLogin.name} (${userLogin.role.type_role})</a>
-					</li>				
+					</li>
 
 					<li class="nav-item">
 						<a class="nav-link" href="logout">Log out</a>

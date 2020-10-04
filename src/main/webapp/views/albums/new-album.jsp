@@ -36,7 +36,7 @@
 		<div class="form-group">
 			<label for="artist">
 				Artist
-				<span class="formRestriction"> (2 characters minimum) </span>	
+				<span class="formRestriction"> (2 characters minimum) </span>
 				:
 			</label>
 			<input type="text" name="artist" class="form-control" id="artist" value="${album.artist}" placeholder="Artist" required>
@@ -51,9 +51,9 @@
 			</label>
 			<input type="text" name="year" class="form-control" id="year" value="${album.year}" placeholder="Year" required>
 		</div>
-	
-		
-		
+
+
+
 
 
 		<div class="form-group">
@@ -73,7 +73,7 @@
 </div>
 
 <!----------------- Getting the <footer> ---------------->
-<%@include file="../../includes/footer.jsp" %>
+<%@include file="../../includes/footer.jsp"%>
 <!-- Getting the foot -->
-<%@include file="../../includes/foot.jsp" %>
+<%@include file="../../includes/foot.jsp"%>
 <!------------------------------------------------------->

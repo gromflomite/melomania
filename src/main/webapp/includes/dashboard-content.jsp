@@ -67,7 +67,10 @@
 
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-success text-white mb-4">
-							<div class="card-body"><i class="fas fa-thumbs-up"></i> Approved albums: ${userAlbums.userAlbumsApproved}</div>
+							<div class="card-body">
+								<i class="fas fa-thumbs-up"></i>
+								Approved albums: ${userAlbums.userAlbumsApproved}
+							</div>
 							<div class="card-footer d-flex align-items-center justify-content-between">
 								<a class="small text-white stretched-link" href="views/frontoffice/user-albums?albumsrequest=approved">View approved albums</a>
 								<div class="small text-white">
@@ -79,7 +82,10 @@
 
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-warning text-white mb-4 text-dark">
-							<div class="card-body"><i class="far fa-pause-circle"></i> Pending albums: ${userAlbums.userAlbumsPending}</div>
+							<div class="card-body">
+								<i class="far fa-pause-circle"></i>
+								Pending albums: ${userAlbums.userAlbumsPending}
+							</div>
 							<div class="card-footer d-flex align-items-center justify-content-between">
 								<a class="small text-white stretched-link text-dark" href="views/frontoffice/user-albums?albumsrequest=not-approved">View pending albums</a>
 								<div class="small text-dark">
@@ -90,6 +96,5 @@
 					</div>
 
 				</div>
-			</div>			
+			</div>
 		</main>
-		

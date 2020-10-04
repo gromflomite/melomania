@@ -4,74 +4,69 @@ html {
 	min-height: 100%;
 }
 
-body { 
-    padding-top: 80px;
-    margin-bottom: 75px;
-    font-family: 'Comfortaa', cursive;
+body {
+	padding-top: 80px;
+	margin-bottom: 75px;
+	font-family: 'Comfortaa', cursive;
 }
 /* -------------------------  End generics ------------------------- */
 
-
-
 /* -------------------------  Navbar ------------------------- */
 .navbar {
-    font-size: 1.2rem;
+	font-size: 1.2rem;
 }
-    
+
 .navbar-brand {
-    font-family: 'Yellowtail', cursive;
-    font-size: 2rem;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-top: 0;
+	font-family: 'Yellowtail', cursive;
+	font-size: 2rem;
+	margin-left: 50px;
+	margin-right: 50px;
+	padding-top: 0;
 }
 
 #dropdownMenuButton {
-    padding-top: 9px;
+	padding-top: 9px;
 	border-top-width: 0;
 	padding-bottom: 9px;
 	border-bottom-width: 0px;
-	font-size: 1.2rem;    
+	font-size: 1.2rem;
 }
 
 .user-badge {
-	margin-top : 0.8em;
+	margin-top: 0.8em;
 }
 /* -------------------------  End navbar ------------------------- */
 
-
 /* -------------------------  index.jsp cards ------------------------- */
-
 #card-deck-title {
-    margin: 3rem 0rem 1rem 0rem;
+	margin: 3rem 0rem 1rem 0rem;
 }
 
 .card-deck {
-    justify-content: space-between;
+	justify-content: space-between;
 }
 
 .card-deck .card {
-    flex: 0 25%;
-    margin-top: 10px;
-    margin-bottom: 3em;
+	flex: 0 25%;
+	margin-top: 10px;
+	margin-bottom: 3em;
 }
 
 #album-title {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 #album-year {
-    color: #98a2b3;
-    font-size: 1rem;
-    font-weight: bolder;
+	color: #98a2b3;
+	font-size: 1rem;
+	font-weight: bolder;
 }
 /* ------------------------- End index.jsp cards ------------------------- */
 
-
 /* -------------------------  Others ------------------------- */
 #album-cover {
-    max-width: 60%;
-    height: auto;    
+	max-width: 60%;
+	height: auto;
 }
 
 #newalbumform {
@@ -86,55 +81,52 @@ body {
 /* i.fas { */
 /*     color: #a60c0c; */
 /* } */
-
-.table > tbody > tr > td {
-     vertical-align: middle;
-     padding-left: 20px;
+.table>tbody>tr>td {
+	vertical-align: middle;
+	padding-left: 20px;
 }
 
 #formOptionButtons {
-    padding-left: 25px;
+	padding-left: 25px;
 }
 
 #workinprogress {
-    font-style: italic;
-    color: #fca103;    
+	font-style: italic;
+	color: #fca103;
 }
 
 .formRestriction {
-    font-style: italic;
-    color: #fca103;
+	font-style: italic;
+	color: #fca103;
 }
 
 #githublogo {
-  margin-left: 20px;  
-  width: 5%;
-  height: auto;     
+	margin-left: 20px;
+	width: 5%;
+	height: auto;
 }
 
 #register-form, #login-form {
 	width: 100%;
 	margin: auto;
 	max-width: 330px;
-	padding: 15px;	
+	padding: 15px;
 	margin-top: 3em;
 }
 /* -------------------------  End others ------------------------- */
 
-
-
 /* -------------------------  Footer ------------------------- */
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;  
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px; /* Set the fixed height of the footer here */
+	line-height: 60px; /* Vertically center the text there */
+	background-color: #f5f5f5;
 }
 
 #footer-title {
 	font-family: 'Yellowtail', cursive;
 	font-size: 2rem;
-} 
+}
 /* -------------------------  End footer ------------------------- */

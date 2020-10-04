@@ -13,7 +13,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <div class="d-flex justify-content-center mt-5">
-	<h1> - Not authorized - </h1>
+	<h1>- Not authorized -</h1>
 </div>
 
 <!----------------- Getting the <footer> ---------------->

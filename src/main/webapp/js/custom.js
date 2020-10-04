@@ -5,7 +5,7 @@
 function searchUserByName(event) {
 
 	// Get the value of the userName form field
-	const formValueEntered = event.target.value;
+	let formValueEntered = event.target.value;
 
 	// REST service call endpoint
 	const endpoint = ('http://localhost:8080/melomania/api/user?name=' + formValueEntered);
@@ -23,52 +23,13 @@ function searchUserByName(event) {
 	*/
 	let elementUserName = document.getElementById('userName'); // userName HTML form field
 	let elementNameCheck = document.getElementById('nameCheck'); // HTML <p> element
-	let elementLoginButton = document.getElementById('loginButton'); // HTML login button
+	let elementSignupButton = document.getElementById('signUpButton'); // HTML sign up button
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.open("GET", endpoint);
 	xhttp.send();
 
 	xhttp.onreadystatechange = function() {
-
-		// Check the response of the REST service
-		if (this.readyState == 4 && this.status == 200) { // Value found in the DB
-
-			console.debug('API response 200 -> Name exists');
-
-			/**
-			* Check if userName form field is empty:			
-			*
-			* If empty -> Remove every element, showing nothing to user
-			* If not empty -> Show the <p> nameCheck element
-			*/
-			if (formValueEntered) { // Not empty
-
-				console.debug('userName field 1+');
-				
-				elementNameCheck.style.display = 'block';
-
-				elementNameCheck.innerHTML = '<span style="color: #228B22;"> <i class="fas fa-check"></i> </span> User found';
-				elementNameCheck.classList.add('text-success');
-				elementNameCheck.classList.remove('text-danger');
-				
-				elementLoginButton.removeAttribute('disabled'); // Enable login button
-
-				elementUserName.classList.add('text-success', 'font-weight-bold');
-				elementUserName.classList.remove('text-danger');				
-
-			} else { // Empty
-
-				console.debug('userName field 0');
-				
-				elementLoginButton.setAttribute('disabled', 'disabled'); // Disable login button
-
-				elementNameCheck.innerHTML = '';
-				elementNameCheck.style.display = 'none';
-				
-			} // End if-else empty field
-
-		} // End if REST service
 
 		// Check the response of the REST service
 		if (this.readyState == 4 && this.status == 204) { // Value NOT found in the DB
@@ -81,26 +42,26 @@ function searchUserByName(event) {
 			* If empty -> Remove every element, showing nothing to user
 			* If not empty -> Show the <p> nameCheck element
 			*/
-			if (formValueEntered) { // NOT empty
+			if (formValueEntered.length > 3) {
 
 				console.debug('userName field 1+');
-				
-				elementLoginButton.setAttribute('disabled', 'disabled'); // Disable login button
-				
+
+				elementSignupButton.removeAttribute('disabled'); // Enable sign up button
+
 				elementNameCheck.style.display = 'block';
 
-				elementNameCheck.innerHTML = '<span style="color: #FF0000;"> <i class="fas fa-times"></i> </span> User not found';
-				elementNameCheck.classList.add('text-danger');
-				elementNameCheck.classList.remove('text-success', 'font-weight-bold');
+				elementNameCheck.innerHTML = '<span style="color: #228B22;"> <i class="fas fa-check"></i> </span> Nick available';
+				elementNameCheck.classList.add('text-success');
+				elementNameCheck.classList.remove('text-danger', 'font-weight-bold');
 
-				elementUserName.classList.add('text-danger');
-				elementUserName.classList.remove('text-success', 'font-weight-bold');
+				elementUserName.classList.add('text-success');
+				elementUserName.classList.remove('text-danger', 'font-weight-bold');
 
 			} else { // Empty
 
 				console.debug('userName field 0');
-				
-				elementLoginButton.setAttribute('disabled', 'disabled'); // Disable login button
+
+				elementSignupButton.setAttribute('disabled', 'disabled'); // Disable sign up button
 
 				elementNameCheck.innerHTML = '';
 				elementNameCheck.style.display = 'none';
@@ -108,6 +69,48 @@ function searchUserByName(event) {
 			} // End if-else empty field
 
 		} // End if REST service
+
+
+		// Check the response of the REST service
+		if (this.readyState == 4 && this.status == 200) { // Value found in the DB
+
+			console.debug('API response 200 -> Name exists');
+
+			/**
+			* Check if userName form field is empty:			
+			*
+			* If empty -> Remove every element, showing nothing to user
+			* If not empty -> Show the <p> nameCheck element
+			*/
+			if (formValueEntered.length > 3) {
+
+				console.debug('userName field 1+');
+
+				elementNameCheck.style.display = 'block';
+
+				elementNameCheck.innerHTML = '<span style="color: #FF0000;"> <i class="fas fa-times"></i> </span> Nick already registered';
+
+				elementNameCheck.classList.add('text-danger');
+				elementNameCheck.classList.remove('text-success');
+
+				elementSignupButton.setAttribute('disabled', 'disabled'); // Disable sign up button
+
+				elementUserName.classList.add('text-danger', 'font-weight-bold');
+				elementUserName.classList.remove('text-success');
+
+			} else { // Empty
+
+				console.debug('userName field 0');
+
+				elementSignupButton.setAttribute('disabled', 'disabled'); // Disable sign up button
+
+				elementNameCheck.innerHTML = '';
+				elementNameCheck.style.display = 'none';
+
+			} // End if-else empty field
+
+		} // End if REST service
+
 
 	} // End AJAX function
 
@@ -117,22 +120,24 @@ function searchUserByName(event) {
 // Password hash cipher function
 function cipherPassword() {
 
-	// Retrieve password from form
-	var password = document.getElementById('password').value;
-
-	// Use the library to get the password hash
-	var passwordHash = sha256(password);
-
-	// Save the hash and send back
+	// Retrieve password from -> Get hash -> Put the value into the HTML element	
+	let password = document.getElementById('password').value;
+	let passwordHash = sha256(password);
 	document.getElementById('password').value = passwordHash;
 
+	// USER REGISTER SCENARIO - Check if passwordConfirm is on the DOM (only exists on user register form)
+	let passwordConfirmExist = document.getElementById('passwordConfirm');
+
+	if (passwordConfirmExist) {		
+		let passwordConfirmHash = sha256(passwordConfirmExist.value);
+		document.getElementById('passwordConfirm').value = passwordConfirmHash;
+	}
+
 	// USER EDIT SCENARIO - Check if the user wants to change the password
-	var newPassword = document.getElementById('passwordChangeConfirm');
+	let newPassword = document.getElementById('passwordChangeConfirm');
 
 	if (newPassword) {
-
-		var newPasswordHash = sha256(newPassword.value);
-
+		let newPasswordHash = sha256(newPassword.value);
 		document.getElementById('passwordChangeConfirm').value = newPasswordHash;
 	}
 

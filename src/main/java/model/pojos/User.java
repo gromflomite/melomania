@@ -1,11 +1,27 @@
 package model.pojos;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+
+
 public class User {
 
 	private int id;
+	
+	@NotBlank(message = "Invalid name")
+	@Size(min = 4, max = 12, message = "Nick must be between 4 and 12 characters")
 	private String name;
+	
+	@Email(message = "Invalid email")
 	private String email;
+	
 	private Role role;
+	
+	@NotBlank(message = "Invalid password")
+	// Setting max 70 to allow SHA256 hash long enough
+	@Size(min = 4, max = 70, message = "Password must be between 4 and 12 characters")
 	private String password;
 
 	// Default constructor

@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Google fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Yellowtail&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Yellowtail&display=swap" rel="stylesheet">
 
 <!-- Font awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">

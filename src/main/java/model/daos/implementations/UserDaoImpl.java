@@ -147,49 +147,34 @@ public class UserDaoImpl implements UserDao {
 
     // insert()
     // ---------------------------------------------------------------------------
-    public User insert(User user) throws Exception {
+    public boolean insert(User newUser) throws Exception {
 
-	try (Connection dbConnection = ConnectionManager.getConnection();
-		/**
-		 * @see We use RETURN_GENERATED_KEYS to be able to get the id number that the DB has assigned to the new created entry
-		 */
-		PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);) {
+	boolean insertOk = false;
+
+	try (Connection dbConnection = ConnectionManager.getConnection(); PreparedStatement preparedStatement = dbConnection.prepareStatement(QUERY_INSERT);) {
 
 	    // Replace ? in the SQL query
-	    preparedStatement.setString(1, user.getName());
-	    preparedStatement.setString(2, user.getEmail());
-	    preparedStatement.setInt(3, user.getRole().getId_role());
-	    preparedStatement.setString(4, user.getPassword());
+	    preparedStatement.setString(1, newUser.getName());
+	    preparedStatement.setString(2, newUser.getEmail());
+	    preparedStatement.setInt(3, newUser.getRole().getId_role());
+	    preparedStatement.setString(4, newUser.getPassword());
 
 	    // Execute the query and save the number of affected rows
 	    int affectedRows = preparedStatement.executeUpdate();
 
 	    if (affectedRows == 1) {
 
-		// Knowing and getting the id number that DB has assigned to the new created
-		// register
-		try (ResultSet rsNewAssignedId = preparedStatement.getGeneratedKeys()) {
-
-		    // Check and save the results from the ResultSet from RETURN_GENERATED_KEYS
-		    if (rsNewAssignedId.next()) {
-
-			int id = rsNewAssignedId.getInt(1); // Column position (one-based index in SQL, NOT zero-based) to retrive the id
-							    // number
-
-			user.setId(id);
-
-		    }
-		}
+		insertOk = true;
 
 	    } else {
-
-		throw new Exception("The user " + user.getName() + " has not been created");
-
+		
+		throw new Exception("New user not created");
+		
 	    }
 
 	}
 
-	return user;
+	return insertOk;
     }
 
     // End insert()
@@ -308,13 +293,13 @@ public class UserDaoImpl implements UserDao {
 
 	    // Check if SQL returns results
 	    if (dbResultSet.next()) {
-		
+
 		nameFound = true;
 	    }
 
 	} catch (Exception e) {
 	    // TODO: handle exception
-	
+
 	}
 
 	return nameFound;

@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>${param.title} | melomania</title>
+<title>${param.title}| melomania</title>
 
 <!-- Using relative paths without including the context root name -->
 <base href="${pageContext.request.contextPath}/" />
@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Google fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Yellowtail&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Yellowtail&display=swap" rel="stylesheet">
 
 <!-- Font awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">

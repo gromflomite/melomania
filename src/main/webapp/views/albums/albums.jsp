@@ -13,19 +13,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<div class="container">	
-	
+<div class="container">
+
 	<hr>
-		
+
 	<h2 class="my-3">My album collection</h2>
-	
+
 	<hr>
 
 	<table id="table" class="tabla table table-striped">
 
 		<thead>
-			
-			<tr>				
+
+			<tr>
 				<td hidden="">Album ID</td>
 				<td>Title</td>
 				<td>Artist</td>
@@ -35,27 +35,31 @@
 				<td>Cover</td>
 				<td>Manage</td>
 			</tr>
-		
+
 		</thead>
 
 		<tbody>
 
 			<c:forEach items="${albums}" var="a">
-						
+
 				<tr>
-					<td hidden="">${a.id}</td>					
+					<td hidden="">${a.id}</td>
 					<td>${a.title}</td>
-					<td>${a.artist}</td>					
+					<td>${a.artist}</td>
 					<td>${a.year}</td>
 					<td>${a.genre.genre}</td>
 					<td>${a.comments}</td>
 					<td>
 						<img id="album-cover" src="${a.cover}" alt="Album cover">
-					</td>					
+					</td>
 					<td id="formOptionButtons">
-						<a href="newalbum?id=${a.id}" class="mr-2"><i class="far fa-edit fa-1x" title="Edit"></i></a>
-						<a href="deletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')"><i class="fas fa-trash fa-1x" title="Delete"></i></a>
-					</td>					
+						<a href="newalbum?id=${a.id}" class="mr-2">
+							<i class="far fa-edit fa-1x" title="Edit"></i>
+						</a>
+						<a href="deletealbum?id=${a.id}" onclick="confirmDelete('${a.title}')">
+							<i class="fas fa-trash fa-1x" title="Delete"></i>
+						</a>
+					</td>
 				</tr>
 
 			</c:forEach>
@@ -67,7 +71,7 @@
 </div>
 
 <!----------------- Getting the <footer> ---------------->
-<%@include file="../../includes/footer.jsp" %>
+<%@include file="../../includes/footer.jsp"%>
 <!-- Getting the foot -->
-<%@include file="../../includes/foot.jsp" %>
+<%@include file="../../includes/foot.jsp"%>
 <!------------------------------------------------------->

@@ -1,6 +1,6 @@
 <!-- --------------------- Includes --------------------- -->
 <!-- head and header -->
-<jsp:include page="/includes/dashboard-head.jsp" />	
+<jsp:include page="/includes/dashboard-head.jsp" />
 <!-- navbar -->
 <jsp:include page="/includes/dashboard-navbar.jsp" />
 <!-- content -->
@@ -12,14 +12,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <div class="container">
-	
+
 	<div id="personalized-jumbo" class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h3 class="display-5">Edit albums</h3>
 			<p class="lead">Remember: If you do changes, this album will go to pending of approved list.</p>
 		</div>
 	</div>
-	
+
 	<form id="newalbumform" action="views/frontoffice/foeditalbum" method="post">
 
 		<div class="form-group" hidden="">
@@ -74,7 +74,7 @@
 		<button type="submit" class="btn btn-info">Save album</button>
 
 	</form>
-	
+
 </div>
 
 <!----------------- Including footer ---------------->

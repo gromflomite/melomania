@@ -10,7 +10,7 @@ public interface UserDao {
 
     public User getById(int idUser);
 
-    public User insert(User user) throws Exception;
+    public boolean insert(User user) throws Exception;
 
     public User checkLogin(String userName, String userPassword); 
     
