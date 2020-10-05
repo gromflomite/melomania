@@ -9,10 +9,10 @@ public class User {
 	private int id;
 	
 	@NotBlank(message = "Invalid name")
-	@Size(min = 4, max = 12, message = "Nick must be between 4 and 12 characters", groups = NoPassGroupValidation.class)
+	@Size(min = 4, max = 12, message = "Nick must be between 4 and 12 characters")
 	private String name;
 	
-	@Email(message = "Invalid email", groups = NoPassGroupValidation.class)
+	@Email(message = "Invalid email")
 	private String email;
 	
 	private Role role;
