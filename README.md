@@ -22,27 +22,19 @@ A very simple CMS to manage your music albums. Contain a REST API (not fully imp
 
 Tested with Apache Tomcat 9.0.38 and MariaDB 10.5.5 (check included DB dump).
 
+Database config done into 
+>src/main/java/model/connectionManagers/DbCredentials.java
+
+    protected DbCredentials() {
+    		this.dbUsername = "<DB_USERNAME>";
+    		this.dbPassword = "<DB_PASSWORD";
+    		this.dbLocation = "jdbc:mysql://<DB_ADDRESS>";
+    	}
+
+
+
 #### Default credentials (password in DB hashed with SHA256)
 | Username | Password | Notes
 |--|--|--|
 | listener | demoListen | Users with no privileges
 | admin | demoAdmin |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
