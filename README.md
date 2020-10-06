@@ -48,7 +48,7 @@ Database config done into  ``` src/main/java/model/connectionManagers/DbCredenti
 ## Known issues
 * Password validation:
 
-	Password is client side hashed using JS. I do not know how to validate how to validate a min or max length in server side.
+	Password is client side hashed using JS. I do not know how to validate a min or max length in server side.
 
    
 
