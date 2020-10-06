@@ -15,7 +15,7 @@ import model.pojos.Album;
 import model.pojos.User;
 
 @WebServlet("/views/frontoffice/user-albums")
-public class FOUserAlbums extends HttpServlet {
+public class FOUserAlbumsController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static final AlbumDao albumDao = AlbumDaoImpl.getInstance();

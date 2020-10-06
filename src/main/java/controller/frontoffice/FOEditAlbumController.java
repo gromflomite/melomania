@@ -18,7 +18,7 @@ import model.pojos.User;
 import model.pojos.UserAlbums;
 
 @WebServlet("/views/frontoffice/foeditalbum")
-public class FOEditAlbum extends HttpServlet {
+public class FOEditAlbumController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     

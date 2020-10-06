@@ -13,13 +13,28 @@ import model.daos.implementations.AlbumDaoImpl;
 import model.pojos.Feedback;
 import model.pojos.User;
 
+/**
+ * Controlador usado para eliminar un álbum de la colección de un usuario.
+ *  
+ * <p>
+ * 
+ * Solo se podrá borrar el álbum si el mismo pertenece al usuario que está lanzando el 
+ * borrado. Este extremo se confirma antes de ejecutar dicho borrado.
+ * 
+ * @author Caronte
+ * @version 1.0
+ *
+ */
 @WebServlet("/views/frontoffice/fodeletealbum")
-public class FODeleteAlbum extends HttpServlet {
+public class FODeleteAlbumController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     private static final AlbumDao DELETE_ALBUM_CHECKING_USER_DAO = AlbumDaoImpl.getInstance();    
    
+    /**
+     * El borrado solo se podrá lanzar desde un enlace HTML, por tanto, solo usamos doGet()
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	Feedback feedback = new Feedback(); // Instantiate feedback object
@@ -44,8 +59,7 @@ public class FODeleteAlbum extends HttpServlet {
 	    feedback = new Feedback("danger", e.getMessage());  // Nope feedback - Getting the text from the
 	    							// exceptions created into the DAO method
 	    
-	    // TODO: LOG!!!!
-	
+	    	
 	} finally {
 	    
 	    request.setAttribute("feedback", feedback); // Add feedback to request	    

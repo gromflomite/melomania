@@ -20,7 +20,7 @@ import model.pojos.Genre;
 import model.pojos.User;
 
 @WebServlet("/views/frontoffice/fonewalbum")
-public class FONewAlbum extends HttpServlet {
+public class FONewAlbumController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     
