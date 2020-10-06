@@ -43,12 +43,9 @@ Database config done into  ``` src/main/java/model/connectionManagers/DbCredenti
 - [ ]  Create / delete / update users
 
 #### REST API
-- [ ] Authentication (API key) - Be careful: Now, the API calls are not authenticated and any user is able to execute all of them against th DB.
+- [ ] Authentication (API key) - Be careful: Now, the API calls are not authenticated and any user is able to execute any of them against the DB.
 
 ## Known issues
 * Password validation:
 
-	Password is client side hashed using JS. I do not know how to validate a min or max length in server side.
-
-   
-
+	Password is client side hashed using JS. I do not know how to validate a min and/or max length in server side.
