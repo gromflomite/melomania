@@ -22,19 +22,33 @@ A very simple CMS to manage your music albums. Contain a REST API (not fully imp
 
 Tested with Apache Tomcat 9.0.38 and MariaDB 10.5.5 (check included DB dump).
 
-Database config done into 
->src/main/java/model/connectionManagers/DbCredentials.java
+Database config done into  ``` src/main/java/model/connectionManagers/DbCredentials.java ```
 
     protected DbCredentials() {
     		this.dbUsername = "<DB_USERNAME>";
     		this.dbPassword = "<DB_PASSWORD";
     		this.dbLocation = "jdbc:mysql://<DB_ADDRESS>";
     	}
-
-
-
+    	
 #### Default credentials (password in DB hashed with SHA256)
 | Username | Password | Notes
 |--|--|--|
 | listener | demoListen | Users with no privileges
 | admin | demoAdmin |
+
+## To do
+
+#### BackOffice (admin actions)
+- [ ]  Approve / remove albums
+- [ ]  Create / delete / update users
+
+#### REST API
+- [ ] Authentication (API key) - Be careful: Now, the API calls are not authenticated and any user is able to execute all of them against th DB.
+
+## Known issues
+* Password validation:
+
+	Password is client side hashed using JS. I do not know how to validate how to validate a min or max length in server side.
+
+   
+
