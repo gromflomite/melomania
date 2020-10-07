@@ -17,7 +17,7 @@ public interface UserDao {
     /**     
      * Recupera todos los usuarios existentes en la BD
      * 
-     * @return ArrayList<> de tipo User con los usuarios existentes en la BD
+     * @return {@literal ArrayList<>}  de tipo User con los usuarios existentes en la BD
      */
     public ArrayList<User> getAll();
 

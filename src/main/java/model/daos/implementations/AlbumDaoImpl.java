@@ -320,9 +320,7 @@ public class AlbumDaoImpl implements AlbumDao {
    /**
     * 
     * Retrieve an album by album ID, checking if that album belongs to the logged user    * 
-    * 
-    * @param idAlbum
-    * @param idUser
+    *
     * @return An album if exists in the DB and belongs to idUser
     * @throws Exception If not results for that idUser
     */

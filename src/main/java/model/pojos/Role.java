@@ -2,11 +2,10 @@ package model.pojos;
 
 public class Role {
 
-    /**
-     * @see FrontOfficeFilter.java & BackOfficeFilter.java
-     * 
+    /**     
      * Constants to use in authentication filters
      * 
+     * Check FrontOfficeFilter.java and BackOfficeFilter.java     
      */
     public static final int ADMIN = 4; // Values from DB
     public static final int LISTENER = 6;
