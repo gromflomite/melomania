@@ -156,6 +156,28 @@ function confirmDelete(title) {
 	}
 }
 
+// Function to ask the admin for album approve confirmation
+function confirmApprove(title) {
+
+	// The confirmDelete() method returns true if the user clicked "OK", and false otherwise.
+	if (confirm('Do you really want to approve the album "' + title + '"?')) {
+
+	} else {
+		event.preventDefault();
+	}
+}
+
+// Function to ask the admin for album disapprove confirmation
+function confirmDisapprove(title) {
+
+	// The confirmDelete() method returns true if the user clicked "OK", and false otherwise.
+	if (confirm('Do you really want to disapprove the album "' + title + '"?')) {
+
+	} else {
+		event.preventDefault();
+	}
+}
+
 // Datatables plugin JS
 // Run the function when the DOM element (page) it charged and ready
 $(document).ready(function() {

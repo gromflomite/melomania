@@ -32,6 +32,10 @@ public interface AlbumDao {
 
     public Album delete(int deleteAlbumId) throws Exception;
 
-    public void deleteCheckingUser(int idAlbum, int idUser) throws Exception, SQLException;    
+    public void deleteCheckingUser(int idAlbum, int idUser) throws Exception, SQLException;  
+    
+    public boolean approve(int albumId) throws Exception;
+    
+    public boolean disapprove(int albumId) throws Exception;    
 
 }

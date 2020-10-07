@@ -25,3 +25,13 @@
 .profile-table-details {
 	border-bottom: 1px solid #dee2e6;
 }
+
+.formManageButtons {
+	margin: auto;
+	width: 50%;
+}
+
+.album-approved-icon {
+	margin: auto;
+	width: 50%;
+}

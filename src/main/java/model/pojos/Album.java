@@ -26,6 +26,8 @@ public class Album {
 
     private String cover;
 
+    private String dateApproved;
+
     private User user; // Adding the User (userId) object
 
     private Genre genre; // Adding the Genre object
@@ -39,6 +41,7 @@ public class Album {
 	this.year = 2020;
 	this.comments = "One of the greatest albums of all time.";
 	this.cover = "https://i.imgur.com/bo3KIgS.jpg";
+	this.dateApproved = "";
 	this.user = new User();
 	this.genre = new Genre();
     }
@@ -51,6 +54,7 @@ public class Album {
 	this.year = year;
 	this.comments = "One of the greatest albums of all time.";
 	this.cover = "https://i.imgur.com/bo3KIgS.jpg";
+	this.dateApproved = "";
 	this.user = new User();
 	this.genre = new Genre();
     }
@@ -105,6 +109,14 @@ public class Album {
 	this.cover = cover;
     }
 
+    public String getDateApproved() {
+	return dateApproved;
+    }
+
+    public void setDateApproved(String dateApproved) {
+	this.dateApproved = dateApproved;
+    }
+
     public User getUser() {
 	return user;
     }
@@ -125,6 +137,7 @@ public class Album {
     // -----------------------------------------------------------------------------
     @Override
     public String toString() {
-	return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments=" + comments + ", cover=" + cover + ", user=" + user + ", genre=" + genre + "]";
+	return "Album [id=" + id + ", title=" + title + ", artist=" + artist + ", year=" + year + ", comments=" + comments + ", cover=" + cover + ", dateApproved=" + dateApproved + ", user=" + user + ", genre=" + genre + "]";
     }
+
 }

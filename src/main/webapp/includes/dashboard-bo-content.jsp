@@ -18,20 +18,20 @@
 						Profile
 					</a>
 
-					<div class="sb-sidenav-menu-heading">Albums management</div>
+					<div class="sb-sidenav-menu-heading">Management</div>
 
-					<a class="nav-link" href="views/frontoffice/user-albums?albumsrequest=approved">
+					<a class="nav-link" href="views/backoffice/albums">
 						<div class="sb-nav-link-icon">
-							<i class="fas fa-thumbs-up"></i>
+							<i class="fas fa-podcast"></i>
 						</div>
-						All approved albums
+						Albums
 					</a>
 
-					<a class="nav-link" href="views/frontoffice/user-albums?albumsrequest=not-approved">
+					<a class="nav-link" href="#">
 						<div class="sb-nav-link-icon">
-							<i class="far fa-pause-circle"></i>
+							<i class="fas fa-users"></i>
 						</div>
-						Pending albums
+						Users
 					</a>
 
 				</div>
