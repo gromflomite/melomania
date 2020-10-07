@@ -8,7 +8,7 @@ function searchUserByName(event) {
 	let formValueEntered = event.target.value;
 
 	// REST service call endpoint
-	const endpoint = ('http://localhost:8080/melomania/api/user?name=' + formValueEntered);
+	const endpoint = ('http://playzone.cyou/melomania/api/user?name=' + formValueEntered);
 
 	console.debug('Name entered by user in login form:' + formValueEntered);
 
