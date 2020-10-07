@@ -12,6 +12,7 @@ public class User {
 	@Size(min = 4, max = 12, message = "Nick must be between 4 and 12 characters")
 	private String name;
 	
+	@NotBlank(message = "Email required")
 	@Email(message = "Invalid email")
 	private String email;
 	
