@@ -9,7 +9,7 @@ public class DbCredentials {
 	protected DbCredentials() {
 		this.dbUsername = "root";
 		this.dbPassword = "secret";
-		this.dbLocation = "jdbc:mysql://localhost/audio";
+		this.dbLocation = "jdbc:mysql://localhost:36972/audio";
 	}
 
 	protected String getDbUsername() {
