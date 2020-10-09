@@ -22,8 +22,9 @@ import model.pojos.User;
 public class LoginController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;    
-    private final static Logger LOGGER = LogManager.getLogger("melomania-log"); 
+    private static final Logger LOGGER = LogManager.getLogger("melomania-log"); 
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	// Get parameters from view (login.jsp)
