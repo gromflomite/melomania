@@ -43,7 +43,7 @@ Database config done into  ``` src/main/java/model/connectionManagers/DbCredenti
 - [ ]  Create / delete / update users
 
 #### REST API
-- [ ] Authentication (API key) - Be careful: Now, the API calls are not authenticated and any user is able to execute any of them against the DB.
+- [ ] Authentication (API key) - Be careful: Now, the API calls are not authenticated and every user is able to execute any of them against the DB.
 
 ## Known issues
 * Password validation:
