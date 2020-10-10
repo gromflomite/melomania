@@ -33,7 +33,7 @@ Database config done into  ``` src/main/java/model/connectionManagers/DbCredenti
 #### Default credentials (password in DB hashed with SHA256)
 | Username | Password | Notes
 |--|--|--|
-| listener | demoListen | Users with no privileges
+| listener | demoListen | User with no privileges
 | admin | demoAdmin |
 
 ## To do
@@ -48,4 +48,4 @@ Database config done into  ``` src/main/java/model/connectionManagers/DbCredenti
 ## Known issues
 * Password validation:
 
-	Password is client side hashed using JS. I do not know how to validate a min and/or max length in server side.
+	Password is client-side hashed using JS (SHA256). I do not know how to validate a min and/or max password length in backend once the password arrives hashed. 
