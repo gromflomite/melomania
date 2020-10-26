@@ -24,7 +24,7 @@ import model.pojos.Genre;
 @WebListener
 public class AppListener implements ServletContextListener {
 
-    private final static Logger logger = LogManager.getLogger("melomania-log");
+    private static final Logger logger = LogManager.getLogger("melomania-log");
 
     /**
      * 
